@@ -39,4 +39,14 @@
       mix-blend-mode: multiply;
     }
   }
+  @media screen and (max-width: 1090px) {
+    padding: 0.5rem;
+
+    .inner {
+      padding: 0.5rem;
+      .logo-dry {
+        width: 100%;
+      }
+    }
+  }
 }

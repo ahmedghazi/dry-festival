@@ -190,7 +190,7 @@ const DryWatter = () => {
       //    gamma > 0 (incliné à droite) → eau se déplace à droite → droite plus basse (y plus grand)
       for (let i = 0; i < numPoints; i++) {
         points[i].targetY =
-          waterLevel +
+          waterLevel -
           tiltGamma * GYRO_SENSITIVITY * (points[i].x / width - 0.5) * 2;
       }
 
