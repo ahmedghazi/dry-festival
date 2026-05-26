@@ -15,10 +15,6 @@ const LogoDry = () => {
         y='0px'
         viewBox='0 0 771 590'
         xmlSpace='preserve'>
-        {/* <style type="text/css">
-	.st0{ style={style}fill:#FFFAF0;}
-</style> */}
-        <title>logo</title>
         <path
           className='st0'
           style={style}
