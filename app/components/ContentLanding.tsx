@@ -6,7 +6,7 @@ const ContentLanding = () => {
   return (
     <div className='content--landing px-md '>
       <div className='inner'>
-        <div
+        {/* <div
           style={{
             position: "absolute",
             bottom: 0,
@@ -17,7 +17,7 @@ const ContentLanding = () => {
             mixBlendMode: "multiply",
             opacity: 0,
           }}
-        />
+        /> */}
 
         <div className='header'>more coming soon…</div>
         <LogoDry />
