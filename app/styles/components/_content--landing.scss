@@ -1,0 +1,42 @@
+.content--landing {
+  text-align: center;
+  padding: 1rem;
+  height: 100dvh;
+  padding: 1rem;
+  .inner {
+    background-color: var(--color-accent);
+    border-radius: 1rem;
+    border: var(--border);
+    padding: 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    .header,
+    .footer {
+      position: relative;
+      z-index: 2;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    .logo-dry {
+      width: 765px;
+      margin: 0 auto;
+      z-index: 2;
+      position: relative;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: multiply;
+    }
+  }
+}

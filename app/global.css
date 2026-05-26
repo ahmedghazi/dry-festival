@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+[data-theme="theme-xyz"] {
+  --header-height: 43.5px;
+  --color-bg: #fff;
+  --color-primary: #000;
+  --color-secondary: #ff8c71;
+  --color-hover: #333;
+  --color-accent: #ff8c71;
+  --color-red: #ff0000;
+  --color-bleu: #77b5fe;
+
+  --font-primary:
+    "FormaDJRDisplay-Medium-Testing", "Helvetica Neue", "HelveticaNeueRoman",
+    "HelveticaNeue-Roman", "Helvetica Neue Roman", "TeXGyreHerosRegular",
+    "Helvetica", "Arial", sans-serif;
+  --font-primary-b:
+    "FormaDJRDisplay-Bold-Testing", "Helvetica Neue", "HelveticaNeueRoman",
+    "HelveticaNeue-Roman", "Helvetica Neue Roman", "TeXGyreHerosRegular",
+    "Helvetica", "Arial", sans-serif;
+  /* --font-secondary:
+    "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman",
+    "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
+    sans-serif; */
+
+  --spacing-xs: 0.4em;
+  --spacing-sm: 0.625em;
+  --spacing-md: 1.25rem;
+  --spacing-lg: 1.875rem;
+  --spacing-xl: 3.75rem;
+  --spacing-2xl: 6.25rem;
+
+  --text-md-mobile: 1rem;
+
+  --text-sm: 0.75rem;
+  --text-md: 1.25rem;
+  --text-lg: 2.25rem;
+
+  --cubic: cubic-bezier(0.87, 0, 0.13, 1);
+
+  /* --text-xl: clamp(26px, 5.21vw, 75px);*/
+
+  --border-width: 2px;
+  --border: var(--border-width) solid;
+  --border-width-lg: 2px;
+  --border-lg: var(--border-width-lg) solid;
+
+  --gutter: 0.4em;
+
+  --screen-sm: 768px;
+  --screen-md: 1080px;
+  --screen-lg: 1441px;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-hover: var(--color-hover);
+  --color-accent: var(--color-accent);
+  --color-red: var(--color-red);
+
+  --font-primary: var(--font-primary);
+  --font-secondary: var(--font-secondary);
+
+  --spacing-xs: var(--spacing-xs);
+  --spacing-sm: var(--spacing-sm);
+  --spacing-md: var(--spacing-md);
+  --spacing-lg: var(--spacing-lg);
+  --spacing-xl: var(--spacing-xl);
+  --spacing-2xl: var(--spacing-2xl);
+
+  --text-md-mobile: var(--text-md-mobile);
+
+  --text-sm: var(--text-sm);
+  --text-md: var(--text-md);
+  --text-lg: var(--text-lg);
+
+  --cubic: var(--cubic);
+
+  --border-width: var(--border-width);
+  --border: var(--border);
+  --border-width-lg: var(--border-width-lg);
+  --border-lg: var(--border-lg);
+
+  --gutter: var(--gutter);
+
+  --screen-sm: var(--screen-sm);
+  --screen-md: var(--screen-md);
+  --screen-lg: var(--screen-lg);
+}
