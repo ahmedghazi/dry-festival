@@ -5,7 +5,7 @@ const website = {
   description:
     "un nouveau salon entièrement dédié aux boissons sans alcool  9, 10 + 11 Janvier 2027 | Carreau du Temple, Paris | bonjour@dryfestival.com",
   headline: "", // Headline for schema.org JSONLD
-  url: "https://dry-festival.fr", // Domain of your site. No trailing slash!
+  url: "https://dryfestrival.netlify.app", // Domain of your site. No trailing slash!
   image: "/dry-festival-poster.jpg", // Used for SEO
   ogLanguage: "fr_FR", // Facebook Language
 
