@@ -46,6 +46,8 @@ const DryWatter = () => {
 
     // Tilt courant du gyroscope (gamma : −90° gauche → +90° droite)
     let tiltGamma = 0;
+    let gyroGranted = false;
+    let idleTime = 0;
 
     // --- Masque logo ---
     let logoImg: HTMLImageElement | null = null;
@@ -124,7 +126,10 @@ const DryWatter = () => {
 
     // --- Gyroscope ---
     const handleOrientation = (e: DeviceOrientationEvent) => {
-      if (e.gamma !== null) tiltGamma = e.gamma;
+      if (e.gamma !== null) {
+        tiltGamma = e.gamma;
+        gyroGranted = true;
+      }
     };
 
     const setupGyroscope = () => {
@@ -153,7 +158,7 @@ const DryWatter = () => {
           { once: true },
         );
       } else {
-        // Android / autres
+        // Android / autres — permission implicite
         window.addEventListener("deviceorientation", handleOrientation);
       }
     };
@@ -186,6 +191,18 @@ const DryWatter = () => {
     };
 
     const animate = () => {
+      idleTime += 0.012;
+
+      // Idle waves when gyro is not active (no permission or desktop)
+      if (!gyroGranted) {
+        for (let i = 0; i < numPoints; i++) {
+          const phase = (i / numPoints) * Math.PI * 2;
+          const slow = Math.sin(idleTime * 0.7 + phase) * 0.18;
+          const fast = Math.sin(idleTime * 1.9 + phase * 1.3) * 0.07;
+          points[i].vy += slow + fast;
+        }
+      }
+
       // 1. targetY : position d'équilibre inclinée selon le gyroscope
       //    gamma > 0 (incliné à droite) → eau se déplace à droite → droite plus basse (y plus grand)
       for (let i = 0; i < numPoints; i++) {

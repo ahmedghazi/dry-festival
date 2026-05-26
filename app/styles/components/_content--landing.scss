@@ -11,19 +11,29 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     overflow: hidden;
     position: relative;
     .header,
     .footer {
-      position: relative;
-      z-index: 2;
+      position: absolute;
+      z-index: 20;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 1rem;
+    }
+    .header {
+      top: 0;
+    }
+    .footer {
+      bottom: 0;
     }
     p {
       margin-bottom: 0;
     }
     .logo-dry {
-      width: 765px;
+      // width: 765px;
+      width: 50%;
       margin: 0 auto;
       z-index: 2;
       position: relative;
@@ -44,6 +54,10 @@
 
     .inner {
       padding: 1rem;
+      .header,
+      .footer {
+        width: 100%;
+      }
       .logo-dry {
         width: 100%;
         transform: translateY(2.2rem);
