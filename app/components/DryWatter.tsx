@@ -256,9 +256,9 @@ const DryWatter = () => {
   const base: React.CSSProperties = {
     position: "absolute",
     top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
+    left: "-1%",
+    width: "102%",
+    height: "102%",
     pointerEvents: "none",
   };
 
