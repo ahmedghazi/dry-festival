@@ -6,9 +6,7 @@ import website from "./config/website";
 import { JSX } from "react/jsx-runtime";
 import ContentLanding from "./components/ContentLanding";
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   // const data = await getHome();
   // console.log(data.seo);
   return {
@@ -30,7 +28,7 @@ type PageLandingProps = {
 
 const PageLanding: ({
   params,
-}: PageLandingProps) => Promise<JSX.Element> = async ({ params }) => {
+}: PageLandingProps) => Promise<JSX.Element> = async () => {
   // const { isEnabled: preview } = draftMode();
   // let data: Home;
   // if (preview) {

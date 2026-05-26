@@ -2,10 +2,11 @@
 import React, { useEffect, useRef } from "react";
 
 // ─── Variables d'ajustement ───────────────────────────────────────────────────
-const COLOR_PINK       = "#FF6680"; // couleur de l'eau rose (fond bas de page)
-const COLOR_BLUE       = "#9DCBE1"; // couleur de l'eau bleue (reflet sur le logo)
-const VISCOSITY        = 0.34;      // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
-const GYRO_SENSITIVITY = 4;         // pixels de décalage par degré de tilt (verre incliné)
+const COLOR_PINK = "#FF6680"; // couleur de l'eau rose (fond bas de page)
+const COLOR_BLUE = "#9DCBE1"; // couleur de l'eau bleue (reflet sur le logo)
+const VISCOSITY = 0.98; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
+const GYRO_SENSITIVITY = 4; // pixels de décalage par degré de tilt (verre incliné)
+const MOUSE_FORCE = 3; // amplitude des vagues souris (1–22, était 22 trop haut)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const DryWatter = () => {
@@ -22,21 +23,23 @@ const DryWatter = () => {
     if (!pinkCtx || !grayCtx) return;
 
     let animationFrameId: number;
-    let width  = (pinkCanvas.width  = grayCanvas.width  = window.innerWidth);
+    let width = (pinkCanvas.width = grayCanvas.width = window.innerWidth);
     let height = (pinkCanvas.height = grayCanvas.height = window.innerHeight);
 
     // --- Physique partagée ---
-    const numPoints   = 40;
+    const numPoints = 40;
     const points: { x: number; y: number; targetY: number; vy: number }[] = [];
-    const tension     = 0.025;
-    const damping     = VISCOSITY;
-    const spread      = 0.18;
-    const mouseForce  = 22;
+    const tension = 0.025;
+    const damping = VISCOSITY;
+    const spread = 0.18;
+    const mouseForce = MOUSE_FORCE;
     const mouseRadius = 180;
 
     const mouse: {
-      x: number | null; y: number | null;
-      oldX: number | null; oldY: number | null;
+      x: number | null;
+      y: number | null;
+      oldX: number | null;
+      oldY: number | null;
     } = { x: null, y: null, oldX: null, oldY: null };
 
     let waterLevel = height * 0.5;
@@ -51,15 +54,15 @@ const DryWatter = () => {
     const updateLogoBounds = () => {
       const svgEl = document.querySelector(".logo-dry svg");
       if (!svgEl) return;
-      const svgRect    = svgEl.getBoundingClientRect();
+      const svgRect = svgEl.getBoundingClientRect();
       const canvasRect = pinkCanvas.getBoundingClientRect();
-      const scaleX     = pinkCanvas.width  / canvasRect.width;
-      const scaleY     = pinkCanvas.height / canvasRect.height;
+      const scaleX = pinkCanvas.width / canvasRect.width;
+      const scaleY = pinkCanvas.height / canvasRect.height;
       logoBounds = {
-        left:   (svgRect.left - canvasRect.left) * scaleX,
-        top:    (svgRect.top  - canvasRect.top)  * scaleY,
-        width:   svgRect.width  * scaleX,
-        height:  svgRect.height * scaleY,
+        left: (svgRect.left - canvasRect.left) * scaleX,
+        top: (svgRect.top - canvasRect.top) * scaleY,
+        width: svgRect.width * scaleX,
+        height: svgRect.height * scaleY,
       };
     };
 
@@ -67,12 +70,17 @@ const DryWatter = () => {
       const svgEl = document.querySelector(".logo-dry svg");
       if (!svgEl || logoBounds.width === 0) return;
       const clone = svgEl.cloneNode(true) as SVGElement;
-      clone.setAttribute("width",  String(logoBounds.width));
+      clone.setAttribute("width", String(logoBounds.width));
       clone.setAttribute("height", String(logoBounds.height));
-      const blob = new Blob([new XMLSerializer().serializeToString(clone)], { type: "image/svg+xml" });
-      const url  = URL.createObjectURL(blob);
-      const img  = new Image();
-      img.onload = () => { logoImg = img; URL.revokeObjectURL(url); };
+      const blob = new Blob([new XMLSerializer().serializeToString(clone)], {
+        type: "image/svg+xml",
+      });
+      const url = URL.createObjectURL(blob);
+      const img = new Image();
+      img.onload = () => {
+        logoImg = img;
+        URL.revokeObjectURL(url);
+      };
       img.src = url;
     };
 
@@ -83,20 +91,33 @@ const DryWatter = () => {
       points.length = 0;
       waterLevel = height * 0.5;
       for (let i = 0; i < numPoints; i++) {
-        points.push({ x: (width / (numPoints - 1)) * i, y: waterLevel, targetY: waterLevel, vy: 0 });
+        points.push({
+          x: (width / (numPoints - 1)) * i,
+          y: waterLevel,
+          targetY: waterLevel,
+          vy: 0,
+        });
       }
     };
     initPoints();
 
     // --- Souris ---
     const handleMouseMove = (e: MouseEvent) => {
-      mouse.oldX = mouse.x; mouse.oldY = mouse.y;
-      mouse.x = e.clientX;  mouse.y = e.clientY;
+      mouse.oldX = mouse.x;
+      mouse.oldY = mouse.y;
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
       const mouseSpeedY = mouse.oldY !== null ? mouse.y - mouse.oldY : 0;
-      if (mouse.y !== null && mouse.x !== null && mouse.y > waterLevel - 150 && mouse.y < waterLevel + 150) {
+      if (
+        mouse.y !== null &&
+        mouse.x !== null &&
+        mouse.y > waterLevel - 150 &&
+        mouse.y < waterLevel + 150
+      ) {
         points.forEach((p) => {
           const dist = Math.abs((mouse.x as number) - p.x);
-          if (dist < mouseRadius) p.vy += mouseSpeedY * 0.1 * (1 - dist / mouseRadius) * mouseForce;
+          if (dist < mouseRadius)
+            p.vy += mouseSpeedY * 0.1 * (1 - dist / mouseRadius) * mouseForce;
         });
       }
     };
@@ -121,7 +142,11 @@ const DryWatter = () => {
           () => {
             DOE.requestPermission!()
               .then((state) => {
-                if (state === "granted") window.addEventListener("deviceorientation", handleOrientation);
+                if (state === "granted")
+                  window.addEventListener(
+                    "deviceorientation",
+                    handleOrientation,
+                  );
               })
               .catch(console.error);
           },
@@ -136,7 +161,7 @@ const DryWatter = () => {
     setupGyroscope();
 
     const handleResize = () => {
-      width  = pinkCanvas.width  = grayCanvas.width  = window.innerWidth;
+      width = pinkCanvas.width = grayCanvas.width = window.innerWidth;
       height = pinkCanvas.height = grayCanvas.height = window.innerHeight;
       initPoints();
       updateLogoBounds();
@@ -144,14 +169,15 @@ const DryWatter = () => {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("resize",    handleResize);
+    window.addEventListener("resize", handleResize);
 
     const drawWavePath = (ctx: CanvasRenderingContext2D) => {
       ctx.beginPath();
       ctx.moveTo(0, height);
       ctx.lineTo(points[0].x, points[0].y);
       for (let i = 0; i < numPoints - 1; i++) {
-        const p1 = points[i], p2 = points[i + 1];
+        const p1 = points[i],
+          p2 = points[i + 1];
         ctx.quadraticCurveTo(p1.x, p1.y, (p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
       }
       ctx.lineTo(width, points[numPoints - 1].y);
@@ -163,7 +189,9 @@ const DryWatter = () => {
       // 1. targetY : position d'équilibre inclinée selon le gyroscope
       //    gamma > 0 (incliné à droite) → eau se déplace à droite → droite plus basse (y plus grand)
       for (let i = 0; i < numPoints; i++) {
-        points[i].targetY = waterLevel + tiltGamma * GYRO_SENSITIVITY * (points[i].x / width - 0.5) * 2;
+        points[i].targetY =
+          waterLevel +
+          tiltGamma * GYRO_SENSITIVITY * (points[i].x / width - 0.5) * 2;
       }
 
       // 2. Ressort vers targetY
@@ -175,8 +203,9 @@ const DryWatter = () => {
 
       // 3. Propagation horizontale
       for (let i = 0; i < numPoints; i++) {
-        if (i > 0)             points[i].vy += (points[i - 1].y - points[i].y) * spread;
-        if (i < numPoints - 1) points[i].vy += (points[i + 1].y - points[i].y) * spread;
+        if (i > 0) points[i].vy += (points[i - 1].y - points[i].y) * spread;
+        if (i < numPoints - 1)
+          points[i].vy += (points[i + 1].y - points[i].y) * spread;
       }
 
       // 4. Appliquer vélocités
@@ -185,23 +214,29 @@ const DryWatter = () => {
       // --- Canvas rose ---
       pinkCtx.clearRect(0, 0, width, height);
       drawWavePath(pinkCtx);
-      pinkCtx.fillStyle   = COLOR_PINK;
+      pinkCtx.fillStyle = COLOR_PINK;
       pinkCtx.fill();
       pinkCtx.strokeStyle = "#000000";
-      pinkCtx.lineWidth   = 2;
+      pinkCtx.lineWidth = 2;
       pinkCtx.stroke();
 
       // --- Canvas bleu (masqué sur le logo) ---
       grayCtx.clearRect(0, 0, width, height);
       drawWavePath(grayCtx);
-      grayCtx.fillStyle   = COLOR_BLUE;
+      grayCtx.fillStyle = COLOR_BLUE;
       grayCtx.fill();
       grayCtx.strokeStyle = "#000000";
-      grayCtx.lineWidth   = 2;
+      grayCtx.lineWidth = 2;
       grayCtx.stroke();
       if (logoImg) {
         grayCtx.globalCompositeOperation = "destination-in";
-        grayCtx.drawImage(logoImg, logoBounds.left, logoBounds.top, logoBounds.width, logoBounds.height);
+        grayCtx.drawImage(
+          logoImg,
+          logoBounds.left,
+          logoBounds.top,
+          logoBounds.width,
+          logoBounds.height,
+        );
         grayCtx.globalCompositeOperation = "source-over";
       }
 
@@ -211,8 +246,8 @@ const DryWatter = () => {
     animate();
 
     return () => {
-      window.removeEventListener("mousemove",         handleMouseMove);
-      window.removeEventListener("resize",            handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("deviceorientation", handleOrientation);
       cancelAnimationFrame(animationFrameId);
     };
@@ -220,15 +255,23 @@ const DryWatter = () => {
 
   const base: React.CSSProperties = {
     position: "absolute",
-    top: 0, left: 0,
-    width: "100%", height: "100%",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
     pointerEvents: "none",
   };
 
   return (
     <>
-      <canvas ref={pinkCanvasRef} style={{ ...base, zIndex: 1, mixBlendMode: "normal"   }} />
-      <canvas ref={grayCanvasRef} style={{ ...base, zIndex: 3, mixBlendMode: "multiply" }} />
+      <canvas
+        ref={pinkCanvasRef}
+        style={{ ...base, zIndex: 1, mixBlendMode: "normal" }}
+      />
+      <canvas
+        ref={grayCanvasRef}
+        style={{ ...base, zIndex: 3, mixBlendMode: "multiply" }}
+      />
     </>
   );
 };

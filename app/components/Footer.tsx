@@ -1,11 +1,8 @@
 import React from "react";
-import { Settings } from "../types/schema";
 
-type Props = {
-  settings: Settings;
-};
+type Props = {};
 
-const Footer = (props: Props) => {
+const Footer = () => {
   return <footer>Footer</footer>;
 };
 
