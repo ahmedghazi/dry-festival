@@ -1,11 +1,12 @@
 const website = {
   pathPrefix: "/", // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
-  title: "Site Name", // Navigation and Site Title
-  titleAlt: "SN", // Title for JSONLD
-  description: "...",
+  title: "dry festival", // Navigation and Site Title
+  titleAlt: "DRY", // Title for JSONLD
+  description:
+    "un nouveau salon entièrement dédié aux boissons sans alcool  9, 10 + 11 Janvier 2027 | Carreau du Temple, Paris | bonjour@dryfestival.com",
   headline: "", // Headline for schema.org JSONLD
-  url: "https://aaa.fr", // Domain of your site. No trailing slash!
-  image: "", // Used for SEO
+  url: "https://dry-festival.fr", // Domain of your site. No trailing slash!
+  image: "/logo-dry.svg", // Used for SEO
   ogLanguage: "fr_FR", // Facebook Language
 
   // JSONLD / Manifest
