@@ -10,10 +10,8 @@ export async function generateMetadata(): Promise<Metadata> {
   // const data = await getHome();
   // console.log(data.seo);
   return {
-    title: `Dry Festival`,
-    description: `un nouveau salon entièrement dédié aux boissons sans alcool
-
-9, 10 + 11 Janvier 2027 | Carreau du Temple, Paris | bonjour@dryfestival.com`,
+    title: website.title,
+    description: website.description,
     openGraph: {
       images: website.image,
     },
