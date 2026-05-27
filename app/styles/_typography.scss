@@ -19,32 +19,41 @@
 
 //ABCDiatype-Regular
 body {
-  color: black;
+  color: var(--color-primary);
   font-family: var(--font-primary);
   font-size: var(--text-md);
-  line-height: 1.25;
+  line-height: 0.94;
+  letter-spacing: 0.0375rem;
   // text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  letter-spacing: 0.02rem;
-
+  // letter-spacing: 0.02rem;ch
+  // font-feature-settings:
+  //   "ss01" on,
+  //   "ss02" on,
+  //   "ss03" on,
+  //   "ss04" on,
+  //   "ss05" on,
+  //   "salt" on;
+  font-feature-settings: "salt" on;
   @media all and (min-width: 1080px) {
-    font-size: var(--text-md);
+    font-size: var(--text-lg);
+    line-height: 0.9;
   }
 }
 
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
-@media all and (min-width: 1080px) {
-  html {
-    font-size: 20px;
-  }
-}
-@media all and (min-width: 1920px) {
-  html {
-    font-size: 1vw;
-  }
-}
+// @media all and (min-width: 1080px) {
+//   html {
+//     font-size: 16px;
+//   }
+// }
+// @media all and (min-width: 1920px) {
+//   html {
+//     font-size: 1vw;
+//   }
+// }
 
 .italic {
   font-style: italic;
@@ -127,8 +136,6 @@ button.is-current {
 /* Text elements */
 p,
 .text p {
-  font-family: var(--font-secondary);
-
   margin-bottom: 1em;
   &:last-child {
     margin-bottom: 0;

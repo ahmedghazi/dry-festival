@@ -234,7 +234,7 @@ const DryWatter = () => {
       pinkCtx.fillStyle = COLOR_PINK;
       pinkCtx.fill();
       pinkCtx.strokeStyle = "#000000";
-      pinkCtx.lineWidth = 2;
+      pinkCtx.lineWidth = 3;
       pinkCtx.stroke();
 
       // --- Canvas bleu (masqué sur le logo) ---
@@ -243,7 +243,7 @@ const DryWatter = () => {
       grayCtx.fillStyle = COLOR_BLUE;
       grayCtx.fill();
       grayCtx.strokeStyle = "#000000";
-      grayCtx.lineWidth = 2;
+      grayCtx.lineWidth = 3;
       grayCtx.stroke();
       if (logoImg) {
         grayCtx.globalCompositeOperation = "destination-in";

@@ -33,7 +33,7 @@ export default async function RootLayout({
               {/* <Header /> */}
               <main>{children}</main>
               {/* <Footer /> */}
-              <Cursor size={20} color='#00ff1a' />
+              {/* <Cursor size={20} color='#00ff1a' /> */}
               {isEnabled && (
                 <VisualEditing
                   zIndex={1000} // Optional

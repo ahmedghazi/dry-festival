@@ -21,22 +21,26 @@
 
   --spacing-xs: 0.4em;
   --spacing-sm: 0.625em;
-  --spacing-md: 1.25rem;
+  --spacing-md: 1.2rem; /*18px*/
   --spacing-lg: 1.875rem;
   --spacing-xl: 3.75rem;
   --spacing-2xl: 6.25rem;
 
   --text-md-mobile: 1rem;
 
+  /*
+  Et oui desktop : taille 30 px / interlignage 28 px / interlettrage 20px
+mobile : taille 17 px / interlignage 16 px / interlettrage 20px
+  */
   --text-sm: 0.75rem;
-  --text-md: 1.25rem;
-  --text-lg: 2.25rem;
+  --text-md: 1.063rem; /*17px*/
+  --text-lg: 1.063rem; /*30px*/
 
   --cubic: cubic-bezier(0.87, 0, 0.13, 1);
 
   /* --text-xl: clamp(26px, 5.21vw, 75px);*/
 
-  --border-width: 2px;
+  --border-width: 3px;
   --border: var(--border-width) solid;
   --border-width-lg: 2px;
   --border-lg: var(--border-width-lg) solid;
