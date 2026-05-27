@@ -116,9 +116,11 @@ a[aria-current="page"] {
   text-decoration: none;
   // &:focus,
   // &:active,
-  &:hover {
+  &:hover,
+  &:active {
+    font-family: var(--font-primary-b);
     // color: var(--color-hover);
-    color: var(--color-hover);
+    // color: var(--color-hover);
   }
   &.is-active {
     color: var(--color-hover);
