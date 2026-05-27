@@ -34,7 +34,7 @@ mobile : taille 17 px / interlignage 16 px / interlettrage 20px
   */
   --text-sm: 0.75rem;
   --text-md: 1.063rem; /*17px*/
-  --text-lg: 1.063rem; /*30px*/
+  --text-lg: 1.875rem; /*30px*/
 
   --cubic: cubic-bezier(0.87, 0, 0.13, 1);
 
