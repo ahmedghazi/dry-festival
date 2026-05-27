@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  //ipconfig getifaddr en0
+  allowedDevOrigins: ["127.0.0.1", "0,0,0,0", "192.168.1.78"],
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [
@@ -10,7 +12,7 @@ const nextConfig: NextConfig = {
     ],
   },
   env: {
-    KEY_SENDGRID: "LA CLE API",
+    // KEY_SENDGRID: "LA CLE API",
   },
   compiler: {
     // Enables the styled-components SWC transform

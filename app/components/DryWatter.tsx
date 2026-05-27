@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 // ─── Variables d'ajustement ───────────────────────────────────────────────────
 const COLOR_PINK = "#FF6680"; // couleur de l'eau rose (fond bas de page)
@@ -23,8 +24,17 @@ const DryWatter = () => {
     if (!pinkCtx || !grayCtx) return;
 
     let animationFrameId: number;
-    let width = (pinkCanvas.width = grayCanvas.width = window.innerWidth);
-    let height = (pinkCanvas.height = grayCanvas.height = window.innerHeight);
+    const dpr = window.devicePixelRatio || 1;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    const applyDpr = () => {
+      pinkCanvas.width = grayCanvas.width = width * dpr;
+      pinkCanvas.height = grayCanvas.height = height * dpr;
+      pinkCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      grayCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    applyDpr();
 
     // --- Physique partagée ---
     const numPoints = 40;
@@ -42,7 +52,7 @@ const DryWatter = () => {
       oldY: number | null;
     } = { x: null, y: null, oldX: null, oldY: null };
 
-    let waterLevel = height * 0.5;
+    let waterLevel = height * 1.1; // start below screen (empty glass)
 
     // Tilt courant du gyroscope (gamma : −90° gauche → +90° droite)
     let tiltGamma = 0;
@@ -58,8 +68,9 @@ const DryWatter = () => {
       if (!svgEl) return;
       const svgRect = svgEl.getBoundingClientRect();
       const canvasRect = pinkCanvas.getBoundingClientRect();
-      const scaleX = pinkCanvas.width / canvasRect.width;
-      const scaleY = pinkCanvas.height / canvasRect.height;
+      // Divide by dpr so logoBounds stays in CSS pixel drawing space
+      const scaleX = width / canvasRect.width;
+      const scaleY = height / canvasRect.height;
       logoBounds = {
         left: (svgRect.left - canvasRect.left) * scaleX,
         top: (svgRect.top - canvasRect.top) * scaleY,
@@ -72,8 +83,9 @@ const DryWatter = () => {
       const svgEl = document.querySelector(".logo-dry svg");
       if (!svgEl || logoBounds.width === 0) return;
       const clone = svgEl.cloneNode(true) as SVGElement;
-      clone.setAttribute("width", String(logoBounds.width));
-      clone.setAttribute("height", String(logoBounds.height));
+      // Render SVG at physical pixel resolution for crisp mask edges
+      clone.setAttribute("width", String(logoBounds.width * dpr));
+      clone.setAttribute("height", String(logoBounds.height * dpr));
       const blob = new Blob([new XMLSerializer().serializeToString(clone)], {
         type: "image/svg+xml",
       });
@@ -91,7 +103,6 @@ const DryWatter = () => {
 
     const initPoints = () => {
       points.length = 0;
-      waterLevel = height * 0.5;
       for (let i = 0; i < numPoints; i++) {
         points.push({
           x: (width / (numPoints - 1)) * i,
@@ -102,6 +113,17 @@ const DryWatter = () => {
       }
     };
     initPoints();
+
+    // Fill-up on load: animate water level from bottom to 50% window height
+    const wlObj = { value: waterLevel };
+    gsap.to(wlObj, {
+      value: height * 0.5,
+      duration: 2.5,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        waterLevel = wlObj.value;
+      },
+    });
 
     // --- Souris ---
     const handleMouseMove = (e: MouseEvent) => {
@@ -166,8 +188,10 @@ const DryWatter = () => {
     setupGyroscope();
 
     const handleResize = () => {
-      width = pinkCanvas.width = grayCanvas.width = window.innerWidth;
-      height = pinkCanvas.height = grayCanvas.height = window.innerHeight;
+      width = window.innerWidth;
+      height = window.innerHeight;
+      applyDpr();
+      waterLevel = height * 0.5;
       initPoints();
       updateLogoBounds();
       loadLogoMask();
@@ -267,6 +291,7 @@ const DryWatter = () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("deviceorientation", handleOrientation);
       cancelAnimationFrame(animationFrameId);
+      gsap.killTweensOf(wlObj);
     };
   }, []);
 

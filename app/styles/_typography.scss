@@ -34,7 +34,8 @@ body {
   //   "ss04" on,
   //   "ss05" on,
   //   "salt" on;
-  font-feature-settings: "salt" on;
+  // font-feature-settings: "salt" on;
+  font-feature-settings: "ss01", "ss02", "ss03", "ss04";
   @media all and (min-width: 1080px) {
     font-size: var(--text-lg);
     line-height: 0.9;
