@@ -39,11 +39,10 @@ mobile : taille 17 px / interlignage 16 px / interlettrage 20px
   --cubic: cubic-bezier(0.87, 0, 0.13, 1);
 
   /* --text-xl: clamp(26px, 5.21vw, 75px);*/
-
+  --border-width-sm: 2px;
+  --border-sm: var(--border-width-sm) solid;
   --border-width: 3px;
   --border: var(--border-width) solid;
-  --border-width-lg: 2px;
-  --border-lg: var(--border-width-lg) solid;
 
   --gutter: 0.4em;
 

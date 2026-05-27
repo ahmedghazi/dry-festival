@@ -1,11 +1,13 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import useDeviceDetect from "../hooks/useDeviceDetect";
 
 // ─── Variables d'ajustement ───────────────────────────────────────────────────
 const COLOR_PINK = "#FF6680"; // couleur de l'eau rose (fond bas de page)
 const COLOR_BLUE = "#9DCBE1"; // couleur de l'eau bleue (reflet sur le logo)
-const VISCOSITY = 0.98; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
+// const VISCOSITY = 0.98; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
+const VISCOSITY = 0.85; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
 const GYRO_SENSITIVITY = 2; // pixels de décalage par degré de tilt (verre incliné)
 const MOUSE_FORCE = 3; // amplitude des vagues souris (1–22, était 22 trop haut)
 // ─────────────────────────────────────────────────────────────────────────────
@@ -17,6 +19,13 @@ interface DryWatterProps {
 const DryWatter = ({ logoRef }: DryWatterProps) => {
   const pinkCanvasRef = useRef<HTMLCanvasElement>(null);
   const grayCanvasRef = useRef<HTMLCanvasElement>(null);
+  // const [strokeSize, setStrokeSize] = useState<number>(3);
+  const { isMobile } = useDeviceDetect();
+  console.log(isMobile);
+  // let strokeSize = isMobile ? 2 : 3;
+  // useEffect(() => {
+  //   setStrokeSize(isMobile ? 1 : 3);
+  // }, [isMobile]);
 
   useEffect(() => {
     const pinkCanvas = pinkCanvasRef.current;
@@ -81,10 +90,9 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       const maskH = svgRect.height;
 
       if (maskBlobUrl) URL.revokeObjectURL(maskBlobUrl);
-      const blob = new Blob(
-        [new XMLSerializer().serializeToString(svgEl)],
-        { type: "image/svg+xml" },
-      );
+      const blob = new Blob([new XMLSerializer().serializeToString(svgEl)], {
+        type: "image/svg+xml",
+      });
       maskBlobUrl = URL.createObjectURL(blob);
 
       const val = `url("${maskBlobUrl}")`;
@@ -223,6 +231,18 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       ctx.closePath();
     };
 
+    // Open path — wave surface only, used for stroke so no side/bottom lines are drawn
+    const drawWaveLine = (ctx: CanvasRenderingContext2D) => {
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (let i = 0; i < numPoints - 1; i++) {
+        const p1 = points[i],
+          p2 = points[i + 1];
+        ctx.quadraticCurveTo(p1.x, p1.y, (p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
+      }
+      ctx.lineTo(width, points[numPoints - 1].y);
+    };
+
     const animate = () => {
       idleTime += 0.012;
 
@@ -261,13 +281,16 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       // 4. Appliquer vélocités
       for (let i = 0; i < numPoints; i++) points[i].y += points[i].vy;
 
+      const strokeSize = isMobile ? 2 : 3;
+      console.log({ strokeSize });
       // --- Canvas rose ---
       pinkCtx.clearRect(0, 0, width, height);
       drawWavePath(pinkCtx);
       pinkCtx.fillStyle = COLOR_PINK;
       pinkCtx.fill();
+      drawWaveLine(pinkCtx);
       pinkCtx.strokeStyle = "#000000";
-      pinkCtx.lineWidth = 3;
+      pinkCtx.lineWidth = strokeSize;
       pinkCtx.stroke();
 
       // --- Canvas bleu (clipping géré par CSS mask sur l'élément) ---
@@ -275,10 +298,11 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       drawWavePath(grayCtx);
       grayCtx.fillStyle = COLOR_BLUE;
       grayCtx.fill();
+      drawWaveLine(grayCtx);
       grayCtx.strokeStyle = "#000000";
-      grayCtx.lineWidth = 3;
+      grayCtx.lineWidth = strokeSize;
       grayCtx.stroke();
-
+      console.log("strokeSize", strokeSize);
       animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -292,7 +316,7 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       gsap.killTweensOf(wlObj);
       if (maskBlobUrl) URL.revokeObjectURL(maskBlobUrl);
     };
-  }, [logoRef]);
+  }, [logoRef, isMobile]);
 
   const base: React.CSSProperties = {
     position: "absolute",
