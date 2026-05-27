@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LogoDry from "./LogoDry";
 import DryWatter from "./DryWatter";
 import useDeviceDetect from "../hooks/useDeviceDetect";
@@ -8,6 +8,7 @@ import LogoDryMobile from "./LogoDryMobile";
 const ContentLanding = () => {
   const { isMobile } = useDeviceDetect();
   const [mounted, setMounted] = useState(false);
+  const logoRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -16,8 +17,10 @@ const ContentLanding = () => {
       {mounted && (
         <div className='inner'>
           <div className='header'>more coming soon…</div>
-          {!isMobile && <LogoDry />}
-          {isMobile && <LogoDryMobile />}
+          <div ref={logoRef}>
+            {!isMobile && <LogoDry />}
+            {isMobile && <LogoDryMobile />}
+          </div>
           <div className='footer'>
             <p>
               {" "}
@@ -32,7 +35,7 @@ const ContentLanding = () => {
               </a>
             </p>
           </div>
-          <DryWatter />
+          <DryWatter logoRef={logoRef} />
         </div>
       )}
     </div>

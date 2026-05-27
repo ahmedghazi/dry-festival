@@ -6,11 +6,15 @@ import gsap from "gsap";
 const COLOR_PINK = "#FF6680"; // couleur de l'eau rose (fond bas de page)
 const COLOR_BLUE = "#9DCBE1"; // couleur de l'eau bleue (reflet sur le logo)
 const VISCOSITY = 0.98; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
-const GYRO_SENSITIVITY = 4; // pixels de décalage par degré de tilt (verre incliné)
+const GYRO_SENSITIVITY = 2; // pixels de décalage par degré de tilt (verre incliné)
 const MOUSE_FORCE = 3; // amplitude des vagues souris (1–22, était 22 trop haut)
 // ─────────────────────────────────────────────────────────────────────────────
 
-const DryWatter = () => {
+interface DryWatterProps {
+  logoRef: React.RefObject<HTMLDivElement | null>;
+}
+
+const DryWatter = ({ logoRef }: DryWatterProps) => {
   const pinkCanvasRef = useRef<HTMLCanvasElement>(null);
   const grayCanvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -59,47 +63,53 @@ const DryWatter = () => {
     let gyroGranted = false;
     let idleTime = 0;
 
-    // --- Masque logo ---
-    let logoImg: HTMLImageElement | null = null;
-    let logoBounds = { left: 0, top: 0, width: 0, height: 0 };
+    // --- Masque logo (CSS mask sur le canvas bleu) ---
+    let maskBlobUrl: string | null = null;
 
-    const updateLogoBounds = () => {
-      const svgEl = document.querySelector(".logo-dry svg");
+    const getSvgEl = () =>
+      logoRef.current?.querySelector("svg") as SVGElement | null;
+
+    const applyLogoMask = () => {
+      const svgEl = getSvgEl();
       if (!svgEl) return;
       const svgRect = svgEl.getBoundingClientRect();
-      const canvasRect = pinkCanvas.getBoundingClientRect();
-      // Divide by dpr so logoBounds stays in CSS pixel drawing space
-      const scaleX = width / canvasRect.width;
-      const scaleY = height / canvasRect.height;
-      logoBounds = {
-        left: (svgRect.left - canvasRect.left) * scaleX,
-        top: (svgRect.top - canvasRect.top) * scaleY,
-        width: svgRect.width * scaleX,
-        height: svgRect.height * scaleY,
-      };
+      const canvasRect = grayCanvas.getBoundingClientRect();
+      // Position and size in CSS pixels, relative to the canvas element
+      const maskX = svgRect.left - canvasRect.left;
+      const maskY = svgRect.top - canvasRect.top;
+      const maskW = svgRect.width;
+      const maskH = svgRect.height;
+
+      if (maskBlobUrl) URL.revokeObjectURL(maskBlobUrl);
+      const blob = new Blob(
+        [new XMLSerializer().serializeToString(svgEl)],
+        { type: "image/svg+xml" },
+      );
+      maskBlobUrl = URL.createObjectURL(blob);
+
+      const val = `url("${maskBlobUrl}")`;
+      const sz = `${maskW}px ${maskH}px`;
+      const pos = `${maskX}px ${maskY}px`;
+      grayCanvas.style.maskImage = val;
+      grayCanvas.style.maskSize = sz;
+      grayCanvas.style.maskPosition = pos;
+      grayCanvas.style.maskRepeat = "no-repeat";
+      (grayCanvas.style as CSSStyleDeclaration & Record<string, string>)[
+        "webkitMaskImage"
+      ] = val;
+      (grayCanvas.style as CSSStyleDeclaration & Record<string, string>)[
+        "webkitMaskSize"
+      ] = sz;
+      (grayCanvas.style as CSSStyleDeclaration & Record<string, string>)[
+        "webkitMaskPosition"
+      ] = pos;
+      (grayCanvas.style as CSSStyleDeclaration & Record<string, string>)[
+        "webkitMaskRepeat"
+      ] = "no-repeat";
     };
 
-    const loadLogoMask = () => {
-      const svgEl = document.querySelector(".logo-dry svg");
-      if (!svgEl || logoBounds.width === 0) return;
-      const clone = svgEl.cloneNode(true) as SVGElement;
-      // Render SVG at physical pixel resolution for crisp mask edges
-      clone.setAttribute("width", String(logoBounds.width * dpr));
-      clone.setAttribute("height", String(logoBounds.height * dpr));
-      const blob = new Blob([new XMLSerializer().serializeToString(clone)], {
-        type: "image/svg+xml",
-      });
-      const url = URL.createObjectURL(blob);
-      const img = new Image();
-      img.onload = () => {
-        logoImg = img;
-        URL.revokeObjectURL(url);
-      };
-      img.src = url;
-    };
-
-    updateLogoBounds();
-    loadLogoMask();
+    // Defer one frame so CSS transforms (e.g. translateY on mobile) are applied
+    requestAnimationFrame(applyLogoMask);
 
     const initPoints = () => {
       points.length = 0;
@@ -193,8 +203,7 @@ const DryWatter = () => {
       applyDpr();
       waterLevel = height * 0.5;
       initPoints();
-      updateLogoBounds();
-      loadLogoMask();
+      applyLogoMask();
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -261,7 +270,7 @@ const DryWatter = () => {
       pinkCtx.lineWidth = 3;
       pinkCtx.stroke();
 
-      // --- Canvas bleu (masqué sur le logo) ---
+      // --- Canvas bleu (clipping géré par CSS mask sur l'élément) ---
       grayCtx.clearRect(0, 0, width, height);
       drawWavePath(grayCtx);
       grayCtx.fillStyle = COLOR_BLUE;
@@ -269,17 +278,6 @@ const DryWatter = () => {
       grayCtx.strokeStyle = "#000000";
       grayCtx.lineWidth = 3;
       grayCtx.stroke();
-      if (logoImg) {
-        grayCtx.globalCompositeOperation = "destination-in";
-        grayCtx.drawImage(
-          logoImg,
-          logoBounds.left,
-          logoBounds.top,
-          logoBounds.width,
-          logoBounds.height,
-        );
-        grayCtx.globalCompositeOperation = "source-over";
-      }
 
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -292,15 +290,19 @@ const DryWatter = () => {
       window.removeEventListener("deviceorientation", handleOrientation);
       cancelAnimationFrame(animationFrameId);
       gsap.killTweensOf(wlObj);
+      if (maskBlobUrl) URL.revokeObjectURL(maskBlobUrl);
     };
-  }, []);
+  }, [logoRef]);
 
   const base: React.CSSProperties = {
     position: "absolute",
     top: 0,
-    left: "-1%",
-    width: "102%",
-    height: "102%",
+    // left: "-1%",
+    // width: "102%",
+    // height: "102%",
+    left: 0,
+    width: "100%",
+    height: "100%",
     pointerEvents: "none",
   };
 

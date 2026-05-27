@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   //ipconfig getifaddr en0
-  allowedDevOrigins: ["127.0.0.1", "0,0,0,0", "192.168.1.78"],
+  allowedDevOrigins: ["127.0.0.1", "0,0,0,0", "192.168.1.96"],
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [
