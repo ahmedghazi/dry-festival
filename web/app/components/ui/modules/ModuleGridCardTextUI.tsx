@@ -38,6 +38,27 @@ const ModuleGridCardTextUI = (props: Props) => {
       text: "Rencontrer les marques, goûter leurs produits, comprendre leur approche. Un temps de découverte, mais  aussi d’apprentissage du goût et des alternatives possibles.",
       color: "green-100",
     },
+    {
+      colSize: 3,
+      title: "animations",
+      text: "Des animations pensées pour petits et grands, pour découvrir le sans alcool de manière ludique et accessible.",
+      color: "green-100",
+    },
+    {
+      colSize: 4,
+      title: "samedi 09/01",
+      color: "yellow-100",
+    },
+    {
+      colSize: 4,
+      title: "dimanche 10/01",
+      color: "pink-50",
+    },
+    {
+      colSize: 4,
+      title: "lundi 11/01",
+      color: "blue-100",
+    },
   ];
   return (
     <section className='module module--grid-card-text-ui'>

@@ -6,7 +6,9 @@ const ModuleTextUI = (props: Props) => {
   return (
     <section className='module module--text-ui'>
       <div className='inner'>
-        <h2 className='title text-lg'>concept</h2>
+        <div className='header'>
+          <h2 className='title text-lg'>concept</h2>
+        </div>{" "}
         <div className='text'>
           <p>
             Premier salon dédié au sans alcool en France, dry festival est un
