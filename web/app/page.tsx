@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import website from "./config/website";
 import { JSX } from "react/jsx-runtime";
 import ContentLanding from "./components/ContentLanding";
+import ContentModulaire from "./components/ContentModulaire";
 
 export async function generateMetadata(): Promise<Metadata> {
   // const data = await getHome();
@@ -43,7 +44,8 @@ const PageLanding: ({
   // if (!data) return <div>please edit pageLanding</div>;
   return (
     <div className='template template--landing' data-template='landing'>
-      <ContentLanding />
+      {/* <ContentLanding /> */}
+      <ContentModulaire />
     </div>
   );
 };

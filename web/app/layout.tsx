@@ -8,6 +8,7 @@ import { LocaleContextProvider } from "./context/LocaleContext";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import Cursor from "./components/ui/Cursor";
+import Header from "./components/Header";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -30,7 +31,7 @@ export default async function RootLayout({
         <div id='page'>
           <LocaleContextProvider>
             <PageContextProvider>
-              {/* <Header /> */}
+              <Header />
               <main>{children}</main>
               {/* <Footer /> */}
               {/* <Cursor size={20} color='#00ff1a' /> */}

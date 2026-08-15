@@ -18,11 +18,16 @@ body {
 main {
   min-height: var(--app-height, 100vh);
   position: relative;
-  // padding-top: var(--header-height);
+  padding-top: var(--header-h);
 }
 
 .h-app {
   height: var(--app-height);
+}
+
+.container-fluid {
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
 }
 
 @media all and (min-width: variables.$md) {

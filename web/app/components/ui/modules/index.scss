@@ -1,0 +1,119 @@
+@use "../../../styles/variables";
+
+.modules {
+  section.module {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+    h2 {
+      // margin-bottom: 1rem;
+    }
+    &--dry-water-ui {
+      .footer .text {
+        max-width: var(--text-max-w);
+        margin: 0 auto;
+      }
+    }
+    &--text-ui {
+      text-align: center;
+      .inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        // align-items: center;
+      }
+    }
+    &--image-text-ui {
+      text-align: center;
+      .col-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+      h2 {
+        // margin-bottom: 1em;
+      }
+    }
+    &--newsletter-ui {
+      text-align: center;
+      .inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: center;
+        input[type="email"] {
+          background-color: var(--color-yellow-100);
+        }
+        button {
+          background-color: var(--color-pink-100);
+        }
+      }
+    }
+    &--form-ui {
+      .form-row {
+        display: block;
+      }
+      input,
+      textarea {
+        width: 100%;
+      }
+      input[type="email"] {
+      }
+      button {
+        background-color: var(--color-blue-50);
+      }
+    }
+    &--grid-card-text-ui {
+      text-align: center;
+      .header {
+        margin-bottom: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+    }
+    &--text-split-ui {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+      align-items: center;
+      .header {
+        // margin-bottom: var(--spacing-lg);
+      }
+      .flex {
+        position: relative;
+      }
+      .sep-line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: var(--border-width);
+
+        background-color: var(--color-primary);
+      }
+      .text {
+        padding: 0 var(--spacing-md);
+      }
+    }
+
+    @media all and (max-width: variables.$md) {
+      &--form-ui {
+        button {
+          width: 100%;
+        }
+      }
+      &--text-split-ui {
+        .sep-line {
+          position: relative;
+          width: 100%;
+          top: 50%;
+          bottom: unset;
+          height: var(--border-width--mobile);
+          // display: none;
+        }
+      }
+    }
+  }
+}

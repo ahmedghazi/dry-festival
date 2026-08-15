@@ -1,0 +1,182 @@
+.card {
+}
+
+.card-outer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    .text-lg {
+      line-height: 1;
+      hyphens: auto;
+      overflow-wrap: break-word;
+    }
+  }
+}
+
+.rounded {
+  border-radius: var(--radius);
+  border: var(--border);
+  overflow: clip;
+
+  @media screen and (max-width: 1090px) {
+    border-width: var(--border-width--mobile);
+  }
+}
+
+figure {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+form {
+  &.mailchimp,
+  &.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  .form-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &__optin {
+      text-align: left;
+    }
+    input,
+    textarea,
+    button {
+      border: var(--border);
+      border-width: var(--border-width);
+      border-radius: var(--radius-xs);
+
+      &[type="email"],
+      &[type="text"] {
+        &::placeholder {
+          color: var(--color-primary);
+        }
+      }
+    }
+    textarea {
+      &::placeholder {
+        color: var(--color-primary);
+      }
+    }
+
+    [type="email"],
+    [type="text"],
+    button {
+      height: var(--spacing-xl);
+      line-height: calc(var(--spacing-xl) * 0.8);
+      padding: 0 0.5em;
+      font-style: unset;
+    }
+    textarea {
+      min-height: calc(var(--spacing-xl) * 3);
+      padding: 0.5em;
+      resize: vertical;
+    }
+    button {
+      cursor: pointer;
+      transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+      &:hover {
+        background-color: var(--color-primary) !important;
+        border-color: var(--color-primary);
+        color: var(--color-bg);
+      }
+    }
+    label {
+      line-height: 1;
+    }
+
+    @media screen and (max-width: 1090px) {
+      &__email .flex {
+        width: 100%;
+      }
+      input,
+      textarea,
+      button {
+        border-width: var(--border-width--mobile);
+      }
+      [type="email"],
+      [type="text"],
+      button {
+        height: var(--spacing-lg);
+        line-height: calc(var(--spacing-lg) * 0.8);
+      }
+    }
+  }
+}
+
+.ui-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: var(--spacing-lg);
+  height: var(--spacing-lg);
+  background-color: var(--color-blue-50);
+  accent-color: var(--color-blue-50);
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    opacity: 0;
+    transform: translate(-50%, -60%) rotate(45deg) scale(0);
+    transform-origin: center;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  &:checked {
+    background: currentColor;
+    &::after {
+      opacity: 1;
+      transform: translate(-50%, -60%) rotate(45deg) scale(1);
+    }
+  }
+}
+
+.card {
+  padding: var(--spacing-md);
+  text-align: center;
+}
+
+@media (width >= 10rem) {
+  @for $i from 1 through 12 {
+    .grid-cols-#{$i} {
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+    .col-span-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}
+@media (width >= 48rem) {
+  @for $i from 1 through 12 {
+    .md\:grid-cols-#{$i} {
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+    .md\:col-span-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}

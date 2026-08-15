@@ -10,6 +10,9 @@
 
 @use "layout";
 
+@use "ds/design-system";
+
 @use "components/header";
 @use "components/footer";
 @use "components/content--landing";
+@use "components/dry-water";

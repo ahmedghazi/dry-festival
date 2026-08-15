@@ -26,7 +26,6 @@ const ContentLanding = () => {
               {" "}
               <strong>dry festival</strong>
             </p>
-            {/* <p style={{ fontSize: "4rem" }}>GRaj</p> */}
             <p>un nouveau salon entièrement dédié aux boissons sans alcool</p>
             <p>
               9, 10 + 11 Janvier 2027 | Carreau du Temple, Paris |{" "}

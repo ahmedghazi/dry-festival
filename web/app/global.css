@@ -10,6 +10,28 @@
   --color-red: #ff0000;
   --color-bleu: #77b5fe;
 
+  /* v1 colors palette */
+  --color-black: #000000;
+
+  --color-gray-50: #dde0de;
+  --color-gray-100: #c5c5c5;
+
+  --color-blue-50: #84b0c5;
+  --color-blue-100: #5098ec;
+  --color-blue-200: #0000ed;
+
+  --color-red-50: #e87568;
+  --color-red-100: #ff4b65;
+
+  --color-pink-50: #ff7cf2;
+  --color-pink-100: #ff47f2;
+
+  --color-lime-100: #83a613;
+  --color-green-100: #268b09;
+
+  --color-yellow-100: #ffff26;
+  --color-purple-100: #6b33e1;
+
   --font-primary:
     "FormaDJRDisplay-Medium-Testing", "Helvetica Neue", "HelveticaNeueRoman",
     "HelveticaNeue-Roman", "Helvetica Neue Roman", "TeXGyreHerosRegular",
@@ -19,12 +41,10 @@
     "HelveticaNeue-Roman", "Helvetica Neue Roman", "TeXGyreHerosRegular",
     "Helvetica", "Arial", sans-serif;
 
-  --spacing-xs: 0.4em;
-  --spacing-sm: 0.625em;
-  --spacing-md: 1.2rem; /*18px*/
-  --spacing-lg: 1.875rem;
-  --spacing-xl: 3.75rem;
-  --spacing-2xl: 6.25rem;
+  --spacing-md: 1.25rem; /*20px */
+  --spacing-lg: 1.875rem; /*30px */
+  --spacing-xl: 3.75rem; /*60px */
+  --spacing-2xl: 6.25rem; /*100px */
 
   --text-md-mobile: 1rem;
 
@@ -32,23 +52,32 @@
   Et oui desktop : taille 30 px / interlignage 28 px / interlettrage 20px
 mobile : taille 17 px / interlignage 16 px / interlettrage 20px
   */
-  --text-sm: 0.75rem;
-  --text-md: 1.063rem; /*17px*/
-  --text-lg: 1.875rem; /*30px*/
+  /* --text-sm: 0.75rem;
+  --text-md: 1.063rem;
+  --text-lg: 1.875rem;  */
+  --text-xs: 0.75rem; /* 12px */
+  --text-base: 1rem; /* 16px */
+  --text-sm: 1.25rem; /* 20px*/
+  --text-md: 1.875rem; /* 30px*/
+  --text-lg: 3.75rem; /* 60px*/
 
   --cubic: cubic-bezier(0.87, 0, 0.13, 1);
 
   /* --text-xl: clamp(26px, 5.21vw, 75px);*/
-  --border-width-sm: 2px;
-  --border-sm: var(--border-width-sm) solid;
-  --border-width: 3px;
+  --border-width--mobile: 0.125rem;
+  --border-width: 0.188rem;
   --border: var(--border-width) solid;
 
-  --gutter: 0.4em;
+  --radius-xs: 0.313rem; /* 5px */
+  --radius: 1.25rem; /* 20px */
+
+  --gutter: 1.25rem;
 
   --screen-sm: 768px;
   --screen-md: 1080px;
   --screen-lg: 1441px;
+
+  --text-max-w: 62.5rem;
 }
 
 @theme inline {
@@ -71,6 +100,8 @@ mobile : taille 17 px / interlignage 16 px / interlettrage 20px
 
   --text-md-mobile: var(--text-md-mobile);
 
+  --text-xs: var(--text-xs);
+  --text-base: var(--text-base);
   --text-sm: var(--text-sm);
   --text-md: var(--text-md);
   --text-lg: var(--text-lg);
@@ -81,6 +112,9 @@ mobile : taille 17 px / interlignage 16 px / interlettrage 20px
   --border: var(--border);
   --border-width-lg: var(--border-width-lg);
   --border-lg: var(--border-lg);
+
+  --radius: var(--radius);
+  --radius-xs: var(--radius-xs);
 
   --gutter: var(--gutter);
 
