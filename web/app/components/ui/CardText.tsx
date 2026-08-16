@@ -10,7 +10,6 @@ type Props = {
 };
 
 const CardTextComponent = ({ input }: Props) => {
-  // const { title, text, footerText, colSize, color } = input;
   return (
     <div className={clsx("card-outer", `md:col-span-${input?.colSize}`)}>
       <div
