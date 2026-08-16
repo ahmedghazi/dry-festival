@@ -4,10 +4,17 @@ import React, { useEffect, useRef, useState } from "react";
 import LogoDry from "../../LogoDry";
 import LogoDryMobile from "../../LogoDryMobile";
 import DryWatter from "../../DryWatter";
+import { DryWaterUI } from "@/app/sanity-api/types/sanity.types";
+import { PortableText } from "next-sanity";
+import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 
-type Props = {};
+type Props = {
+  input: DryWaterUI;
+};
 
-const ModuleDryWater = (props: Props) => {
+const ModuleDryWater = ({ input }: Props) => {
+  const { text } = input;
+
   const { isMobile } = useDeviceDetect();
   const [mounted, setMounted] = useState(false);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -26,17 +33,12 @@ const ModuleDryWater = (props: Props) => {
 
             <div className='footer'>
               <div className='text'>
-                <p>
-                  {" "}
-                  <strong>dry festival</strong>
-                </p>
-                <p>
-                  Le nouveau salon entièrement dédié aux boissons sans alcool.
-                  Pendant trois jours, le Carreau du Temple devient le
-                  rendez-vous de la boisson sans alcool. Ici, le sans alcool
-                  n’est ni un substitut ni un compromis. C’est une catégorie à
-                  part entière, exigeante, créative, et pleinement assumée.
-                </p>
+                <div className='module__text text'>
+                  <PortableText
+                    value={text}
+                    components={portableTextComponents}
+                  />
+                </div>
               </div>
             </div>
 

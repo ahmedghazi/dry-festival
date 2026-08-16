@@ -1,26 +1,27 @@
 import clsx from "clsx";
 import React from "react";
+import { PortableText } from "next-sanity";
+import { CardTextItem } from "@/app/sanity-api/types/extra-types";
+import portableTextComponents from "@/app/sanity-api/portableTextComponents";
+import { CardText } from "@/app/sanity-api/types/sanity.types";
 
 type Props = {
-  title?: string;
-  colSize?: number;
-  color: string;
-  text?: string;
-  footerText?: string;
+  input: CardText;
 };
 
-const CardText = ({ title, colSize = 1, color, text, footerText }: Props) => {
+const CardTextComponent = ({ input }: Props) => {
+  const { title, text, footerText, colSize, color } = input;
   return (
     <div className={clsx("card-outer", `md:col-span-${colSize}`)}>
       <div
         className={clsx("card card-text rounded")}
-        style={{
-          backgroundColor: `var(--color-${color})`,
-        }}>
+        style={
+          color ? { backgroundColor: `var(--color-${color})` } : undefined
+        }>
         {title && <h2 className='text-lg ellipsis-'>{title}</h2>}
         {text && (
           <div className='text text-sm'>
-            <p>{text}</p>
+            <PortableText value={text} components={portableTextComponents} />
           </div>
         )}
       </div>
@@ -33,4 +34,4 @@ const CardText = ({ title, colSize = 1, color, text, footerText }: Props) => {
   );
 };
 
-export default CardText;
+export default CardTextComponent;

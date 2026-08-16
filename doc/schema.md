@@ -34,7 +34,7 @@ purple-100: #6b33e1;
 - subtitle: String
 - text: BlockContent
 
-# CardsTextUI
+# listCardsImageUI
 
 - title: String
 - text: BlockContent

@@ -2,18 +2,21 @@ import clsx from "clsx";
 import React from "react";
 import Mailchimp from "../Mailchimp";
 import Form from "../Form";
+import { FormUI } from "@/app/sanity-api/types/sanity.types";
+import Figure from "../Figure";
 
-type Props = {};
+type Props = {
+  input: FormUI;
+};
 
-const ModuleFormUI = () => {
+const ModuleFormUI = ({ input }: Props) => {
+  const { image } = input;
   return (
     <section className='module module--form-ui'>
       <div className='inner'>
         <div className='grid md:grid-cols-2 gap-md'>
           <div className='col-media'>
-            <figure className='rounded'>
-              <img src='https://picsum.photos/600/600' alt='Concept' />
-            </figure>
+            {image && <Figure asset={image.asset} />}
           </div>
           <div className='col-text'>
             <Form

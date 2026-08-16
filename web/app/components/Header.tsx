@@ -1,12 +1,22 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import website from "../config/website";
 import { useScroll } from "../hooks/useScroll";
+import { SETTINGS_QUERY_RESULT } from "../sanity-api/types/sanity.types";
+import { _linkResolver } from "../sanity-api/utils";
+import { usePathname } from "next/navigation";
 
-const Header = () => {
+type Props = {
+  settings: SETTINGS_QUERY_RESULT;
+};
+const Header = ({ settings }: Props) => {
   const [active, setActive] = useState<boolean>(false);
   const { scrollDirection } = useScroll();
+  const pathname = usePathname();
+  useEffect(() => {
+    setActive(false);
+  }, [pathname]);
   return (
     <header className={scrollDirection ? `is-${scrollDirection}` : ""}>
       <div className='inner'>
@@ -31,31 +41,15 @@ const Header = () => {
         </div>
         <nav className={active ? "is-active" : ""}>
           <ul>
-            <li>
-              <Link href='/' data-text='accueil'>
-                <span>accueil</span>
-              </Link>
-            </li>
-            <li>
-              <Link href='/programmation' data-text='programmation'>
-                <span>programmation</span>
-              </Link>
-            </li>
-            <li>
-              <Link href='/projet' data-text='projet'>
-                <span>projet</span>
-              </Link>
-            </li>
-            <li>
-              <Link href='/exposants' data-text='exposants'>
-                <span>exposants</span>
-              </Link>
-            </li>
-            <li>
-              <Link href='/partenaires' data-text='partenaires'>
-                <span>partenaires</span>
-              </Link>
-            </li>
+            {settings?.navPrimary?.map((item) => (
+              <li key={item._key}>
+                {item._type === "linkInternal" && (
+                  <Link href={_linkResolver(item?.link)} data-text={item.label}>
+                    <span>{item.label}</span>
+                  </Link>
+                )}
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

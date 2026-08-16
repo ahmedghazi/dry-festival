@@ -1,23 +1,28 @@
 import clsx from "clsx";
 import React from "react";
 import Mailchimp from "../Mailchimp";
+import { NewsletterUI } from "@/app/sanity-api/types/sanity.types";
+import { PortableText } from "next-sanity";
+import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 
-type Props = {};
+type Props = {
+  input: NewsletterUI;
+};
 
-const ModuleNewsletterUI = () => {
+const ModuleNewsletterUI = ({ input }: Props) => {
+  const { title, text } = input;
   return (
     <section className='module module--newsletter-ui'>
       <div className='inner'>
-        <h2 className='subtitle text-lg'>some title</h2>
-        <div className='text'>
-          <p>
-            Premier salon dédié au sans alcool en France, dry festival est un
-            événement d’un genre nouveau. Nous réunissons de jeunes marques
-            audacieuses, acteurs établis qui se réinventent, bartenders créatifs
-            et un public curieux et exigeant. Un lieu pour goûter, mais aussi
-            pour apprendre à choisir autrement ce que l’on boit.
-          </p>
-        </div>
+        {title && <h2 className='title text-lg'>{title}</h2>}
+
+        {text && (
+          <div className='text'>
+            <div className='module__text text'>
+              <PortableText value={text} components={portableTextComponents} />
+            </div>
+          </div>
+        )}
 
         <Mailchimp action='' optin />
       </div>

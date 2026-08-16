@@ -1,22 +1,25 @@
+import portableTextComponents from "@/app/sanity-api/portableTextComponents";
+import { TextUI } from "@/app/sanity-api/types/sanity.types";
+import { PortableText } from "next-sanity";
 import React from "react";
 
-type Props = {};
+type Props = {
+  input: TextUI;
+};
 
-const ModuleTextUI = (props: Props) => {
+const ModuleTextUI = ({ input }: Props) => {
+  const { title, subtitle, text } = input;
   return (
     <section className='module module--text-ui'>
       <div className='inner'>
         <div className='header'>
-          <h2 className='title text-lg'>concept</h2>
-        </div>{" "}
+          {title && <h2 className='title text-lg'>{title}</h2>}
+          {subtitle && <p className='subtitle'>{subtitle}</p>}
+        </div>
         <div className='text'>
-          <p>
-            Premier salon dédié au sans alcool en France, dry festival est un
-            événement d’un genre nouveau. Nous réunissons de jeunes marques
-            audacieuses, acteurs établis qui se réinventent, bartenders créatifs
-            et un public curieux et exigeant. Un lieu pour goûter, mais aussi
-            pour apprendre à choisir autrement ce que l’on boit.
-          </p>
+          <div className='module__text text'>
+            <PortableText value={text} components={portableTextComponents} />
+          </div>
         </div>
       </div>
     </section>

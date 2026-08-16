@@ -1,13 +1,16 @@
 import React from "react";
 import Modules from "./ui/modules";
+import { ModulesList } from "../sanity-api/types/extra-types";
 
-type Props = {};
+type Props = {
+  input: ModulesList;
+};
 
-const ContentModulaire = (props: Props) => {
+const ContentModulaire = ({ input }: Props) => {
   return (
     <div className='content--modulaire'>
       <div className='container-fluid'>
-        <Modules />
+        {input && <Modules modules={input} />}
       </div>
     </div>
   );
