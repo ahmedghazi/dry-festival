@@ -43,7 +43,6 @@ const PageLanding: ({
   // if (!data) return <div>please edit pageLanding</div>;
   return (
     <div className='template template--landing' data-template='landing'>
-      <div className='hidden'>debug 18.08</div>
       <ContentLanding />
     </div>
   );
