@@ -86,6 +86,7 @@ export default defineType({
         },
       ],
       group: 'footer',
+      hidden: true,
     }),
 
     defineField({
@@ -95,16 +96,22 @@ export default defineType({
       group: 'footer',
     }),
     defineField({
-      name: 'logos',
-      title: 'Logos',
-      type: 'array',
-      of: [
-        {
-          type: 'image',
-        },
-      ],
+      name: 'contactText',
+      title: 'Contact text',
+      type: 'blockContent',
       group: 'footer',
     }),
+    // defineField({
+    //   name: 'logos',
+    //   title: 'Logos',
+    //   type: 'array',
+    //   of: [
+    //     {
+    //       type: 'image',
+    //     },
+    //   ],
+    //   group: 'footer',
+    // }),
     // defineField({
     //   name: 'labelNewsletter',
     //   title: 'Label newsletter',

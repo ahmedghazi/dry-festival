@@ -20,6 +20,8 @@ export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0]{
       }
     }
   },
+  contact,
+  contactText,
 }`);
 
 export async function getSettings(): Promise<SETTINGS_QUERY_RESULT> {

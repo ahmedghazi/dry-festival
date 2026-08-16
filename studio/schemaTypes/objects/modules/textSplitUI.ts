@@ -1,4 +1,4 @@
-import {defineField} from 'sanity'
+import {defineField, defineArrayMember} from 'sanity'
 import {FiColumns} from 'react-icons/fi'
 import {getFirstBlockText} from './lib/blockPreview'
 
@@ -9,10 +9,38 @@ export default defineField({
   icon: FiColumns,
   fields: [
     defineField({
+      name: 'title',
+      type: 'string',
+      title: 'Title',
+    }),
+    defineField({
       name: 'texts',
-      type: 'array',
       title: 'Texts',
-      of: [{type: 'blockContent'}],
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'textItem',
+          fields: [
+            defineField({
+              name: 'text',
+              title: 'Text',
+              type: 'blockContent',
+            }),
+          ],
+          preview: {
+            select: {
+              text: 'text',
+            },
+            prepare(selection) {
+              const {text} = selection
+              return {
+                title: getFirstBlockText(text) || 'Text',
+              }
+            },
+          },
+        }),
+      ],
     }),
     defineField({
       name: 'image',
@@ -30,14 +58,17 @@ export default defineField({
   ],
   preview: {
     select: {
+      title: 'title',
       texts: 'texts',
       media: 'image',
     },
     prepare(selection) {
-      const {texts, media} = selection
-      const firstText = (texts || []).map((blocks: any) => getFirstBlockText(blocks)).find(Boolean)
+      const {title, texts, media} = selection
+      const firstText = (texts || [])
+        .map((item: any) => getFirstBlockText(item?.text))
+        .find(Boolean)
       return {
-        title: 'Text Split UI',
+        title: title || 'Text UI',
         subtitle: firstText ? `Text Split UI: ${firstText}` : 'Text Split UI',
         media,
       }

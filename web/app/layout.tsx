@@ -36,7 +36,7 @@ export default async function RootLayout({
               <main>{children}</main>
             </ViewTransition>
 
-            <Footer />
+            <Footer settings={settings} />
             {/* <Cursor size={20} color='#00ff1a' /> */}
             {/* {isEnabled && (
               <VisualEditing

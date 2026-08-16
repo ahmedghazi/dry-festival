@@ -6,7 +6,7 @@
     margin-bottom: var(--spacing-lg);
 
     .header h2 {
-      margin-bottom: var(--spacing-md);
+      // margin-bottom: var(--spacing-md);
     }
     &--dry-water-ui {
       margin-bottom: var(--spacing-2xl);
@@ -23,6 +23,9 @@
         flex-direction: column;
         gap: calc(var(--spacing-md) * 2);
         // align-items: center;
+        h2 {
+          margin: 0;
+        }
       }
     }
     &--image-text-ui {
@@ -99,8 +102,22 @@
 
         background-color: var(--color-primary);
       }
+      figure {
+        // min-width: 50vw;
+      }
       .text {
         padding: 0 var(--spacing-md);
+      }
+    }
+    &--list-cards-image-ui {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+      align-items: center;
+
+      .header {
+        // margin-bottom: var(--spacing-lg);
+        text-align: center;
       }
     }
 

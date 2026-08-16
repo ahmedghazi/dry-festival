@@ -9,17 +9,21 @@ type Props = {
 };
 
 const ModuleTextSplit = ({ input }: Props) => {
-  const { texts, image, footerText } = input;
+  const { title, texts, image, footerText } = input;
 
   return (
     <section className='module module--text-split-ui'>
+      <div className='header '>
+        {title && <h2 className='title text-lg'>{title}</h2>}
+      </div>
+
       <div className='flex flex-col md:flex-row gap-md md:gap-lg'>
-        {texts?.map((text, index) => (
+        {texts?.map((item, index) => (
           <div key={index} className='md:max-w-1/2'>
-            {text && (
+            {item?.text && (
               <div className='text'>
                 <PortableText
-                  value={text}
+                  value={item.text}
                   components={portableTextComponents}
                 />
               </div>
@@ -29,7 +33,9 @@ const ModuleTextSplit = ({ input }: Props) => {
         {/* <div className='sep-line'></div> */}
       </div>
 
-      <div className='media'>{image && <Figure asset={image.asset} />}</div>
+      <div className='media w-4/12'>
+        {image && <Figure asset={image.asset} />}
+      </div>
       {footerText && <div className='footer'>{footerText}</div>}
     </section>
   );

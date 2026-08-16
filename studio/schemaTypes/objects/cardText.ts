@@ -31,7 +31,7 @@ export default defineField({
         list: [
           {
             title: 'SM',
-            value: 3,
+            value: 4,
           },
           {
             title: 'MD',

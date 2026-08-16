@@ -10,24 +10,29 @@ type Props = {
 };
 
 const CardTextComponent = ({ input }: Props) => {
-  const { title, text, footerText, colSize, color } = input;
+  // const { title, text, footerText, colSize, color } = input;
   return (
-    <div className={clsx("card-outer", `md:col-span-${colSize}`)}>
+    <div className={clsx("card-outer", `md:col-span-${input?.colSize}`)}>
       <div
         className={clsx("card card-text rounded")}
         style={
-          color ? { backgroundColor: `var(--color-${color})` } : undefined
+          input?.color
+            ? { backgroundColor: `var(--color-${input.color})` }
+            : undefined
         }>
-        {title && <h2 className='text-lg ellipsis-'>{title}</h2>}
-        {text && (
+        {input?.title && <h2 className='text-lg ellipsis-'>{input.title}</h2>}
+        {input?.text && (
           <div className='text text-sm'>
-            <PortableText value={text} components={portableTextComponents} />
+            <PortableText
+              value={input.text}
+              components={portableTextComponents}
+            />
           </div>
         )}
       </div>
-      {footerText && (
+      {input?.footerText && (
         <div className='footer text text-xs md:text-sm '>
-          <p>{footerText}</p>
+          <p>{input.footerText}</p>
         </div>
       )}
     </div>

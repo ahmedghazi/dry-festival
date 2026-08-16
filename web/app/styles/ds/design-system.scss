@@ -115,6 +115,14 @@ form {
       }
     }
   }
+  &.mailchimp {
+    input[type="email"] {
+      background-color: var(--color-yellow-100);
+    }
+    button {
+      background-color: var(--color-pink-100);
+    }
+  }
 }
 
 .ui-checkbox {

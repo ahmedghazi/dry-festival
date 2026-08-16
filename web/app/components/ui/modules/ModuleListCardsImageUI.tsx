@@ -9,9 +9,12 @@ type Props = {
 };
 
 const ModuleListCardsImageUI = ({ input }: Props) => {
-  const { items, image } = input;
+  const { title, items, image } = input;
   return (
-    <section className='module module--cards-text-ui'>
+    <section className='module module--list-cards-image-ui'>
+      <div className='header'>
+        {title && <h2 className='title text-lg'>{title}</h2>}
+      </div>
       <div
         className={clsx(
           "flex flex-col md:flex-row gap-md",
@@ -20,7 +23,7 @@ const ModuleListCardsImageUI = ({ input }: Props) => {
         <div className='col-text w-full md:w-1/2'>
           <div className='grid grid-cols-1  gap-md'>
             {items?.map((item, i) => (
-              <CardText key={i} {...item} />
+              <CardText key={i} input={item} />
             ))}
           </div>
         </div>

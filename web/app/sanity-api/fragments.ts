@@ -116,7 +116,10 @@ export const textSplitUI = `
 	_type == 'textSplitUI' => {
 		...,
 		texts[]{
-			${blockContent}
+			...,
+			text[]{
+				${blockContent}
+			}
 		},
 		image{
 			${image}

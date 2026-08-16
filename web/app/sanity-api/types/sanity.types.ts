@@ -45,11 +45,12 @@ export type ImageTextUI = {
 
 export type TextSplitUI = {
   _type: "textSplitUI";
-  texts?: Array<
-    {
-      _key: string;
-    } & BlockContent
-  >;
+  title?: string;
+  texts?: Array<{
+    text?: BlockContent;
+    _type: "textItem";
+    _key: string;
+  }>;
   image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -132,7 +133,7 @@ export type CardText = {
     | "green-100"
     | "yellow-100"
     | "purple-100";
-  colSize?: 3 | 6 | 12;
+  colSize?: 4 | 6 | 12;
   text?: BlockContent;
   footerText?: string;
 };
@@ -268,14 +269,7 @@ export type Settings = {
       } & LinkExternal)
   >;
   contact?: string;
-  logos?: Array<{
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-    _key: string;
-  }>;
+  contactText?: BlockContent;
   message404?: BlockContent;
   customCss?: string;
 };
@@ -539,7 +533,7 @@ export type AllSanitySchemaTypes =
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: SETTINGS_QUERY
-// Query: *[_type == "settings"][0]{  ...,  navPrimary[]{    ...,    _type == 'linkInternal' => {      ...,      link->{        _type,        slug      }    }  },}
+// Query: *[_type == "settings"][0]{  ...,  navPrimary[]{    ...,    _type == 'linkInternal' => {      ...,      link->{        homePage,        _type,        slug      }    }  },  contact,  contactText,}
 export type SETTINGS_QUERY_RESULT = {
   _id: string;
   _type: "settings";
@@ -560,6 +554,7 @@ export type SETTINGS_QUERY_RESULT = {
         _type: "linkInternal";
         label?: string;
         link: {
+          homePage: boolean | null;
           _type: "pageModulaire";
           slug: Slug | null;
         } | null;
@@ -578,22 +573,15 @@ export type SETTINGS_QUERY_RESULT = {
         _key: string;
       } & LinkInternal)
   >;
-  contact?: string;
-  logos?: Array<{
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-    _key: string;
-  }>;
+  contact: string | null;
+  contactText: BlockContent | null;
   message404?: BlockContent;
   customCss?: string;
 } | null;
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: HOME_QUERY
-// Query: *[_type == "pageModulaire" && homePage == true][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  modules[]{      ...,		_type == 'dryWaterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},	  _type == 'textUI' => {    ...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}  },		_type == 'formUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'gridCardTextUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		}	},		_type == 'listCardsImageUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'textSplitUI' => {		...,		texts[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'imageTextUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		},		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},		_type == 'newsletterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	}  }}
+// Query: *[_type == "pageModulaire" && homePage == true][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  modules[]{      ...,		_type == 'dryWaterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},	  _type == 'textUI' => {    ...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}  },		_type == 'formUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'gridCardTextUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		}	},		_type == 'listCardsImageUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'textSplitUI' => {		...,		texts[]{			...,			text[]{					...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}			}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'imageTextUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		},		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},		_type == 'newsletterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	}  }}
 export type HOME_QUERY_RESULT = {
   _id: string;
   _type: "pageModulaire";
@@ -817,7 +805,7 @@ export type HOME_QUERY_RESULT = {
             | "red-100"
             | "red-50"
             | "yellow-100";
-          colSize?: 12 | 3 | 6;
+          colSize?: 12 | 4 | 6;
           text: Array<
             | {
                 children?: Array<{
@@ -1093,7 +1081,7 @@ export type HOME_QUERY_RESULT = {
             | "red-100"
             | "red-50"
             | "yellow-100";
-          colSize?: 12 | 3 | 6;
+          colSize?: 12 | 4 | 6;
           text: Array<
             | {
                 children?: Array<{
@@ -1275,7 +1263,83 @@ export type HOME_QUERY_RESULT = {
     | {
         _key: string;
         _type: "textSplitUI";
-        texts: Array<unknown> | null;
+        title?: string;
+        texts: Array<{
+          text: Array<
+            | {
+                children?: Array<{
+                  marks?: Array<string>;
+                  text?: string;
+                  _type: "span";
+                  _key: string;
+                }>;
+                style?: "normal" | "text-lg";
+                listItem?: "bullet";
+                markDefs: Array<
+                  | {
+                      href?: string;
+                      _type: "linkExternal";
+                      _key: string;
+                    }
+                  | {
+                      reference: {
+                        _id: string;
+                        _type: "pageModulaire";
+                        _createdAt: string;
+                        _updatedAt: string;
+                        _rev: string;
+                        seo?: Seo;
+                        homePage?: boolean;
+                        title?: string;
+                        slug?: Slug;
+                        modules?: Array<
+                          | ({
+                              _key: string;
+                            } & DryWaterUI)
+                          | ({
+                              _key: string;
+                            } & FormUI)
+                          | ({
+                              _key: string;
+                            } & GridCardTextUI)
+                          | ({
+                              _key: string;
+                            } & ImageTextUI)
+                          | ({
+                              _key: string;
+                            } & ListCardsImageUI)
+                          | ({
+                              _key: string;
+                            } & NewsletterUI)
+                          | ({
+                              _key: string;
+                            } & TextSplitUI)
+                          | ({
+                              _key: string;
+                            } & TextUI)
+                        >;
+                      } | null;
+                      _type: "linkInternal";
+                      _key: string;
+                    }
+                > | null;
+                level?: number;
+                _type: "block";
+                _key: string;
+              }
+            | {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+                _key: string;
+                markDefs: null;
+              }
+          > | null;
+          _type: "textItem";
+          _key: string;
+        }> | null;
         image: {
           asset: {
             _id: string;
@@ -1387,7 +1451,7 @@ export type HOME_QUERY_RESULT = {
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: PAGE_MODULAIRE_QUERY
-// Query: *[_type == "pageModulaire" && slug.current == $slug][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  modules[]{      ...,		_type == 'dryWaterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},	  _type == 'textUI' => {    ...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}  },		_type == 'formUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'gridCardTextUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		}	},		_type == 'listCardsImageUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'textSplitUI' => {		...,		texts[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'imageTextUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		},		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},		_type == 'newsletterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	}  }}
+// Query: *[_type == "pageModulaire" && slug.current == $slug][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  modules[]{      ...,		_type == 'dryWaterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},	  _type == 'textUI' => {    ...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}  },		_type == 'formUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'gridCardTextUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		}	},		_type == 'listCardsImageUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'textSplitUI' => {		...,		texts[]{			...,			text[]{					...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}			}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'imageTextUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		},		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},		_type == 'newsletterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	}  }}
 export type PAGE_MODULAIRE_QUERY_RESULT = {
   _id: string;
   _type: "pageModulaire";
@@ -1611,7 +1675,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
             | "red-100"
             | "red-50"
             | "yellow-100";
-          colSize?: 12 | 3 | 6;
+          colSize?: 12 | 4 | 6;
           text: Array<
             | {
                 children?: Array<{
@@ -1887,7 +1951,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
             | "red-100"
             | "red-50"
             | "yellow-100";
-          colSize?: 12 | 3 | 6;
+          colSize?: 12 | 4 | 6;
           text: Array<
             | {
                 children?: Array<{
@@ -2069,7 +2133,83 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
     | {
         _key: string;
         _type: "textSplitUI";
-        texts: Array<unknown> | null;
+        title?: string;
+        texts: Array<{
+          text: Array<
+            | {
+                children?: Array<{
+                  marks?: Array<string>;
+                  text?: string;
+                  _type: "span";
+                  _key: string;
+                }>;
+                style?: "normal" | "text-lg";
+                listItem?: "bullet";
+                markDefs: Array<
+                  | {
+                      href?: string;
+                      _type: "linkExternal";
+                      _key: string;
+                    }
+                  | {
+                      reference: {
+                        _id: string;
+                        _type: "pageModulaire";
+                        _createdAt: string;
+                        _updatedAt: string;
+                        _rev: string;
+                        seo?: Seo;
+                        homePage?: boolean;
+                        title?: string;
+                        slug?: Slug;
+                        modules?: Array<
+                          | ({
+                              _key: string;
+                            } & DryWaterUI)
+                          | ({
+                              _key: string;
+                            } & FormUI)
+                          | ({
+                              _key: string;
+                            } & GridCardTextUI)
+                          | ({
+                              _key: string;
+                            } & ImageTextUI)
+                          | ({
+                              _key: string;
+                            } & ListCardsImageUI)
+                          | ({
+                              _key: string;
+                            } & NewsletterUI)
+                          | ({
+                              _key: string;
+                            } & TextSplitUI)
+                          | ({
+                              _key: string;
+                            } & TextUI)
+                        >;
+                      } | null;
+                      _type: "linkInternal";
+                      _key: string;
+                    }
+                > | null;
+                level?: number;
+                _type: "block";
+                _key: string;
+              }
+            | {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+                _key: string;
+                markDefs: null;
+              }
+          > | null;
+          _type: "textItem";
+          _key: string;
+        }> | null;
         image: {
           asset: {
             _id: string;
@@ -2183,8 +2323,8 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"settings\"][0]{\n  ...,\n  navPrimary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        _type,\n        slug\n      }\n    }\n  },\n}": SETTINGS_QUERY_RESULT;
-    '*[_type == "pageModulaire" && homePage == true][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n\n  modules[]{\n    \n  ...,\n\t\n\t_type == \'dryWaterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n  _type == \'textUI\' => {\n    ...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n  }\n,\n\t\n\t_type == \'formUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'gridCardTextUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'listCardsImageUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'textSplitUI\' => {\n\t\t...,\n\t\ttexts[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'imageTextUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t},\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'newsletterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n\n\n  }\n}': HOME_QUERY_RESULT;
-    '*[_type == "pageModulaire" && slug.current == $slug][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n\n  modules[]{\n    \n  ...,\n\t\n\t_type == \'dryWaterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n  _type == \'textUI\' => {\n    ...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n  }\n,\n\t\n\t_type == \'formUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'gridCardTextUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'listCardsImageUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'textSplitUI\' => {\n\t\t...,\n\t\ttexts[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'imageTextUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t},\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'newsletterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n\n\n  }\n}': PAGE_MODULAIRE_QUERY_RESULT;
+    "*[_type == \"settings\"][0]{\n  ...,\n  navPrimary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        homePage,\n        _type,\n        slug\n      }\n    }\n  },\n  contact,\n  contactText,\n}": SETTINGS_QUERY_RESULT;
+    '*[_type == "pageModulaire" && homePage == true][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n\n  modules[]{\n    \n  ...,\n\t\n\t_type == \'dryWaterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n  _type == \'textUI\' => {\n    ...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n  }\n,\n\t\n\t_type == \'formUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'gridCardTextUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'listCardsImageUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'textSplitUI\' => {\n\t\t...,\n\t\ttexts[]{\n\t\t\t...,\n\t\t\ttext[]{\n\t\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t\t}\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'imageTextUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t},\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'newsletterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n\n\n  }\n}': HOME_QUERY_RESULT;
+    '*[_type == "pageModulaire" && slug.current == $slug][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n\n  modules[]{\n    \n  ...,\n\t\n\t_type == \'dryWaterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n  _type == \'textUI\' => {\n    ...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n  }\n,\n\t\n\t_type == \'formUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'gridCardTextUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'listCardsImageUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'textSplitUI\' => {\n\t\t...,\n\t\ttexts[]{\n\t\t\t...,\n\t\t\ttext[]{\n\t\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t\t}\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'imageTextUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t},\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'newsletterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n\n\n  }\n}': PAGE_MODULAIRE_QUERY_RESULT;
   }
 }
