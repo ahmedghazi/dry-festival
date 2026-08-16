@@ -1,0 +1,21 @@
+{
+  "createdAt": "2026-08-16T11:59:07.062Z",
+  "studioVersion": "6.9.2",
+  "version": 3,
+  "workspaces": [
+    {
+      "basePath": "/",
+      "dataset": "production",
+      "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"2\" fill=\"#2927aa\"></rect><text x=\"50%\" y=\"50%\" text-anchor=\"middle\" alignment-baseline=\"middle\" fill=\"hsla(241, 63%, 81%, 1)\" style=\"font-family:Inter, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, &quot;Liberation Sans&quot;, Helvetica, Arial, system-ui, sans-serif;font-weight:500;font-size:13px;transform:translateY(1px)\">DF</text></svg>",
+      "mediaLibrary": {
+        "enabled": false,
+        "__internal": {}
+      },
+      "name": "default",
+      "projectId": "6m8quf4y",
+      "schema": "7b22c48a.create-schema.json",
+      "title": "Dry festival",
+      "tools": "cd4a0608.create-tools.json"
+    }
+  ]
+}

@@ -1,0 +1,868 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ]
+          }
+        ],
+        "name": "name",
+        "type": "slug"
+      }
+    ],
+    "name": "media.tag",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "weak": true,
+        "to": [
+          {
+            "type": "media.folder"
+          }
+        ],
+        "name": "parent",
+        "type": "reference"
+      }
+    ],
+    "name": "media.folder",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "h",
+        "type": "number",
+        "title": "Hue"
+      },
+      {
+        "name": "s",
+        "type": "number",
+        "title": "Saturation"
+      },
+      {
+        "name": "l",
+        "type": "number",
+        "title": "Lightness"
+      },
+      {
+        "name": "a",
+        "type": "number",
+        "title": "Alpha"
+      }
+    ],
+    "name": "hslaColor",
+    "type": "object",
+    "title": "Hue Saturation Lightness"
+  },
+  {
+    "fields": [
+      {
+        "name": "h",
+        "type": "number",
+        "title": "Hue"
+      },
+      {
+        "name": "s",
+        "type": "number",
+        "title": "Saturation"
+      },
+      {
+        "name": "v",
+        "type": "number",
+        "title": "Value"
+      },
+      {
+        "name": "a",
+        "type": "number",
+        "title": "Alpha"
+      }
+    ],
+    "name": "hsvaColor",
+    "type": "object",
+    "title": "Hue Saturation Value"
+  },
+  {
+    "fields": [
+      {
+        "name": "r",
+        "type": "number",
+        "title": "Red"
+      },
+      {
+        "name": "g",
+        "type": "number",
+        "title": "Green"
+      },
+      {
+        "name": "b",
+        "type": "number",
+        "title": "Blue"
+      },
+      {
+        "name": "a",
+        "type": "number",
+        "title": "Alpha"
+      }
+    ],
+    "name": "rgbaColor",
+    "type": "object",
+    "title": "Red Green Blue (rgb)"
+  },
+  {
+    "fields": [
+      {
+        "name": "hex",
+        "type": "string"
+      },
+      {
+        "name": "alpha",
+        "type": "number"
+      },
+      {
+        "name": "hsl",
+        "type": "hslaColor",
+        "title": "Hue Saturation Lightness"
+      },
+      {
+        "name": "hsv",
+        "type": "hsvaColor",
+        "title": "Hue Saturation Value"
+      },
+      {
+        "name": "rgb",
+        "type": "rgbaColor",
+        "title": "Red Green Blue (rgb)"
+      }
+    ],
+    "name": "color",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "siteName",
+        "type": "string",
+        "title": "Nom du site"
+      },
+      {
+        "name": "baseline",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "linkInternal"
+          },
+          {
+            "type": "linkExternal"
+          }
+        ],
+        "name": "navPrimary",
+        "type": "array",
+        "title": "Naviguation Primary"
+      },
+      {
+        "of": [
+          {
+            "type": "linkIcon"
+          }
+        ],
+        "name": "navSocial",
+        "type": "array",
+        "title": "Naviguation Social"
+      },
+      {
+        "of": [
+          {
+            "type": "linkInternal"
+          },
+          {
+            "type": "linkExternal"
+          }
+        ],
+        "name": "navSecondary",
+        "type": "array",
+        "title": "Naviguation Secondary"
+      },
+      {
+        "name": "contact",
+        "type": "string"
+      },
+      {
+        "name": "contactText",
+        "type": "blockContent",
+        "title": "Contact text"
+      },
+      {
+        "name": "message404",
+        "type": "blockContent"
+      },
+      {
+        "name": "customCss",
+        "type": "text"
+      }
+    ],
+    "name": "settings",
+    "type": "document",
+    "title": "Réglages (header, footer, ...)"
+  },
+  {
+    "fields": [
+      {
+        "name": "seo",
+        "type": "seo",
+        "title": "SEO"
+      },
+      {
+        "name": "homePage",
+        "type": "boolean",
+        "title": "Homepage? only one"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Titre"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "description": "Click GENERATE. URL based on the title (without spaces or any character other than a-z-0-9",
+        "name": "slug",
+        "type": "slug",
+        "title": "Slug (URL de la page)"
+      },
+      {
+        "description": "Modular content zone (images, textes, lists, clients, etc.)",
+        "of": [
+          {
+            "type": "dryWaterUI",
+            "title": "Dry Water"
+          },
+          {
+            "type": "textUI",
+            "title": "Text"
+          },
+          {
+            "type": "formUI",
+            "title": "Form"
+          },
+          {
+            "type": "gridCardTextUI",
+            "title": "Grid Card Text"
+          },
+          {
+            "type": "listCardsImageUI",
+            "title": "List Cards Image"
+          },
+          {
+            "type": "textSplitUI",
+            "title": "Text Split"
+          },
+          {
+            "initialValue": {
+              "direction": "ltr"
+            },
+            "type": "imageTextUI",
+            "title": "Image Text"
+          },
+          {
+            "type": "newsletterUI",
+            "title": "Newsletter"
+          }
+        ],
+        "name": "modules",
+        "type": "array"
+      }
+    ],
+    "name": "pageModulaire",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 80
+              }
+            ]
+          }
+        ],
+        "name": "metaTitle",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 160
+              }
+            ]
+          }
+        ],
+        "name": "metaDescription",
+        "type": "string"
+      },
+      {
+        "name": "metaImage",
+        "type": "image"
+      }
+    ],
+    "name": "seo",
+    "type": "object",
+    "title": "SEO"
+  },
+  {
+    "of": [
+      {
+        "lists": [
+          {
+            "value": "bullet",
+            "title": "Bullet"
+          }
+        ],
+        "marks": {
+          "annotations": [
+            {
+              "fields": [
+                {
+                  "weak": true,
+                  "to": [
+                    {
+                      "type": "pageModulaire"
+                    }
+                  ],
+                  "name": "reference",
+                  "type": "reference"
+                }
+              ],
+              "name": "linkInternal",
+              "type": "object",
+              "title": "Internal link"
+            },
+            {
+              "fields": [
+                {
+                  "name": "href",
+                  "type": "string",
+                  "title": "URL"
+                }
+              ],
+              "name": "linkExternal",
+              "type": "object",
+              "title": "External link"
+            }
+          ],
+          "decorators": [
+            {
+              "value": "strong",
+              "title": "Strong"
+            },
+            {
+              "value": "em",
+              "title": "Emphasis"
+            }
+          ]
+        },
+        "of": [],
+        "styles": [
+          {
+            "value": "normal",
+            "title": "Normal"
+          },
+          {
+            "value": "text-lg",
+            "title": "Texte L"
+          }
+        ],
+        "type": "block"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "type": "image"
+      }
+    ],
+    "name": "blockContent",
+    "type": "array"
+  },
+  {
+    "fields": [
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "name": "link",
+        "type": "string"
+      }
+    ],
+    "name": "linkExternal",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "weak": true,
+        "to": [
+          {
+            "type": "pageModulaire"
+          }
+        ],
+        "name": "link",
+        "type": "reference"
+      }
+    ],
+    "name": "linkInternal",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "link",
+        "type": "url"
+      },
+      {
+        "name": "icon",
+        "type": "image"
+      }
+    ],
+    "name": "linkIcon",
+    "type": "object"
+  },
+  {
+    "initialValue": {
+      "colSize": 1
+    },
+    "fields": [
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "name": "link",
+        "type": "string"
+      },
+      {
+        "description": "Number of columns on the grid",
+        "name": "colSize",
+        "type": "number"
+      }
+    ],
+    "name": "contactLinkItem",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "internal",
+        "type": "linkInternal"
+      },
+      {
+        "name": "external",
+        "type": "linkExternal"
+      }
+    ],
+    "name": "cta",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "key",
+        "type": "string"
+      },
+      {
+        "name": "val",
+        "type": "string",
+        "title": "Value"
+      },
+      {
+        "hidden": true,
+        "name": "text",
+        "type": "blockContent"
+      }
+    ],
+    "name": "keyVal",
+    "type": "object",
+    "title": "Key Value"
+  },
+  {
+    "fields": [
+      {
+        "rows": 2,
+        "name": "title",
+        "type": "text"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Black — #000000",
+              "value": "black"
+            },
+            {
+              "title": "Gray 50 — #dde0de",
+              "value": "gray-50"
+            },
+            {
+              "title": "Gray 100 — #c5c5c5",
+              "value": "gray-100"
+            },
+            {
+              "title": "Blue 50 — #84b0c5",
+              "value": "blue-50"
+            },
+            {
+              "title": "Blue 100 — #5098ec",
+              "value": "blue-100"
+            },
+            {
+              "title": "Blue 200 — #0000ed",
+              "value": "blue-200"
+            },
+            {
+              "title": "Red 50 — #e87568",
+              "value": "red-50"
+            },
+            {
+              "title": "Red 100 — #ff4b65",
+              "value": "red-100"
+            },
+            {
+              "title": "Pink 50 — #ff7cf2",
+              "value": "pink-50"
+            },
+            {
+              "title": "Pink 100 — #ff47f2",
+              "value": "pink-100"
+            },
+            {
+              "title": "Lime 100 — #83a613",
+              "value": "lime-100"
+            },
+            {
+              "title": "Green 100 — #268b09",
+              "value": "green-100"
+            },
+            {
+              "title": "Yellow 100 — #ffff26",
+              "value": "yellow-100"
+            },
+            {
+              "title": "Purple 100 — #6b33e1",
+              "value": "purple-100"
+            }
+          ]
+        },
+        "name": "color",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "SM",
+              "value": 4
+            },
+            {
+              "title": "MD",
+              "value": 6
+            },
+            {
+              "title": "LG",
+              "value": 12
+            }
+          ]
+        },
+        "name": "colSize",
+        "type": "number",
+        "title": "Taille de la carte"
+      },
+      {
+        "name": "text",
+        "type": "blockContent"
+      },
+      {
+        "name": "footerText",
+        "type": "string"
+      }
+    ],
+    "name": "cardText",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "subtitle",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "blockContent"
+      }
+    ],
+    "name": "textUI",
+    "type": "object",
+    "title": "Text"
+  },
+  {
+    "fields": [
+      {
+        "name": "text",
+        "type": "blockContent"
+      }
+    ],
+    "name": "dryWaterUI",
+    "type": "object",
+    "title": "Dry Water"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "description": "Email address where form submissions will be sent",
+        "name": "to",
+        "type": "string",
+        "title": "Recipient Email"
+      }
+    ],
+    "name": "formUI",
+    "type": "object",
+    "title": "Form"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "subtitle",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "blockContent"
+      },
+      {
+        "of": [
+          {
+            "type": "cardText"
+          }
+        ],
+        "name": "items",
+        "type": "array",
+        "title": "Cards"
+      }
+    ],
+    "name": "gridCardTextUI",
+    "type": "object",
+    "title": "Grid Card Text"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "hidden": true,
+        "name": "text",
+        "type": "blockContent"
+      },
+      {
+        "of": [
+          {
+            "type": "cardText"
+          }
+        ],
+        "name": "items",
+        "type": "array",
+        "title": "Cards"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      }
+    ],
+    "name": "listCardsImageUI",
+    "type": "object",
+    "title": "List Cards Image"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "text",
+                "type": "blockContent"
+              }
+            ],
+            "type": "object",
+            "name": "textItem"
+          }
+        ],
+        "name": "texts",
+        "type": "array"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "name": "footerText",
+        "type": "string"
+      }
+    ],
+    "name": "textSplitUI",
+    "type": "object",
+    "title": "Text Split"
+  },
+  {
+    "initialValue": {
+      "direction": "ltr"
+    },
+    "fields": [
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "subtitle",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "blockContent"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Left to right",
+              "value": "ltr"
+            },
+            {
+              "title": "Right to left",
+              "value": "rtl"
+            }
+          ]
+        },
+        "name": "direction",
+        "type": "string"
+      }
+    ],
+    "name": "imageTextUI",
+    "type": "object",
+    "title": "Image Text"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "blockContent"
+      }
+    ],
+    "name": "newsletterUI",
+    "type": "object",
+    "title": "Newsletter"
+  }
+]
