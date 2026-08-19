@@ -2,4 +2,6 @@ MOBILE
 
 DESKTOP
 
-- DS
+<!-- - DS -->
+
+- whook revalidate

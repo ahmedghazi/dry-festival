@@ -17,9 +17,9 @@ const ModuleTextSplit = ({ input }: Props) => {
         {title && <h2 className='title text-lg'>{title}</h2>}
       </div>
 
-      <div className='flex flex-col md:flex-row gap-md md:gap-lg'>
+      <div className='grid md:grid-cols-2'>
         {texts?.map((item, index) => (
-          <div key={index} className='md:max-w-1/2'>
+          <div key={index} className='item'>
             {item?.text && (
               <div className='text'>
                 <PortableText
@@ -33,7 +33,7 @@ const ModuleTextSplit = ({ input }: Props) => {
         {/* <div className='sep-line'></div> */}
       </div>
 
-      <div className='media w-4/12'>
+      <div className='media md:w-4/12'>
         {image && <Figure asset={image.asset} />}
       </div>
       {footerText && <div className='footer'>{footerText}</div>}

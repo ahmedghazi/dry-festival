@@ -17,17 +17,17 @@ const ModuleListCardsImageUI = ({ input }: Props) => {
       </div>
       <div
         className={clsx(
-          "flex flex-col md:flex-row gap-md",
+          "gap-md grid md:grid-cols-2",
           // direction === "rtl" && "md:flex-row-reverse",
         )}>
-        <div className='col-text w-full md:w-1/2'>
-          <div className='grid grid-cols-1  gap-md'>
+        <div className='col-text w-full order-2 md:order-1'>
+          <div className='grid grid-cols-1 gap-md'>
             {items?.map((item, i) => (
               <CardText key={i} input={item} />
             ))}
           </div>
         </div>
-        <div className='col-media w-full md:w-1/2'>
+        <div className='col-media w-full order-1 md:order-2'>
           {image && <Figure asset={image.asset} />}
         </div>
       </div>

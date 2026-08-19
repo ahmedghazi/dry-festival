@@ -13,7 +13,7 @@ const Footer = ({ settings }: Props) => {
   return (
     <footer>
       <div className='inner'>
-        <h2 className='md:text-lg'>contact</h2>
+        <h2 className='text-lg'>contact</h2>
         {settings?.contactText && (
           <div className='text'>
             <div className='module__text text'>
