@@ -12,13 +12,6 @@ img {
   place-items: center;
 }
 
-// .ar-a4 {
-//   img {
-//     aspect-ratio: 1/1.414;
-//   }
-// }
-figure {
-}
 ul.list-with-comma {
   display: flex;
   li {
@@ -31,25 +24,25 @@ ul.list-with-comma {
   }
 }
 
-.outline {
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: var(--border);
-    z-index: 1;
-    pointer-events: none;
-  }
+// .outline {
+//   position: relative;
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     inset: 0;
+//     border: var(--border);
+//     z-index: 1;
+//     pointer-events: none;
+//   }
 
-  &.is-rounded {
-    border-radius: 2rem;
-  }
-  &.is-rounded::before,
-  &.is-rounded::after {
-    border-radius: 2rem;
-  }
-}
+//   &.is-rounded {
+//     border-radius: 2rem;
+//   }
+//   &.is-rounded::before,
+//   &.is-rounded::after {
+//     border-radius: 2rem;
+//   }
+// }
 
 .b-t {
   position: relative;

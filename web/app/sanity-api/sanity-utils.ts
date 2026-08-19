@@ -1,10 +1,10 @@
-import createImageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import { sanityConfig } from "./sanity.client";
 
 const imageBuilder = createImageUrlBuilder(sanityConfig);
 
 export function urlFor(source: any, maxWidth: number = 2000): any {
-  if (!source) {
+  if (!source || !source._id) {
     return "/placeholder.png";
   }
   // return source.assetId;

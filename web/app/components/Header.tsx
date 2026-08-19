@@ -45,7 +45,8 @@ const Header = ({ settings }: Props) => {
               <li key={item._key}>
                 {item._type === "linkInternal" && (
                   <Link href={_linkResolver(item?.link)} data-text={item.label}>
-                    <span>{item.label}</span>
+                    <span className='medium'>{item.label}</span>
+                    <span className='strong'>{item.label}</span>
                   </Link>
                 )}
               </li>

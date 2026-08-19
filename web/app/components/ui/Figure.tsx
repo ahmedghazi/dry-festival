@@ -3,6 +3,7 @@ import { urlFor } from "@/app/sanity-api/sanity-utils";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
+import ImagePixelated from "./ImagePixelated";
 
 type Props = {
   asset: any;
@@ -12,6 +13,7 @@ type Props = {
   author?: string;
   copyright?: string;
   sizes?: string;
+  className?: string;
 };
 
 const Figure = ({
@@ -21,18 +23,25 @@ const Figure = ({
   caption,
   author,
   copyright,
-  sizes = "100vw",
+  // sizes = "100vw",
+  sizes = "(max-width: 767px) 90vw, 50vw",
+  className,
 }: Props) => {
   const isLandscape =
     asset?.metadata?.dimensions?.width > asset?.metadata?.dimensions?.height;
+  console.log(asset.mimeType);
+  const isSvg = asset.mimeType === "image/svg+xml";
   return (
     <figure
       className={clsx(
         "figure",
+        isSvg && "figure--is-svg",
+        !isSvg && "rounded",
+        className,
         isLandscape && "figure--is-landscape",
         !isLandscape && "figure--is-portrait",
       )}>
-      <Image
+      {/* <Image
         src={urlFor(asset, width)}
         width={asset?.metadata?.dimensions?.width || width}
         height={asset?.metadata?.dimensions?.height || width}
@@ -44,6 +53,19 @@ const Figure = ({
           aspectRatio: `${asset?.metadata?.dimensions?.width} / ${asset?.metadata?.dimensions?.height}`,
         }}
         placeholder={asset?.metadata?.lqip ? "blur" : "empty"}
+        blurDataURL={asset?.metadata?.lqip}
+      /> */}
+      <ImagePixelated
+        src={urlFor(asset, width)}
+        width={asset?.metadata?.dimensions?.width || width}
+        height={asset?.metadata?.dimensions?.height || width}
+        alt={alt || ""}
+        sizes={sizes}
+        style={{
+          width: "100%",
+          height: "auto",
+          aspectRatio: `${asset?.metadata?.dimensions?.width} / ${asset?.metadata?.dimensions?.height}`,
+        }}
         blurDataURL={asset?.metadata?.lqip}
       />
       {caption && (

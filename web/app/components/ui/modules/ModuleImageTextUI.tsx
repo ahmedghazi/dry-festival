@@ -21,7 +21,7 @@ const ModuleImageTextUI = ({ input }: Props) => {
         )}>
         {image && (
           <div className='col-media w-full md:w-1/2'>
-            <Figure asset={image.asset} />
+            <Figure className='card-img' asset={image.asset} />
           </div>
         )}
         <div className='col-text w-full md:w-1/2'>

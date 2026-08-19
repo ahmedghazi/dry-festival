@@ -21,7 +21,6 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
   const grayCanvasRef = useRef<HTMLCanvasElement>(null);
   // const [strokeSize, setStrokeSize] = useState<number>(3);
   const { isMobile } = useDeviceDetect();
-  console.log(isMobile);
   // let strokeSize = isMobile ? 2 : 3;
   // useEffect(() => {
   //   setStrokeSize(isMobile ? 1 : 3);
@@ -282,7 +281,6 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       for (let i = 0; i < numPoints; i++) points[i].y += points[i].vy;
 
       const strokeSize = isMobile ? 2 : 3;
-      console.log({ strokeSize });
       // --- Canvas rose ---
       pinkCtx.clearRect(0, 0, width, height);
       drawWavePath(pinkCtx);
@@ -302,7 +300,6 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       grayCtx.strokeStyle = "#000000";
       grayCtx.lineWidth = strokeSize;
       grayCtx.stroke();
-      console.log("strokeSize", strokeSize);
       animationFrameId = requestAnimationFrame(animate);
     };
 

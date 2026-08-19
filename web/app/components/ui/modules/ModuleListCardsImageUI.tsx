@@ -28,7 +28,7 @@ const ModuleListCardsImageUI = ({ input }: Props) => {
           </div>
         </div>
         <div className='col-media w-full order-1 md:order-2'>
-          {image && <Figure asset={image.asset} />}
+          {image && <Figure className='card-img' asset={image.asset} />}
         </div>
       </div>
     </section>

@@ -34,7 +34,7 @@ const ModuleTextSplit = ({ input }: Props) => {
       </div>
 
       <div className='media md:w-4/12'>
-        {image && <Figure asset={image.asset} />}
+        {image && <Figure className='card-img' asset={image.asset} />}
       </div>
       {footerText && <div className='footer'>{footerText}</div>}
     </section>

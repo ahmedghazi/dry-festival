@@ -16,9 +16,6 @@ const previewURL = window.location.hostname === 'localhost' ? localURL : remoteU
 
 const plugins = [
   structureTool({structure}),
-  media(),
-  visionTool(),
-  colorInput(),
   presentationTool({
     title: 'Live preview',
     resolve: linkResolverPreview,
@@ -30,6 +27,9 @@ const plugins = [
       },
     },
   }),
+  media(),
+  visionTool(),
+  colorInput(),
 ]
 
 export default defineConfig({

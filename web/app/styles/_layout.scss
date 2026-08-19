@@ -21,7 +21,7 @@ body {
 main {
   // min-height: var(--app-height, 100vh);
   position: relative;
-  padding-top: var(--header-h);
+  padding-top: calc(var(--header-h) + var(--spacing-xl));
 }
 
 .h-app {

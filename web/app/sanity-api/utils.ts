@@ -25,7 +25,6 @@ type LinkableNode = {
 export const _linkResolver = (node: PageModulaire | LinkableNode) => {
   if (!node || !node._type) return "/";
   if ((node as PageModulaire).homePage === true) return "/";
-  console.log(node);
   return `/${node.slug?.current}`;
 };
 

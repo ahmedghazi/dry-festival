@@ -13,18 +13,25 @@ const ModuleGridCardTextUI = ({ input }: Props) => {
 
   return (
     <section className='module module--grid-card-text-ui'>
-      <div className='header mb-lg'>
-        {title && <h2 className='title text-lg'>{title}</h2>}
+      {title ||
+        subtitle ||
+        (text && (
+          <div className='header mb-lg'>
+            {title && <h2 className='title text-lg'>{title}</h2>}
 
-        {subtitle && <p className='subtitle'>{subtitle}</p>}
-        {text && (
-          <div className='text'>
-            <div className='module__text text'>
-              <PortableText value={text} components={portableTextComponents} />
-            </div>
+            {subtitle && <p className='subtitle'>{subtitle}</p>}
+            {text && (
+              <div className='text'>
+                <div className='module__text text'>
+                  <PortableText
+                    value={text}
+                    components={portableTextComponents}
+                  />
+                </div>
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        ))}
       <div className='grid grid-cols-1 md:grid-cols-12 gap-md'>
         {items?.map((item, i) => (
           <CardText key={i} input={item} />

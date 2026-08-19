@@ -16,7 +16,7 @@ const ModuleFormUI = ({ input }: Props) => {
       <div className='inner'>
         <div className='grid md:grid-cols-2 gap-md'>
           <div className='col-media'>
-            {image && <Figure asset={image.asset} />}
+            {image && <Figure className='card-img' asset={image.asset} />}
           </div>
           <div className='col-text'>
             <Form
