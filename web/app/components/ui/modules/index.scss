@@ -14,6 +14,9 @@
     }
     &--dry-water-ui {
       margin-bottom: var(--spacing-2xl);
+      border-top: unset;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
       .footer .text {
         max-width: var(--text-max-w);
         margin: 0 auto;
@@ -39,11 +42,14 @@
     }
     &--image-text-ui {
       margin-bottom: var(--spacing-md);
-      & + .module--image-text-ui {
+      text-align: center;
+
+      // &:last-child {
+      //   margin-bottom: calc(var(--spacing-md) * 2);
+      // }
+      &:not(:has(~ section.module--image-text-ui)) {
         margin-bottom: calc(var(--spacing-md) * 2);
       }
-
-      text-align: center;
 
       .col-text {
         display: flex;
