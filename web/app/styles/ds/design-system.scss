@@ -8,12 +8,16 @@
     gap: var(--spacing-md);
     padding: var(--spacing-md);
     text-align: center;
-
+    flex: 1 1 auto;
+    height: auto;
     .text-lg {
       line-height: 1;
       hyphens: auto;
       overflow-wrap: break-word;
     }
+  }
+  .footer {
+    padding: 0 var(--spacing-md);
   }
 }
 
@@ -192,6 +196,7 @@ form {
     }
   }
 }
+
 @media (width >= 48rem) {
   @for $i from 1 through 12 {
     .md\:grid-cols-#{$i} {
@@ -199,6 +204,9 @@ form {
     }
     .md\:col-span-#{$i} {
       grid-column: span $i;
+    }
+    .md\:w-#{$i}\/12 {
+      width: calc(#{$i} / 12 * 100%);
     }
   }
 }

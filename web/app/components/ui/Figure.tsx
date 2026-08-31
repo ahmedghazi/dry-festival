@@ -14,6 +14,7 @@ type Props = {
   copyright?: string;
   sizes?: string;
   className?: string;
+  rounded?: boolean;
 };
 
 const Figure = ({
@@ -26,17 +27,17 @@ const Figure = ({
   // sizes = "100vw",
   sizes = "(max-width: 767px) 90vw, 50vw",
   className,
+  rounded = true,
 }: Props) => {
   const isLandscape =
     asset?.metadata?.dimensions?.width > asset?.metadata?.dimensions?.height;
-  console.log(asset.mimeType);
   const isSvg = asset.mimeType === "image/svg+xml";
   return (
     <figure
       className={clsx(
         "figure",
         isSvg && "figure--is-svg",
-        !isSvg && "rounded",
+        !isSvg && rounded && "rounded",
         className,
         isLandscape && "figure--is-landscape",
         !isLandscape && "figure--is-portrait",

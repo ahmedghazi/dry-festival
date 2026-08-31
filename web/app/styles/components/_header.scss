@@ -4,14 +4,19 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  padding: var(--spacing-md);
+  padding: calc(var(--spacing-md) * 1.5) var(--spacing-md) 0;
   z-index: 50;
+  background-color: var(--color-bg);
   transition:
     transform 0.2s var(--cubic),
     opacity 0.2s var(--cubic);
   &.is-up {
     transform: translateY(-100%);
     opacity: 0;
+  }
+  .inner {
+    border-bottom: var(--border);
+    padding-bottom: var(--spacing-md);
   }
   nav {
     ul {

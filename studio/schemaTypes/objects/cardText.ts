@@ -16,6 +16,12 @@ export default defineField({
       rows: 2,
     }),
     defineField({
+      name: 'subtitle',
+      type: 'text',
+      title: 'Subtitle',
+      rows: 2,
+    }),
+    defineField({
       name: 'color',
       type: 'string',
       title: 'Color',

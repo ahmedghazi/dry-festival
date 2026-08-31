@@ -7,9 +7,7 @@ import { _linkResolver } from "./utils";
 const portableTextComponents: PortableTextComponents = {
   block: {
     h2: ({ children }) => <h2>{children}</h2>,
-    "text-display-lg": ({ children }) => (
-      <p className='text-body-md md:text-display-lg'>{children}</p>
-    ),
+    "text-lg": ({ children }) => <p className=' md:text-md'>{children}</p>,
   },
   types: {
     // image: ({ value }) => {

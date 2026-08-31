@@ -12,6 +12,8 @@ body {
   // @include debugFiletX(50%);
 
   // @include debugOutline(var(--space-md));
+  // background-image: url("/desktop.png");
+  background-color: var(--color-bg);
   transition: opacity 0.3s ease;
   .is-loading {
     opacity: 0;
@@ -21,7 +23,12 @@ body {
 main {
   // min-height: var(--app-height, 100vh);
   position: relative;
-  padding-top: calc(var(--header-h) + var(--spacing-xl));
+  .template {
+    padding-top: calc(var(--header-h));
+    &:not(.template--home) {
+      padding-top: calc(var(--header-h) + var(--spacing-xl));
+    }
+  }
 }
 
 .h-app {

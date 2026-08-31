@@ -11,7 +11,12 @@ type Props = {
 
 const CardTextComponent = ({ input }: Props) => {
   return (
-    <div className={clsx("card-outer", `md:col-span-${input?.colSize}`)}>
+    <div
+      className={clsx(
+        "card-outer",
+        `md:col-span-${input?.colSize}`,
+        // `md:w-${input?.colSize}/12`,
+      )}>
       <div
         className={clsx("card card-text rounded")}
         style={
@@ -20,6 +25,7 @@ const CardTextComponent = ({ input }: Props) => {
             : undefined
         }>
         {input?.title && <h2 className='text-lg ellipsis-'>{input.title}</h2>}
+        {input?.subtitle && <p className='subtitle'>{input.subtitle}</p>}
         {input?.text && (
           <div className='text text-sm'>
             <PortableText

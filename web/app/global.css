@@ -2,7 +2,7 @@
 
 [data-theme="theme-xyz"] {
   --header-height: 43.5px;
-  --color-bg: #fff;
+  --color-bg: #fffaf0;
   --color-primary: #000;
   --color-secondary: #ff8c71;
   --color-hover: #333;
@@ -16,21 +16,21 @@
   --color-gray-50: #dde0de;
   --color-gray-100: #c5c5c5;
 
-  --color-blue-50: #84b0c5;
-  --color-blue-100: #5098ec;
+  --color-blue-50: #92b8cc;
+  --color-blue-100: #77b5fe;
   --color-blue-200: #0000ed;
 
-  --color-red-50: #e87568;
+  --color-red-50: #ff8c71;
   --color-red-100: #ff4b65;
 
-  --color-pink-50: #ff7cf2;
+  --color-pink-50: #ff8df4;
   --color-pink-100: #ff47f2;
 
-  --color-lime-100: #83a613;
+  --color-lime-100: #a1b200;
   --color-green-100: #268b09;
 
-  --color-yellow-100: #ffff26;
-  --color-purple-100: #6b33e1;
+  --color-yellow-100: #ffff24;
+  --color-purple-100: #8c4def;
 
   --font-primary:
     "FormaDJRDisplay-Medium-Testing", "Helvetica Neue", "HelveticaNeueRoman",

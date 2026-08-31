@@ -9,21 +9,23 @@ type Props = {
 
 const ModuleTextUI = ({ input }: Props) => {
   const { title, subtitle, text } = input;
+  const hasHeading = title || subtitle;
   return (
     <section className='module module--text-ui'>
       <div className='inner'>
-        {title ||
-          (subtitle && (
-            <div className='header'>
-              {title && <h2 className='title text-lg'>{title}</h2>}
-              {subtitle && <p className='subtitle'>{subtitle}</p>}
-            </div>
-          ))}
-        <div className='text'>
-          <div className='module__text text'>
-            <PortableText value={text} components={portableTextComponents} />
+        {hasHeading && (
+          <div className='header'>
+            {title && <h2 className='title text-lg'>{title}</h2>}
+            {subtitle && <p className='subtitle'>{subtitle}</p>}
           </div>
-        </div>
+        )}
+        {text && (
+          <div className='text'>
+            <div className='module__text text'>
+              <PortableText value={text} components={portableTextComponents} />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

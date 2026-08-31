@@ -118,6 +118,7 @@ export type TextUI = {
 export type CardText = {
   _type: "cardText";
   title?: string;
+  subtitle?: string;
   color?:
     | "black"
     | "gray-50"
@@ -790,6 +791,7 @@ export type HOME_QUERY_RESULT = {
           _key: string;
           _type: "cardText";
           title?: string;
+          subtitle?: string;
           color?:
             | "black"
             | "blue-100"
@@ -1066,6 +1068,7 @@ export type HOME_QUERY_RESULT = {
           _key: string;
           _type: "cardText";
           title?: string;
+          subtitle?: string;
           color?:
             | "black"
             | "blue-100"
@@ -1660,6 +1663,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
           _key: string;
           _type: "cardText";
           title?: string;
+          subtitle?: string;
           color?:
             | "black"
             | "blue-100"
@@ -1936,6 +1940,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
           _key: string;
           _type: "cardText";
           title?: string;
+          subtitle?: string;
           color?:
             | "black"
             | "blue-100"

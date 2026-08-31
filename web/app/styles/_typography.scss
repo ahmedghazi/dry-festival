@@ -155,7 +155,7 @@ button.is-current {
 p,
 .text p {
   margin-bottom: 1em;
-  line-height: 0.9;
+  line-height: 0.95;
   hyphens: auto;
   overflow-wrap: break-word;
   &:last-child,
@@ -186,22 +186,22 @@ p,
   padding: 0 0.3em;
 }
 
-.text {
-  h2,
-  h3 {
-  }
-  p {
-    // text-indent: 1em;
-    margin-bottom: 1em;
-    line-height: 1.2;
-    @media all and (min-width: var(--screen-md)) {
-      line-height: 1.12;
-    }
-  }
-  // p:first-child {
-  //   text-indent: 0;
-  // }
-}
+// .text {
+//   h2,
+//   h3 {
+//   }
+//   p {
+//     // text-indent: 1em;
+//     margin-bottom: 1em;
+//     line-height: 1.2;
+//     @media all and (min-width: var(--screen-md)) {
+//       line-height: 1.12;
+//     }
+//   }
+//   // p:first-child {
+//   //   text-indent: 0;
+//   // }
+// }
 
 .tabnum {
   font-feature-settings:
