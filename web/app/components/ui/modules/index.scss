@@ -4,7 +4,9 @@
   section.module {
     position: relative;
     margin-bottom: var(--spacing-lg);
-
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
     .header h2 {
       // margin-bottom: var(--spacing-md);
     }
@@ -40,7 +42,7 @@
           margin: 0;
         }
         .subtitle {
-          white-space: pre;
+          white-space: pre-line;
         }
       }
     }
@@ -110,7 +112,7 @@
       }
       h2,
       .footer-text {
-        white-space: pre;
+        white-space: pre-line;
       }
     }
     &--text-split-ui {
@@ -133,6 +135,9 @@
 
       .text {
         padding: 0 var(--spacing-md);
+      }
+      .footer-text {
+        white-space: pre-line;
       }
     }
     &--list-cards-image-ui {

@@ -4,12 +4,14 @@ import { PortableText } from "next-sanity";
 import { CardTextItem } from "@/app/sanity-api/types/extra-types";
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 import { CardText } from "@/app/sanity-api/types/sanity.types";
+import PortableExcerptToText from "./PortableExcerptToText";
 
 type Props = {
   input: CardText;
+  withDropDownText?: boolean;
 };
 
-const CardTextComponent = ({ input }: Props) => {
+const CardTextComponent = ({ input, withDropDownText = false }: Props) => {
   return (
     <div
       className={clsx(
@@ -28,10 +30,14 @@ const CardTextComponent = ({ input }: Props) => {
         {input?.subtitle && <p className='subtitle'>{input.subtitle}</p>}
         {input?.text && (
           <div className='text text-sm'>
-            <PortableText
-              value={input.text}
-              components={portableTextComponents}
-            />
+            {withDropDownText ? (
+              <PortableExcerptToText value={input.text} />
+            ) : (
+              <PortableText
+                value={input.text}
+                components={portableTextComponents}
+              />
+            )}
           </div>
         )}
       </div>

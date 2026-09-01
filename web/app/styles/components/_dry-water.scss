@@ -22,7 +22,7 @@
       z-index: 20;
       // left: 50%;
       // transform: translateX(-50%);
-      padding: 1rem;
+      padding: var(--spacing-md);
     }
     .header {
       top: 0;

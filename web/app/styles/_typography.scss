@@ -10,6 +10,14 @@
 }
 
 @font-face {
+  font-family: "FormaDJRDisplay-MediumItalic-Testing";
+  src:
+    url("./fonts/FormaDJRDisplay-MediumItalic-Testing.woff") format("woff"),
+    url("./fonts/FormaDJRDisplay-MediumItalic-Testing.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "FormaDJRDisplay-Bold-Testing";
   src:
     url("./fonts/FormaDJRDisplay-Bold-Testing.woff") format("woff"),
@@ -23,7 +31,9 @@ body {
   font-family: var(--font-primary);
   font-size: var(--text-base);
   line-height: 0.94;
-  letter-spacing: 0.0375rem;
+  // letter-spacing: 0.0375rem;
+  // letter-spacing: 1.5%;
+  letter-spacing: 0.028rem; /* 1.5% */
   // text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   // letter-spacing: 0.02rem;ch
@@ -39,8 +49,7 @@ body {
   @media all and (min-width: 1080px) {
     // font-size: var(--text-lg);
     font-size: var(--text-md);
-
-    line-height: 0.9;
+    line-height: 0.934;
   }
 }
 
@@ -82,6 +91,7 @@ h6 {
   font-family: var(--font-primary-b);
   font-weight: normal;
   line-height: 0.8;
+  letter-spacing: 0.028rem; //2%;
 }
 h2 {
   font-family: var(--font-primary-b);
@@ -90,6 +100,10 @@ strong,
 .strong {
   font-family: var(--font-primary-b);
   font-weight: normal;
+}
+em {
+  font-family: var(--font-primary-i);
+  font-style: unset;
 }
 
 .headline {
@@ -152,26 +166,46 @@ button.is-current {
 }
 
 /* Text elements */
-p,
-.text p {
-  margin-bottom: 1em;
-  line-height: 0.95;
-  hyphens: auto;
-  overflow-wrap: break-word;
-  &:last-child,
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-  &:empty {
-    display: none;
-  }
-  a {
-    font-family: var(--font-primary-b);
-  }
-}
+// p,
+// .text p {
+//   margin-bottom: 1em;
+//   // line-height: 0.95;
+//   hyphens: auto;
+//   overflow-wrap: break-word;
+//   &:last-child,
+//   &:last-of-type {
+//     margin-bottom: 0;
+//   }
+//   &:empty {
+//     display: none;
+//   }
+//   a {
+//     font-family: var(--font-primary-b);
+//   }
+// }
 .text {
   max-width: var(--text-max-w);
   margin: 0 auto;
+  &-sm p,
+  &.md\:text-sm p {
+    line-height: 0.95;
+  }
+  p {
+    margin-bottom: 1em;
+    // line-height: 0.95;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    &:last-child,
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    &:empty {
+      display: none;
+    }
+    a {
+      font-family: var(--font-primary-b);
+    }
+  }
 }
 .ellipsis {
   overflow: hidden;

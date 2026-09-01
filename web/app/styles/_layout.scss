@@ -30,7 +30,7 @@ main {
       padding-top: calc(var(--header-h) + var(--spacing-2xl));
     }
     &--home {
-      padding-bottom: calc(var(--spacing-2xl) - var(--spacing-md));
+      // padding-bottom: calc(var(--spacing-2xl) - var(--spacing-md));
     }
   }
 }

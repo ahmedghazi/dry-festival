@@ -36,6 +36,10 @@
     "FormaDJRDisplay-Medium-Testing", "Helvetica Neue", "HelveticaNeueRoman",
     "HelveticaNeue-Roman", "Helvetica Neue Roman", "TeXGyreHerosRegular",
     "Helvetica", "Arial", sans-serif;
+  --font-primary-i:
+    "FormaDJRDisplay-MediumItalic-Testing", "Helvetica Neue",
+    "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman",
+    "TeXGyreHerosRegular", "Helvetica", "Arial", sans-serif;
   --font-primary-b:
     "FormaDJRDisplay-Bold-Testing", "Helvetica Neue", "HelveticaNeueRoman",
     "HelveticaNeue-Roman", "Helvetica Neue Roman", "TeXGyreHerosRegular",
@@ -89,6 +93,7 @@ mobile : taille 17 px / interlignage 16 px / interlettrage 20px
   --color-red: var(--color-red);
 
   --font-primary: var(--font-primary);
+  --font-primary-i: var(--font-primary-i);
   --font-secondary: var(--font-secondary);
 
   --spacing-xs: var(--spacing-xs);

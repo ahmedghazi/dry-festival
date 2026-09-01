@@ -23,7 +23,7 @@ const ModuleListCardsImageUI = ({ input }: Props) => {
         <div className='col-text w-full order-2 md:order-1'>
           <div className='grid grid-cols-1 gap-md'>
             {items?.map((item, i) => (
-              <CardText key={i} input={item} />
+              <CardText key={i} input={item} withDropDownText={true} />
             ))}
           </div>
         </div>

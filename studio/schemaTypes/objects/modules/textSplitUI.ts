@@ -52,7 +52,7 @@ export default defineField({
     }),
     defineField({
       name: 'footerText',
-      type: 'string',
+      type: 'text',
       title: 'Footer Text',
     }),
   ],
