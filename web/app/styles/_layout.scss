@@ -1,4 +1,5 @@
 @use "variables";
+@use "mixins";
 
 html {
   -webkit-tap-highlight-color: transparent;
@@ -9,7 +10,7 @@ html {
 }
 body {
   // overflow-y: auto;
-  // @include debugFiletX(50%);
+  // @include mixins.debugSquare(var(--spacing-2xl));
 
   // @include debugOutline(var(--space-md));
   // background-image: url("/desktop.png");
@@ -26,7 +27,7 @@ main {
   .template {
     padding-top: calc(var(--header-h));
     &:not(.template--home) {
-      padding-top: calc(var(--header-h) + var(--spacing-xl));
+      padding-top: calc(var(--header-h) + var(--spacing-2xl));
     }
   }
 }

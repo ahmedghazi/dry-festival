@@ -29,6 +29,7 @@
         display: flex;
         flex-direction: column;
         gap: calc(var(--spacing-md) * 2);
+        gap: calc(var(--spacing-md) * 1.5);
         // align-items: center;
         .header {
           display: flex;
@@ -65,9 +66,13 @@
         display: flex;
         flex-direction: column;
         gap: var(--spacing-md);
+        gap: calc(var(--spacing-md) * 1.5);
         align-items: center;
         input[type="email"] {
           background-color: var(--color-yellow-100);
+          @media all and (min-width: variables.$md) {
+            min-width: 13.3em;
+          }
         }
         button {
           background-color: var(--color-pink-100);
@@ -97,7 +102,7 @@
         display: flex;
         flex-direction: column;
         gap: var(--spacing-md);
-
+        gap: calc(var(--spacing-md) * 1.5);
         // gap: calc(var(--spacing-md) * 2);
       }
       h2,
