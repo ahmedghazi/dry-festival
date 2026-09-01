@@ -6,12 +6,12 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
-    padding: var(--spacing-md);
+    padding: var(--spacing-lg);
     text-align: center;
     flex: 1 1 auto;
     height: auto;
     .text-lg {
-      line-height: 1;
+      line-height: 0.8;
       hyphens: auto;
       overflow-wrap: break-word;
     }
