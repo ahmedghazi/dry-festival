@@ -150,6 +150,9 @@
         // margin-bottom: var(--spacing-lg);
         text-align: center;
       }
+      .text {
+        font-size: var(--text-lg);
+      }
     }
     &--form-ui {
       form {

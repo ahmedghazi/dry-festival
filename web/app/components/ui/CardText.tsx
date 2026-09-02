@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import React from "react";
 import { PortableText } from "next-sanity";
@@ -31,7 +33,10 @@ const CardTextComponent = ({ input, withDropDownText = false }: Props) => {
         {input?.text && (
           <div className='text text-sm'>
             {withDropDownText ? (
-              <PortableExcerptToText value={input.text} />
+              <PortableExcerptToText
+                value={input.text}
+                components={portableTextComponents}
+              />
             ) : (
               <PortableText
                 value={input.text}
