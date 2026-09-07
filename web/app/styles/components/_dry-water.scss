@@ -12,8 +12,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-content: start;
     overflow: hidden;
     position: relative;
+    padding-top: var(--header-h);
     .header,
     .footer {
       position: absolute;
