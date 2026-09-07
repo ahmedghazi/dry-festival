@@ -47,7 +47,7 @@ const CardTextComponent = ({ input, withDropDownText = false }: Props) => {
         )}
       </div>
       {input?.footerText && (
-        <div className='footer text text-xs md:text-sm '>
+        <div className='footer text text-xs- md:text-sm '>
           <p>{input.footerText}</p>
         </div>
       )}

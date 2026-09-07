@@ -16,6 +16,9 @@
       min-height: 0;
       overflow: hidden;
     }
+    p {
+      margin: 0;
+    }
   }
 
   &__full {
@@ -49,23 +52,29 @@
     }
 
     &:hover {
-      opacity: 0.7;
+      // opacity: 0.7;
     }
   }
 
   &__toggle {
-    display: inline-block;
-    margin-top: var(--spacing-xs, 0.5em);
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
     padding: 0;
     border: 0;
     background: none;
-    font-size: var(--text-md);
-    // font: inherit;
+    font-size: inherit;
+    line-height: 0.95;
     color: inherit;
     cursor: pointer;
 
     &:hover {
       opacity: 0.7;
+    }
+  }
+  .md\:text-md + &__toggle {
+    @media (min-width: 48rem) {
+      font-size: var(--text-md);
     }
   }
 }

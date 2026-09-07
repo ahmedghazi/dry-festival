@@ -28,6 +28,7 @@ header {
         // overflow: hidden;
         // clip-path: inset(8% 0% 5% 0%);
         position: relative;
+        &[aria-current="page"],
         &:hover {
           span {
             &.strong {
@@ -47,7 +48,7 @@ header {
           &.strong {
             // transform: translateY(1em);
             opacity: 0;
-            text-decoration: underline;
+            // text-decoration: underline;
           }
         }
       }

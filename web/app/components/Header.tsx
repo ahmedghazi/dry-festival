@@ -18,7 +18,7 @@ const Header = ({ settings }: Props) => {
     setActive(false);
   }, [pathname]);
   return (
-    <header className={scrollDirection ? `is-${scrollDirection}` : ""}>
+    <header className={""}>
       <div className='inner'>
         <div className='sm-only'>
           <ul className='menu-mobile flex justify-between'>
@@ -41,16 +41,21 @@ const Header = ({ settings }: Props) => {
         </div>
         <nav className={active ? "is-active" : ""}>
           <ul>
-            {settings?.navPrimary?.map((item) => (
-              <li key={item._key}>
-                {item._type === "linkInternal" && (
-                  <Link href={_linkResolver(item?.link)} data-text={item.label}>
+            {settings?.navPrimary?.map((item) => {
+              if (item._type !== "linkInternal") return null;
+              const href = _linkResolver(item?.link);
+              return (
+                <li key={item._key}>
+                  <Link
+                    href={href}
+                    data-text={item.label}
+                    aria-current={pathname === href ? "page" : undefined}>
                     <span className='medium'>{item.label}</span>
                     <span className='strong'>{item.label}</span>
                   </Link>
-                )}
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>

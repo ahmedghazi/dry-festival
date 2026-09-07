@@ -22,8 +22,8 @@ const ModuleDryWater = ({ input }: Props) => {
     setMounted(true);
   }, []);
   return (
-    <section className='module module--dry-water-ui rounded'>
-      <div className='dry-water'>
+    <section className='module module--dry-water-ui '>
+      <div className='dry-water rounded'>
         {mounted && (
           <div className='inner'>
             <div ref={logoRef}>

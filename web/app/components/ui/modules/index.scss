@@ -1,4 +1,5 @@
 @use "../../../styles/variables";
+@use "../../../styles/mixins";
 
 .modules {
   section.module {
@@ -16,9 +17,25 @@
     }
     &--dry-water-ui {
       margin-bottom: var(--spacing-2xl);
-      border-top: unset;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+
+      position: relative;
+      overflow: unset;
+      &::before {
+        content: "";
+        position: absolute;
+        top: calc(var(--border-width) * -1);
+        left: 0;
+        width: 100%;
+        height: var(--border-width);
+        background-color: var(--color-primary);
+        z-index: 1;
+      }
+      .dry-water {
+        border-top: unset;
+
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
       .footer .text {
         // max-width: var(--text-max-w);
         // margin: 0 auto;
@@ -34,7 +51,7 @@
         display: flex;
         flex-direction: column;
         gap: calc(var(--spacing-md) * 2);
-        gap: calc(var(--spacing-md) * 1.5);
+        gap: calc(var(--spacing-md) * 1.5 + var(--border-width));
         // align-items: center;
         .header {
           display: flex;
@@ -74,7 +91,7 @@
         display: flex;
         flex-direction: column;
         gap: var(--spacing-md);
-        gap: calc(var(--spacing-md) * 1.5);
+        gap: calc(var(--spacing-md) * 1.5 + var(--border-width));
         align-items: center;
         input[type="email"] {
           background-color: var(--color-yellow-100);
@@ -110,7 +127,7 @@
         display: flex;
         flex-direction: column;
         gap: var(--spacing-md);
-        // gap: calc(var(--spacing-md) * 1.5);
+        // gap: calc(var(--spacing-md)*1.5 + var(--border-width));
         gap: calc(var(--spacing-md) * 2);
       }
       h2,
@@ -146,15 +163,23 @@
     &--list-cards-image-ui {
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-lg);
+      // gap: var(--spacing-lg);
+      gap: calc(var(--spacing-md) * 1.5 + var(--border-width));
       align-items: center;
-
+      // @include mixins.debugSquare(
+      //   calc(var(--spacing-md) * 1.5 + var(--border-width))
+      // );
       .header {
         // margin-bottom: var(--spacing-lg);
         text-align: center;
       }
       .text {
         font-size: var(--text-lg);
+      }
+      @media all and (max-width: variables.$md) {
+        .text {
+          font-size: var(--text-md);
+        }
       }
     }
     &--form-ui {

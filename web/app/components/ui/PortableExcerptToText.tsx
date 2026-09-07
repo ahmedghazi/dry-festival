@@ -146,7 +146,9 @@ const PortableExcerptToText = ({
             _onExpand();
           }
         }}>
-        <PortableText value={excerptBlocks} components={components} />
+        <div className='portable-excerpt__excerpt-inner'>
+          <PortableText value={excerptBlocks} components={components} />
+        </div>
       </div>
       <div className='portable-excerpt__full' id={id}>
         <div className='portable-excerpt__full-inner'>

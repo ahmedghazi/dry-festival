@@ -159,11 +159,11 @@ a[aria-current="page"] {
     color: var(--color-hover);
   }
 }
-a[aria-current="page"],
-a.is-current,
-button.is-current {
-  color: var(--color-blue);
-}
+// a[aria-current="page"],
+// a.is-current,
+// button.is-current {
+//   color: var(--color-blue);
+// }
 
 /* Text elements */
 // p,
@@ -193,8 +193,8 @@ button.is-current {
   p {
     margin-bottom: 1em;
     // line-height: 0.95;
-    hyphens: auto;
-    overflow-wrap: break-word;
+    // hyphens: auto;
+    // overflow-wrap: break-word;
     &:last-child,
     &:last-of-type {
       margin-bottom: 0;
@@ -246,7 +246,8 @@ button.is-current {
 
 .strong,
 strong {
-  font-weight: bold;
+  font-weight: unset;
+  font-family: var(--font-primary-b);
 }
 // em {
 //   // font-style: italic;
