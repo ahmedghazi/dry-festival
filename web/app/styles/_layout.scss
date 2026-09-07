@@ -57,4 +57,9 @@ main {
   .hidden-sm {
     display: none;
   }
+  main {
+    .template:not(.template--home) {
+      padding-top: calc(var(--header-h) + var(--spacing-lg));
+    }
+  }
 }

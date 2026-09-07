@@ -184,8 +184,8 @@ a[aria-current="page"] {
 //   }
 // }
 .text {
-  max-width: var(--text-max-w);
-  margin: 0 auto;
+  // max-width: var(--text-max-w);
+  // margin: 0 auto;
   &-sm p,
   &.md\:text-sm p {
     line-height: 0.95;
@@ -204,6 +204,11 @@ a[aria-current="page"] {
     }
     a {
       font-family: var(--font-primary-b);
+    }
+  }
+  @media all and (max-width: variables.$md) {
+    br {
+      display: none;
     }
   }
 }

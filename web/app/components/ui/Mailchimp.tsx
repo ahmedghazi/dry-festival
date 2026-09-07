@@ -112,7 +112,7 @@ const Mailchimp = (props: Props) => {
           </div>
         )}
         <div className='form-row form-row__email'>
-          <div className='flex items-center gap-md'>
+          <div className='flex items-center gap-sm md:gap-md'>
             <input
               name='EMAIL'
               placeholder='email'

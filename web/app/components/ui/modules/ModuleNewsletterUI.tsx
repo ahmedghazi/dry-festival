@@ -14,7 +14,7 @@ const ModuleNewsletterUI = ({ input }: Props) => {
   return (
     <section className='module module--newsletter-ui'>
       <div className='inner'>
-        {title && <h2 className='title text-lg'>{title}</h2>}
+        {title && <h2 className='title text-md md:text-lg '>{title}</h2>}
 
         {text && (
           <div className='text'>

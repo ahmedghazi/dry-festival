@@ -28,7 +28,9 @@ const CardTextComponent = ({ input, withDropDownText = false }: Props) => {
             ? { backgroundColor: `var(--color-${input.color})` }
             : undefined
         }>
-        {input?.title && <h2 className='text-lg ellipsis-'>{input.title}</h2>}
+        {input?.title && (
+          <h2 className='text-md md:text-lg ellipsis-'>{input.title}</h2>
+        )}
         {input?.subtitle && <p className='subtitle'>{input.subtitle}</p>}
         {input?.text && (
           <div className='text text-sm'>

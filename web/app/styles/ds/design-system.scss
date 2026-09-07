@@ -1,7 +1,12 @@
+@use "../variables";
+
 .card-outer {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  @media all and (max-width: variables.$md) {
+    gap: 1rem;
+  }
   .card {
     display: flex;
     flex-direction: column;
@@ -10,6 +15,9 @@
     text-align: center;
     flex: 1 1 auto;
     height: auto;
+    @media all and (max-width: variables.$md) {
+      gap: 1rem;
+    }
     .text-lg {
       line-height: 0.8;
       hyphens: auto;
@@ -49,7 +57,7 @@
   // outline: var(--border-width) solid var(--color-primary);
   // outline-offset: calc(var(--border-width) * -1);
   @media screen and (max-width: 1090px) {
-    border-width: var(--border-width--mobile);
+    border: var(--border-sm);
     // outline: var(--border-width--mobile) solid var(--color-primary);
     // outline-offset: calc(var(--border-width--mobile) * -1);
   }
@@ -95,6 +103,9 @@ form {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+    @media all and (max-width: variables.$md) {
+      gap: var(--spacing-sm);
+    }
   }
   .form-row {
     display: flex;

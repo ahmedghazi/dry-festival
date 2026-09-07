@@ -26,7 +26,7 @@ const ModuleImageTextUI = ({ input }: Props) => {
         )}
         <div className='col-text w-full md:w-1/2'>
           {/* {direction} */}
-          {title && <h2 className='title text-lg'>{title}</h2>}
+          {title && <h2 className='title text-md md:text-lg '>{title}</h2>}
           {subtitle && <p className='subtitle'>{subtitle}</p>}
           {text && (
             <div className='text'>

@@ -45,12 +45,15 @@
     "HelveticaNeue-Roman", "Helvetica Neue Roman", "TeXGyreHerosRegular",
     "Helvetica", "Arial", sans-serif;
 
-  --spacing-md: 1.25rem; /*20px */
-  --spacing-lg: 1.875rem; /*30px */
-  --spacing-xl: 3.75rem; /*60px */
-  --spacing-2xl: 6.25rem; /*100px */
+  --spacing-sm: 0.625rem; /* 10px */
+  --spacing-md: 1.25rem; /* 20px */
+  --spacing-lg: 1.875rem; /* 30px */
+  --spacing-xl: 3.75rem; /* 60px */
+  --spacing-2xl: 6.25rem; /* 100px */
+  --spacing-40: 2.5rem; /* 40px */
 
   --text-md-mobile: 1rem;
+  /* --text-lg-mobile: 2rem; */
 
   /*
   Et oui desktop : taille 30 px / interlignage 28 px / interlettrage 20px
@@ -71,6 +74,7 @@ mobile : taille 17 px / interlignage 16 px / interlettrage 20px
   --border-width--mobile: 0.125rem;
   --border-width: 0.188rem;
   --border: var(--border-width) solid;
+  --border-sm: var(--border-width--mobile) solid;
 
   --radius-xs: 0.313rem; /* 5px */
   --radius: 1.25rem; /* 20px */

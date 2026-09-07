@@ -12,25 +12,31 @@ const ModuleListCardsImageUI = ({ input }: Props) => {
   const { title, items, image } = input;
   return (
     <section className='module module--list-cards-image-ui'>
-      <div className='header'>
-        {title && <h2 className='title text-lg'>{title}</h2>}
-      </div>
-      <div
-        className={clsx(
-          "gap-md grid md:grid-cols-2",
-          // direction === "rtl" && "md:flex-row-reverse",
-        )}>
-        <div className='col-text w-full order-2 md:order-1'>
-          <div className='grid grid-cols-1 gap-md'>
-            {items?.map((item, i) => (
-              <CardText key={i} input={item} withDropDownText={true} />
-            ))}
-          </div>
+      <div className='inner'>
+        <div className='header'>
+          {title && <h2 className='title text-md md:text-lg'>{title}</h2>}
         </div>
-        <div className='col-media w-full order-1 md:order-2'>
-          {image && (
-            <Figure className='card-img-' asset={image.asset} rounded={false} />
-          )}
+        <div
+          className={clsx(
+            "gap-sm md:gap-md grid md:grid-cols-2",
+            // direction === "rtl" && "md:flex-row-reverse",
+          )}>
+          <div className='col-text w-full order-2 md:order-1'>
+            <div className='grid grid-cols-1 gap-md'>
+              {items?.map((item, i) => (
+                <CardText key={i} input={item} withDropDownText={true} />
+              ))}
+            </div>
+          </div>
+          <div className='col-media w-full order-1 md:order-2'>
+            {image && (
+              <Figure
+                className='card-img-'
+                asset={image.asset}
+                rounded={false}
+              />
+            )}
+          </div>
         </div>
       </div>
     </section>

@@ -29,7 +29,7 @@ const Form = ({ action, fields }: Props) => {
   };
 
   const [values, setValues] = useState<Record<string, string>>(
-    Object.fromEntries(fields.map((field) => [field.name, ""]))
+    Object.fromEntries(fields.map((field) => [field.name, ""])),
   );
   const [status, setStatus] = useState<string>("");
 
@@ -85,7 +85,9 @@ const Form = ({ action, fields }: Props) => {
   return (
     <form onSubmit={handleSubmit} className={clsx("form")}>
       {fields.map((field) => (
-        <div key={field.name} className={`form-row form-row__${field.name.toLowerCase()}`}>
+        <div
+          key={field.name}
+          className={`form-row form-row__${field.name.toLowerCase()}`}>
           <div className='flex items-center gap-md'>
             {field.type === "textarea" ? (
               <textarea

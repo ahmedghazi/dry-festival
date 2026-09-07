@@ -15,7 +15,7 @@ const ModuleTextSplit = ({ input }: Props) => {
     <section className='module module--text-split-ui'>
       <div className='inner'>
         <div className='header '>
-          {title && <h2 className='title text-lg'>{title}</h2>}
+          {title && <h2 className='title text-md md:text-lg '>{title}</h2>}
         </div>
 
         <div className='grid md:grid-cols-2'>

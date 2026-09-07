@@ -15,7 +15,7 @@ const ModuleTextUI = ({ input }: Props) => {
       <div className='inner'>
         {hasHeading && (
           <div className='header'>
-            {title && <h2 className='title text-lg'>{title}</h2>}
+            {title && <h2 className='title text-md md:text-lg '>{title}</h2>}
             {subtitle && <p className='subtitle'>{subtitle}</p>}
           </div>
         )}
