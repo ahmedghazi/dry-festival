@@ -35,8 +35,12 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
     const grayCtx = grayCanvas.getContext("2d");
     if (!pinkCtx || !grayCtx) return;
 
-    let animationFrameId: number;
-    const dpr = window.devicePixelRatio || 1;
+    let animationFrameId = 0;
+    let isRunning = false;
+    // Cap DPR: on 3x+ screens the uncapped backing-store area (and the
+    // per-frame clear/fill/stroke cost of two full-viewport canvases)
+    // roughly triples for no visible gain.
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let width = window.innerWidth;
     let height = window.innerHeight;
 
@@ -303,13 +307,38 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    animate();
+    const startLoop = () => {
+      if (isRunning) return;
+      isRunning = true;
+      animate();
+    };
+
+    const stopLoop = () => {
+      isRunning = false;
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      animationFrameId = 0;
+    };
+
+    // Pause the render loop entirely while the section is scrolled out of
+    // view — this is the actual CPU/GPU cost (two full-viewport canvases
+    // redrawn every frame), not something rAF's own tab-hidden throttling
+    // covers.
+    const observerTarget = pinkCanvas.parentElement ?? pinkCanvas;
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) startLoop();
+        else stopLoop();
+      },
+      { threshold: 0 },
+    );
+    intersectionObserver.observe(observerTarget);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("deviceorientation", handleOrientation);
-      cancelAnimationFrame(animationFrameId);
+      intersectionObserver.disconnect();
+      stopLoop();
       gsap.killTweensOf(wlObj);
       if (maskBlobUrl) URL.revokeObjectURL(maskBlobUrl);
     };
