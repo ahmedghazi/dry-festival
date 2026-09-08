@@ -20,6 +20,9 @@
 
       position: relative;
       overflow: unset;
+      min-height: calc(
+        100dvh - (var(--header-h) + var(--spacing-md)) - var(--border-width) * 2
+      );
       &::before {
         content: "";
         position: absolute;
@@ -166,7 +169,7 @@
       .text {
         padding: 0 var(--spacing-md);
       }
-      .footer-text {
+      .footer {
         white-space: pre-line;
       }
     }
