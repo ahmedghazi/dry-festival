@@ -4,21 +4,50 @@ import gsap from "gsap";
 import useDeviceDetect from "../hooks/useDeviceDetect";
 
 // ─── Variables d'ajustement ───────────────────────────────────────────────────
-const COLOR_PINK = "#FF6680"; // couleur de l'eau rose (fond bas de page)
-const COLOR_BLUE = "#9DCBE1"; // couleur de l'eau bleue (reflet sur le logo)
+const COLOR_PINK = "rgb(255, 93, 112)"; // couleur de l'eau rose (fond bas de page) — défaut si randomizeColors=false
+const COLOR_BLUE = "rgb(146, 184, 204)"; // couleur de l'eau bleue (reflet sur le logo) — défaut si randomizeColors=false
 // const VISCOSITY = 0.98; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
 const VISCOSITY = 0.85; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
 const GYRO_SENSITIVITY = 2; // pixels de décalage par degré de tilt (verre incliné)
 const MOUSE_FORCE = 3; // amplitude des vagues souris (1–22, était 22 trop haut)
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ─── Palette de randomisation (web/app/global.css) ─────────────────────────
+// Deux groupes (chaud / froid) pour garder du contraste entre l'eau (rose)
+// et le reflet du logo (bleu) même quand les couleurs sont tirées au hasard.
+const PINK_PALETTE = [
+  "rgb(255, 140, 113)", // --color-red-50
+  "rgb(255, 93, 112)", // --color-red-100
+  "rgb(255, 141, 244)", // --color-pink-50
+  "rgb(255, 94, 244)", // --color-pink-100
+  "rgb(255, 255, 36)", // --color-yellow-100
+];
+const BLUE_PALETTE = [
+  "rgb(146, 184, 204)", // --color-blue-50
+  "rgb(119, 181, 254)", // --color-blue-100
+  "rgb(10, 5, 240)", // --color-blue-200
+  "rgb(161, 178, 0)", // --color-lime-100
+  "rgb(54, 148, 0)", // --color-green-100
+  "rgb(140, 77, 239)", // --color-purple-100
+];
+const pickRandom = (palette: string[]) =>
+  palette[Math.floor(Math.random() * palette.length)];
+// ─────────────────────────────────────────────────────────────────────────────
+
 interface DryWatterProps {
   logoRef: React.RefObject<HTMLDivElement | null>;
+  /** Pioche une couleur au hasard dans la palette (contrastée) à chaque montage. Défaut: true. */
+  randomizeColors?: boolean;
 }
 
-const DryWatter = ({ logoRef }: DryWatterProps) => {
+const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
   const pinkCanvasRef = useRef<HTMLCanvasElement>(null);
   const grayCanvasRef = useRef<HTMLCanvasElement>(null);
+  const [colors] = useState(() =>
+    randomizeColors
+      ? { pink: pickRandom(PINK_PALETTE), blue: pickRandom(BLUE_PALETTE) }
+      : { pink: COLOR_PINK, blue: COLOR_BLUE },
+  );
   // const [strokeSize, setStrokeSize] = useState<number>(3);
   const { isMobile } = useDeviceDetect();
   // let strokeSize = isMobile ? 2 : 3;
@@ -288,7 +317,7 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       // --- Canvas rose ---
       pinkCtx.clearRect(0, 0, width, height);
       drawWavePath(pinkCtx);
-      pinkCtx.fillStyle = COLOR_PINK;
+      pinkCtx.fillStyle = colors.pink;
       pinkCtx.fill();
       drawWaveLine(pinkCtx);
       pinkCtx.strokeStyle = "#000000";
@@ -298,7 +327,7 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       // --- Canvas bleu (clipping géré par CSS mask sur l'élément) ---
       grayCtx.clearRect(0, 0, width, height);
       drawWavePath(grayCtx);
-      grayCtx.fillStyle = COLOR_BLUE;
+      grayCtx.fillStyle = colors.blue;
       grayCtx.fill();
       drawWaveLine(grayCtx);
       grayCtx.strokeStyle = "#000000";
@@ -342,7 +371,7 @@ const DryWatter = ({ logoRef }: DryWatterProps) => {
       gsap.killTweensOf(wlObj);
       if (maskBlobUrl) URL.revokeObjectURL(maskBlobUrl);
     };
-  }, [logoRef, isMobile]);
+  }, [logoRef, isMobile, colors]);
 
   const base: React.CSSProperties = {
     position: "absolute",

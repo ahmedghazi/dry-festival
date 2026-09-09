@@ -10,9 +10,10 @@ import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 
 type Props = {
   input: DryWaterUI;
+  randomizeColors?: boolean;
 };
 
-const ModuleDryWater = ({ input }: Props) => {
+const ModuleDryWater = ({ input, randomizeColors }: Props) => {
   const { text } = input;
 
   const { isMobile } = useDeviceDetect();
@@ -42,7 +43,7 @@ const ModuleDryWater = ({ input }: Props) => {
               </div>
             </div>
 
-            <DryWatter logoRef={logoRef} />
+            <DryWatter logoRef={logoRef} randomizeColors={true} />
           </div>
         )}
       </div>

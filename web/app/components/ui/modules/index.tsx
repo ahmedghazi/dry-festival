@@ -8,18 +8,28 @@ import ModuleTextSplit from "./ModuleTextSplit";
 import ModuleFormUI from "./ModuleFormUI";
 import ModuleListCardsImageUI from "./ModuleListCardsImageUI";
 import { ModulesList } from "@/app/sanity-api/types/extra-types";
+import { getSettings } from "@/app/sanity-api/sanity-queries";
 import "./index.scss";
 
 type Props = {
   modules: ModulesList;
 };
 
-const Modules = ({ modules }: Props) => {
+const Modules = async ({ modules }: Props) => {
+  const settings = await getSettings();
+  const randomizeDryWaterColors = settings?.randomizeDryWaterColors ?? true;
+
   const _renderModules = () => {
     return modules?.map((module) => {
       switch (module._type) {
         case "dryWaterUI":
-          return <ModuleDryWater key={module._key} input={module} />;
+          return (
+            <ModuleDryWater
+              key={module._key}
+              input={module}
+              randomizeColors={randomizeDryWaterColors}
+            />
+          );
         case "textUI":
           return <ModuleTextUI key={module._key} input={module} />;
         case "formUI":

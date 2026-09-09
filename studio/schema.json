@@ -1482,6 +1482,13 @@
           "type": "string"
         },
         "optional": true
+      },
+      "randomizeDryWaterColors": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
       }
     }
   },

@@ -137,6 +137,15 @@ export default defineType({
       type: 'text',
       group: 'design',
     }),
+    defineField({
+      name: 'randomizeDryWaterColors',
+      title: "Couleurs aléatoires pour l'animation Dry Water",
+      description:
+        "Si activé, l'eau (rose) et le reflet du logo (bleu) piochent une couleur au hasard dans la palette à chaque chargement de page, au lieu des couleurs par défaut.",
+      type: 'boolean',
+      initialValue: true,
+      group: 'design',
+    }),
   ],
   preview: {
     prepare() {
