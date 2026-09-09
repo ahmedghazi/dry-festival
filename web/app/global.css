@@ -2,13 +2,23 @@
 
 [data-theme="theme-xyz"] {
   --header-height: 43.5px;
-  --color-bg: #fffaf0;
+  --color-bg: rgb(255, 250, 240);
   --color-primary: #000;
   --color-secondary: #ff8c71;
   --color-hover: #333;
   --color-accent: #ff8c71;
   --color-red: #ff0000;
   --color-bleu: #77b5fe;
+
+  /* --c-vert: rgb(161, 178, 0);
+  --c-violet: rgb(140, 77, 239);
+  --c-rose: rgb(255, 141, 244);
+  --c-jaune: rgb(255, 255, 36);
+  --c-corail: rgb(255, 140, 113);
+  --c-bleu: rgb(119, 181, 254);
+  --c-bleu-gris: rgb(146, 184, 204);
+  --c-gris: rgb(204, 204, 204);
+  --c-écru: rgb(255, 250, 240); */
 
   /* v1 colors palette */
   --color-black: rgb(0, 0, 0);
@@ -17,20 +27,20 @@
   --color-gray-100: rgb(204, 204, 204);
 
   --color-blue-50: rgb(146, 184, 204);
-  --color-blue-100: rgb(99, 163, 239);
+  --color-blue-100: rgb(119, 181, 254);
   --color-blue-200: rgb(10, 5, 240);
 
-  --color-red-50: rgb(230, 131, 115);
+  --color-red-50: rgb(255, 140, 113);
   --color-red-100: rgb(255, 93, 112);
 
   --color-pink-50: rgb(255, 141, 244);
   --color-pink-100: rgb(255, 94, 244);
 
-  --color-lime-100: rgb(143, 174, 12);
+  --color-lime-100: rgb(161, 178, 0);
   --color-green-100: rgb(54, 148, 0);
 
   --color-yellow-100: rgb(255, 255, 36);
-  --color-purple-100: rgb(118, 67, 229);
+  --color-purple-100: rgb(140, 77, 239);
 
   --font-primary:
     "FormaDJRDisplay-Medium-Testing", "Helvetica Neue", "HelveticaNeueRoman",
