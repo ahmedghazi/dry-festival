@@ -78,6 +78,7 @@ mobile : taille 17 px / interlignage 16 px / interlettrage 20px
 
   --radius-xs: 0.313rem; /* 5px */
   --radius: 1.25rem; /* 20px */
+  --radius-sm: 0.625rem; /* 10px */
 
   --gutter: 1.25rem;
 

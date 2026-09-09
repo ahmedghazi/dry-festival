@@ -58,6 +58,8 @@
   // outline-offset: calc(var(--border-width) * -1);
   @media screen and (max-width: 1090px) {
     border: var(--border-sm);
+    border-radius: var(--radius-sm);
+
     // outline: var(--border-width--mobile) solid var(--color-primary);
     // outline-offset: calc(var(--border-width--mobile) * -1);
   }
