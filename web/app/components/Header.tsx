@@ -12,18 +12,27 @@ type Props = {
 };
 const Header = ({ settings }: Props) => {
   const [active, setActive] = useState<boolean>(false);
-  const { scrollDirection } = useScroll();
+  // const { scrollDirection } = useScroll();
   const pathname = usePathname();
+
   useEffect(() => {
     setActive(false);
   }, [pathname]);
+
+  const _scrollToFooter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const footer = document.querySelector("footer");
+    if (footer) {
+      footer.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <header className={""}>
       <div className='inner'>
         <div className='sm-only'>
           <ul className='menu-mobile flex justify-between'>
             <li>
-              <Link href='/'>
+              <Link href='/' onClick={_scrollToFooter}>
                 <span>contact</span>
               </Link>
             </li>
