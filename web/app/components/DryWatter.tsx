@@ -16,7 +16,7 @@ const MOUSE_FORCE = 3; // amplitude des vagues souris (1–22, était 22 trop ha
 // Deux groupes (chaud / froid) pour garder du contraste entre l'eau (rose)
 // et le reflet du logo (bleu) même quand les couleurs sont tirées au hasard.
 const PINK_PALETTE = [
-  "rgb(255, 140, 113)", // --color-red-50
+  // "rgb(255, 140, 113)", // --color-red-50
   "rgb(255, 93, 112)", // --color-red-100
   "rgb(255, 141, 244)", // --color-pink-50
   "rgb(255, 94, 244)", // --color-pink-100
@@ -25,7 +25,7 @@ const PINK_PALETTE = [
 const BLUE_PALETTE = [
   "rgb(146, 184, 204)", // --color-blue-50
   "rgb(119, 181, 254)", // --color-blue-100
-  "rgb(10, 5, 240)", // --color-blue-200
+  // "rgb(10, 5, 240)", // --color-blue-200
   "rgb(161, 178, 0)", // --color-lime-100
   "rgb(54, 148, 0)", // --color-green-100
   "rgb(140, 77, 239)", // --color-purple-100
