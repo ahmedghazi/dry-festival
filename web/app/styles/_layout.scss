@@ -59,7 +59,7 @@ main {
   }
   main {
     .template:not(.template--home) {
-      padding-top: calc(var(--header-h) + var(--spacing-lg));
+      padding-top: calc(var(--header-h) + var(--spacing-40));
     }
   }
 }
