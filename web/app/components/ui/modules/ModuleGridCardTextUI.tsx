@@ -31,7 +31,7 @@ const ModuleGridCardTextUI = ({ input }: Props) => {
             )}
           </div>
         )}
-        <div className='grid grid-cols-1 md:grid-cols-12 gap-md'>
+        <div className='grid grid-cols-1 md:grid-cols-12 gap-sm md:gap-md'>
           {items?.map((item, i) => (
             <CardText key={i} input={item} />
           ))}

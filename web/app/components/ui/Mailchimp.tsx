@@ -104,7 +104,7 @@ const Mailchimp = (props: Props) => {
               id='optin'
               className='ui-checkbox'
             />
-            <label htmlFor='optin' className='text-2xs md:text-sm'>
+            <label htmlFor='optin' className='text-xs md:text-sm'>
               Je consens au traitement des informations saisies
               <br />
               afin de recevoir la newsletter du dry festival.

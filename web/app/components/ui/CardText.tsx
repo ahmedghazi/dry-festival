@@ -14,11 +14,14 @@ type Props = {
 };
 
 const CardTextComponent = ({ input, withDropDownText = false }: Props) => {
+  const hasFooterText = input?.footerText !== undefined;
+  console.log(input?.footerText);
   return (
     <div
       className={clsx(
         "card-outer",
         `md:col-span-${input?.colSize}`,
+        hasFooterText && "has-footer-text",
         // `md:w-${input?.colSize}/12`,
       )}>
       <div

@@ -101,15 +101,6 @@
         // gap: calc(var(--spacing-md) * 1.5 + var(--border-width));
         gap: calc(var(--spacing-40));
         align-items: center;
-        input[type="email"] {
-          background-color: var(--color-yellow-100);
-          @media all and (min-width: variables.$md) {
-            min-width: 13.3em;
-          }
-        }
-        button {
-          background-color: var(--color-pink-100);
-        }
       }
     }
     &--form-ui {
@@ -146,6 +137,9 @@
       h2,
       .footer-text {
         white-space: pre-line;
+      }
+      .grid:has(.card-outer.has-footer-text) {
+        gap: var(--spacing-lg);
       }
     }
     &--text-split-ui {

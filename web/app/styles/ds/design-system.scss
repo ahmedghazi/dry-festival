@@ -26,7 +26,11 @@
   }
   .footer {
     // padding: 0 var(--spacing-md);
-    max-width: 23.375rem;
+    display: flex;
+    justify-content: center;
+    p {
+      max-width: 23.375rem;
+    }
   }
 }
 
@@ -169,8 +173,11 @@ form {
     label {
       line-height: 1;
     }
-
-    @media screen and (max-width: 1090px) {
+  }
+  @media screen and (max-width: 1090px) {
+    width: 100%;
+    .form-row {
+      gap: var(--spacing-sm);
       &__email .flex {
         width: 100%;
       }
@@ -185,8 +192,12 @@ form {
         height: var(--spacing-lg);
         line-height: calc(var(--spacing-lg) * 0.8);
       }
+      label.text-xs {
+        line-height: 1;
+      }
     }
   }
+
   &.mailchimp {
     input[type="email"] {
       background-color: var(--color-yellow-100);
@@ -232,6 +243,10 @@ form {
       opacity: 1;
       transform: translate(-50%, -60%) rotate(45deg) scale(1);
     }
+  }
+  @media screen and (max-width: 1090px) {
+    width: calc(var(--spacing-lg) * 0.75);
+    height: calc(var(--spacing-lg) * 0.75);
   }
 }
 

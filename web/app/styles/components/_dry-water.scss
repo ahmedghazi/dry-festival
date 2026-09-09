@@ -4,7 +4,7 @@
     100dvh - (var(--header-h) + var(--spacing-md)) - var(--border-width) * 2
   );
   .inner {
-    background-color: var(--color-accent);
+    background-color: var(--dry-water-air, var(--color-accent));
     // border-radius: var(--spacing-md);
     // border: var(--border);
     padding: var(--spacing-md);
@@ -15,7 +15,7 @@
     justify-content: start;
     overflow: hidden;
     position: relative;
-    padding-top: var(--header-h);
+    padding-top: var(--spacing-lg);
     .header,
     .footer {
       position: absolute;

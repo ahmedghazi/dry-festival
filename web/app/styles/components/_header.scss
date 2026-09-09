@@ -70,6 +70,11 @@ header {
     .menu-mobile {
       padding-bottom: 1rem;
       border-bottom: var(--border-sm);
+      li:nth-child(2) {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
     nav {
       z-index: 1;

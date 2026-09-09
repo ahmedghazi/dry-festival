@@ -4,50 +4,41 @@ import gsap from "gsap";
 import useDeviceDetect from "../hooks/useDeviceDetect";
 
 // ─── Variables d'ajustement ───────────────────────────────────────────────────
-const COLOR_PINK = "rgb(255, 93, 112)"; // couleur de l'eau rose (fond bas de page) — défaut si randomizeColors=false
-const COLOR_BLUE = "rgb(146, 184, 204)"; // couleur de l'eau bleue (reflet sur le logo) — défaut si randomizeColors=false
+const COLOR_WATER = "rgb(255, 93, 112)"; // couleur de l'eau bleue (reflet sur le logo)
+const COLOR_BLUE = "rgb(146, 184, 204)"; // couleur de l'eau bleue (reflet sur le logo)
 // const VISCOSITY = 0.98; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
 const VISCOSITY = 0.85; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
 const GYRO_SENSITIVITY = 2; // pixels de décalage par degré de tilt (verre incliné)
 const MOUSE_FORCE = 3; // amplitude des vagues souris (1–22, était 22 trop haut)
+const WATER_LEVEL_RATIO = 0.41; // desktop : niveau de repos de l'eau, en % de la hauteur d'écran (0 = haut, 1 = bas)
+const WATER_LEVEL_RATIO_MOBILE = 0.36; // mobile : idem, réglable séparément
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─── Palette de randomisation (web/app/global.css) ─────────────────────────
-// Deux groupes (chaud / froid) pour garder du contraste entre l'eau (rose)
-// et le reflet du logo (bleu) même quand les couleurs sont tirées au hasard.
-const PINK_PALETTE = [
-  // "rgb(255, 140, 113)", // --color-red-50
-  "rgb(255, 93, 112)", // --color-red-100
-  "rgb(255, 141, 244)", // --color-pink-50
-  "rgb(255, 94, 244)", // --color-pink-100
-  "rgb(255, 255, 36)", // --color-yellow-100
-];
-const BLUE_PALETTE = [
-  "rgb(146, 184, 204)", // --color-blue-50
-  "rgb(119, 181, 254)", // --color-blue-100
-  // "rgb(10, 5, 240)", // --color-blue-200
-  "rgb(161, 178, 0)", // --color-lime-100
-  "rgb(54, 148, 0)", // --color-green-100
-  "rgb(140, 77, 239)", // --color-purple-100
-];
+// Fallback quand aucune waterColor n'est fournie par le parent (ex: ContentLanding).
+// const PINK_PALETTE = [
+//   // "rgb(255, 140, 113)", // --color-red-50
+//   "rgb(255, 93, 112)", // --color-red-100
+//   "rgb(255, 141, 244)", // --color-pink-50
+//   "rgb(255, 94, 244)", // --color-pink-100
+//   "rgb(255, 255, 36)", // --color-yellow-100
+// ];
 const pickRandom = (palette: string[]) =>
   palette[Math.floor(Math.random() * palette.length)];
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface DryWatterProps {
   logoRef: React.RefObject<HTMLDivElement | null>;
-  /** Pioche une couleur au hasard dans la palette (contrastée) à chaque montage. Défaut: true. */
-  randomizeColors?: boolean;
+  /** Couleur de l'eau (fond du canvas). La couleur vient normalement du parent (combo air/water) ; à défaut, une couleur est piochée dans PINK_PALETTE. */
+  waterColor?: string;
 }
 
-const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
-  const pinkCanvasRef = useRef<HTMLCanvasElement>(null);
-  const grayCanvasRef = useRef<HTMLCanvasElement>(null);
-  const [colors] = useState(() =>
-    randomizeColors
-      ? { pink: pickRandom(PINK_PALETTE), blue: pickRandom(BLUE_PALETTE) }
-      : { pink: COLOR_PINK, blue: COLOR_BLUE },
-  );
+const DryWatter = ({ logoRef, waterColor }: DryWatterProps) => {
+  const waterCanvasRef = useRef<HTMLCanvasElement>(null);
+  const iceCanvasRef = useRef<HTMLCanvasElement>(null);
+  const [colors] = useState(() => ({
+    water: waterColor ?? COLOR_WATER,
+  }));
   // const [strokeSize, setStrokeSize] = useState<number>(3);
   const { isMobile } = useDeviceDetect();
   // let strokeSize = isMobile ? 2 : 3;
@@ -56,13 +47,13 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
   // }, [isMobile]);
 
   useEffect(() => {
-    const pinkCanvas = pinkCanvasRef.current;
-    const grayCanvas = grayCanvasRef.current;
-    if (!pinkCanvas || !grayCanvas) return;
+    const waterCanvas = waterCanvasRef.current;
+    const iceCanvas = iceCanvasRef.current;
+    if (!waterCanvas || !iceCanvas) return;
 
-    const pinkCtx = pinkCanvas.getContext("2d");
-    const grayCtx = grayCanvas.getContext("2d");
-    if (!pinkCtx || !grayCtx) return;
+    const waterCtx = waterCanvas.getContext("2d");
+    const iceCtx = iceCanvas.getContext("2d");
+    if (!waterCtx || !iceCtx) return;
 
     let animationFrameId = 0;
     let isRunning = false;
@@ -74,10 +65,10 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
     let height = window.innerHeight;
 
     const applyDpr = () => {
-      pinkCanvas.width = grayCanvas.width = width * dpr;
-      pinkCanvas.height = grayCanvas.height = height * dpr;
-      pinkCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      grayCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      waterCanvas.width = iceCanvas.width = width * dpr;
+      waterCanvas.height = iceCanvas.height = height * dpr;
+      waterCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      iceCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     applyDpr();
 
@@ -97,6 +88,9 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
       oldY: number | null;
     } = { x: null, y: null, oldX: null, oldY: null };
 
+    const waterLevelRatio = isMobile
+      ? WATER_LEVEL_RATIO_MOBILE
+      : WATER_LEVEL_RATIO;
     let waterLevel = height * 1.1; // start below screen (empty glass)
 
     // Tilt courant du gyroscope (gamma : −90° gauche → +90° droite)
@@ -104,7 +98,7 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
     let gyroGranted = false;
     let idleTime = 0;
 
-    // --- Masque logo (CSS mask sur le canvas bleu) ---
+    // --- Masque logo (CSS mask sur le canvas glace) ---
     let maskBlobUrl: string | null = null;
 
     const getSvgEl = () =>
@@ -114,7 +108,7 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
       const svgEl = getSvgEl();
       if (!svgEl) return;
       const svgRect = svgEl.getBoundingClientRect();
-      const canvasRect = grayCanvas.getBoundingClientRect();
+      const canvasRect = iceCanvas.getBoundingClientRect();
       // Position and size in CSS pixels, relative to the canvas element
       const maskX = svgRect.left - canvasRect.left;
       const maskY = svgRect.top - canvasRect.top;
@@ -130,20 +124,20 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
       const val = `url("${maskBlobUrl}")`;
       const sz = `${maskW}px ${maskH}px`;
       const pos = `${maskX}px ${maskY}px`;
-      grayCanvas.style.maskImage = val;
-      grayCanvas.style.maskSize = sz;
-      grayCanvas.style.maskPosition = pos;
-      grayCanvas.style.maskRepeat = "no-repeat";
-      (grayCanvas.style as CSSStyleDeclaration & Record<string, string>)[
+      iceCanvas.style.maskImage = val;
+      iceCanvas.style.maskSize = sz;
+      iceCanvas.style.maskPosition = pos;
+      iceCanvas.style.maskRepeat = "no-repeat";
+      (iceCanvas.style as CSSStyleDeclaration & Record<string, string>)[
         "webkitMaskImage"
       ] = val;
-      (grayCanvas.style as CSSStyleDeclaration & Record<string, string>)[
+      (iceCanvas.style as CSSStyleDeclaration & Record<string, string>)[
         "webkitMaskSize"
       ] = sz;
-      (grayCanvas.style as CSSStyleDeclaration & Record<string, string>)[
+      (iceCanvas.style as CSSStyleDeclaration & Record<string, string>)[
         "webkitMaskPosition"
       ] = pos;
-      (grayCanvas.style as CSSStyleDeclaration & Record<string, string>)[
+      (iceCanvas.style as CSSStyleDeclaration & Record<string, string>)[
         "webkitMaskRepeat"
       ] = "no-repeat";
     };
@@ -167,7 +161,7 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
     // Fill-up on load: animate water level from bottom to 50% window height
     const wlObj = { value: waterLevel };
     gsap.to(wlObj, {
-      value: height * 0.5,
+      value: height * waterLevelRatio,
       duration: 2.5,
       ease: "power2.inOut",
       onUpdate: () => {
@@ -241,7 +235,7 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
       width = window.innerWidth;
       height = window.innerHeight;
       applyDpr();
-      waterLevel = height * 0.5;
+      waterLevel = height * waterLevelRatio;
       initPoints();
       applyLogoMask();
     };
@@ -314,25 +308,25 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
       for (let i = 0; i < numPoints; i++) points[i].y += points[i].vy;
 
       const strokeSize = isMobile ? 2 : 3;
-      // --- Canvas rose ---
-      pinkCtx.clearRect(0, 0, width, height);
-      drawWavePath(pinkCtx);
-      pinkCtx.fillStyle = colors.pink;
-      pinkCtx.fill();
-      drawWaveLine(pinkCtx);
-      pinkCtx.strokeStyle = "#000000";
-      pinkCtx.lineWidth = strokeSize;
-      pinkCtx.stroke();
+      // --- Canvas eau ---
+      waterCtx.clearRect(0, 0, width, height);
+      drawWavePath(waterCtx);
+      waterCtx.fillStyle = colors.water;
+      waterCtx.fill();
+      drawWaveLine(waterCtx);
+      waterCtx.strokeStyle = "#000000";
+      waterCtx.lineWidth = strokeSize;
+      waterCtx.stroke();
 
-      // --- Canvas bleu (clipping géré par CSS mask sur l'élément) ---
-      grayCtx.clearRect(0, 0, width, height);
-      drawWavePath(grayCtx);
-      grayCtx.fillStyle = colors.blue;
-      grayCtx.fill();
-      drawWaveLine(grayCtx);
-      grayCtx.strokeStyle = "#000000";
-      grayCtx.lineWidth = strokeSize;
-      grayCtx.stroke();
+      // --- Canvas glace (clipping géré par CSS mask sur l'élément) ---
+      iceCtx.clearRect(0, 0, width, height);
+      drawWavePath(iceCtx);
+      iceCtx.fillStyle = COLOR_BLUE;
+      iceCtx.fill();
+      drawWaveLine(iceCtx);
+      iceCtx.strokeStyle = "#000000";
+      iceCtx.lineWidth = strokeSize;
+      iceCtx.stroke();
       animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -352,7 +346,7 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
     // view — this is the actual CPU/GPU cost (two full-viewport canvases
     // redrawn every frame), not something rAF's own tab-hidden throttling
     // covers.
-    const observerTarget = pinkCanvas.parentElement ?? pinkCanvas;
+    const observerTarget = waterCanvas.parentElement ?? waterCanvas;
     const intersectionObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) startLoop();
@@ -388,11 +382,11 @@ const DryWatter = ({ logoRef, randomizeColors = true }: DryWatterProps) => {
   return (
     <>
       <canvas
-        ref={pinkCanvasRef}
+        ref={waterCanvasRef}
         style={{ ...base, zIndex: 1, mixBlendMode: "normal" }}
       />
       <canvas
-        ref={grayCanvasRef}
+        ref={iceCanvasRef}
         style={{ ...base, zIndex: 3, mixBlendMode: "multiply" }}
       />
     </>

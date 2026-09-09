@@ -43,7 +43,7 @@ const Header = ({ settings }: Props) => {
             </li>
             <li>
               <button className='nav-toggle' onClick={() => setActive(!active)}>
-                menu
+                {active ? "fermer" : "menu"}
               </button>
             </li>
           </ul>
