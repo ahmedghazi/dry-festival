@@ -21,6 +21,7 @@ const ModuleDryWater = ({ input, randomizeColors }: Props) => {
   const logoRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     setMounted(true);
+    console.log(randomizeColors);
   }, []);
   return (
     <section className='module module--dry-water-ui '>
