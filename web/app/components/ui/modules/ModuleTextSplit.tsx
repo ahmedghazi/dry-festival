@@ -31,10 +31,9 @@ const ModuleTextSplit = ({ input }: Props) => {
               )}
             </div>
           ))}
-          {/* <div className='sep-line'></div> */}
         </div>
 
-        <div className='media md:w-4/12'>
+        <div className='media w-full md:w-4/12'>
           {image && <Figure className='card-img' asset={image.asset} />}
         </div>
       </div>
