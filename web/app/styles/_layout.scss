@@ -24,6 +24,7 @@ body {
 main {
   // min-height: var(--app-height, 100vh);
   position: relative;
+  z-index: 0;
   .template {
     padding-top: calc(var(--header-h, 80px));
     &:not(.template--home) {
