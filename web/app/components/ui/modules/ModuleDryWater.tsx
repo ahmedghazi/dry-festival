@@ -63,13 +63,11 @@ const ModuleDryWater = ({ input, randomizeColors }: Props) => {
             </div>
 
             <div className='footer'>
-              <div className='text'>
-                <div className='module__text text'>
-                  <PortableText
-                    value={text}
-                    components={portableTextComponents}
-                  />
-                </div>
+              <div className=' text'>
+                <PortableText
+                  value={text}
+                  components={portableTextComponents}
+                />
               </div>
             </div>
 

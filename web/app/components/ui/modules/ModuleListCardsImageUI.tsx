@@ -22,7 +22,7 @@ const ModuleListCardsImageUI = ({ input }: Props) => {
             // direction === "rtl" && "md:flex-row-reverse",
           )}>
           <div className='col-text w-full order-2 md:order-1'>
-            <div className='grid grid-cols-1 gap-md'>
+            <div className='grid grid-cols-1 gap-sm md:gap-md'>
               {items?.map((item, i) => (
                 <CardText key={i} input={item} withDropDownText={true} />
               ))}

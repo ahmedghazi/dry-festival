@@ -8,10 +8,10 @@ const COLOR_WATER = "rgb(255, 93, 112)"; // couleur de l'eau bleue (reflet sur l
 const COLOR_BLUE = "rgb(146, 184, 204)"; // couleur de l'eau bleue (reflet sur le logo)
 // const VISCOSITY = 0.98; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
 const VISCOSITY = 0.85; // amortissement : 0 = très fluide, 1 = rigide (0.90–0.98)
-const GYRO_SENSITIVITY = 2; // pixels de décalage par degré de tilt (verre incliné)
+const GYRO_SENSITIVITY = 2.6; // pixels de décalage par degré de tilt (verre incliné)
 const MOUSE_FORCE = 3; // amplitude des vagues souris (1–22, était 22 trop haut)
 const WATER_LEVEL_RATIO = 0.41; // desktop : niveau de repos de l'eau, en % de la hauteur d'écran (0 = haut, 1 = bas)
-const WATER_LEVEL_RATIO_MOBILE = 0.36; // mobile : idem, réglable séparément
+const WATER_LEVEL_RATIO_MOBILE = 0.26; // mobile : idem, réglable séparément
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─── Palette de randomisation (web/app/global.css) ─────────────────────────
