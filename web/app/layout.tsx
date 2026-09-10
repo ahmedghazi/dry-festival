@@ -28,7 +28,7 @@ export default async function RootLayout({
   const settings = await getSettings();
   return (
     <html lang='fr'>
-      <body className={"is-loading"} data-theme='theme-xyz'>
+      <body className='is-loading' data-theme='theme-xyz'>
         <div id='page'>
           <PageContextProvider>
             <Header settings={settings} />

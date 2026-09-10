@@ -52,6 +52,7 @@ export const PageContextProvider = (props: PageContextProps) => {
         headerBounding.height + "px",
       );
     }
+    document.body.classList.remove("is-loading");
   };
 
   return (

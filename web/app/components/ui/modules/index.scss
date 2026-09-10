@@ -21,7 +21,8 @@
       position: relative;
       overflow: unset;
       min-height: calc(
-        100dvh - (var(--header-h) + var(--spacing-md)) - var(--border-width) * 2
+        100dvh -
+          (var(--header-h, 80px) + var(--spacing-md)) - var(--border-width) * 2
       );
       &::before {
         content: "";
@@ -44,6 +45,11 @@
         border-top-right-radius: 0;
       }
       @media all and (max-width: variables.$md) {
+        min-height: calc(
+          100dvh -
+            (var(--header-h, 53px) + var(--spacing-md)) - var(--border-width) *
+            2
+        );
         .text p {
           br {
             display: none;

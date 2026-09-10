@@ -16,7 +16,7 @@ body {
   // background-image: url("/desktop.png");
   background-color: var(--color-bg);
   transition: opacity 0.3s ease;
-  .is-loading {
+  &.is-loading {
     opacity: 0;
   }
 }
@@ -25,9 +25,9 @@ main {
   // min-height: var(--app-height, 100vh);
   position: relative;
   .template {
-    padding-top: calc(var(--header-h));
+    padding-top: calc(var(--header-h, 80px));
     &:not(.template--home) {
-      padding-top: calc(var(--header-h) + var(--spacing-2xl));
+      padding-top: calc(var(--header-h, 80px) + var(--spacing-2xl));
     }
     &--home {
       // padding-bottom: calc(var(--spacing-2xl) - var(--spacing-md));
@@ -58,8 +58,12 @@ main {
     display: none;
   }
   main {
-    .template:not(.template--home) {
-      padding-top: calc(var(--header-h) + var(--spacing-40));
+    .template {
+      padding-top: calc(var(--header-h, 53px));
+
+      &:not(.template--home) {
+        padding-top: calc(var(--header-h, 53px) + var(--spacing-40));
+      }
     }
   }
 }
