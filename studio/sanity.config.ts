@@ -10,7 +10,8 @@ import {resolveProductionUrl} from './src/actions/resolveProductionUrl'
 import {media} from 'sanity-plugin-media'
 
 // const remoteURL = 'https://dryfestival.com'
-const remoteURL = 'https://v1--dryfestrival.netlify.app'
+// const remoteURL = 'https://v1--dryfestrival.netlify.app'
+const remoteURL = 'https://v1--preprod-dry-festival.netlify.app'
 const localURL = 'http://localhost:3000'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
