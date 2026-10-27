@@ -2,7 +2,7 @@ import { ImageTextUI } from "@/app/sanity-api/types/sanity.types";
 import clsx from "clsx";
 import React from "react";
 import Figure from "../Figure";
-import { PortableText } from "next-sanity";
+import { PortableText, stegaClean } from "next-sanity";
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 
 type Props = {
@@ -26,11 +26,16 @@ const ModuleImageTextUI = ({ input }: Props) => {
         )}
         <div className='col-text w-full md:w-1/2'>
           {/* {direction} */}
-          {title && <h2 className='title text-md md:text-lg '>{title}</h2>}
-          {subtitle && <p className='subtitle'>{subtitle}</p>}
+          {title && (
+            <h2 className='title text-md md:text-lg '>{stegaClean(title)}</h2>
+          )}
+          {subtitle && <p className='subtitle'>{stegaClean(subtitle)}</p>}
           {text && (
             <div className='text'>
-              <PortableText value={text} components={portableTextComponents} />
+              <PortableText
+                value={stegaClean(text)}
+                components={portableTextComponents}
+              />
             </div>
           )}
         </div>

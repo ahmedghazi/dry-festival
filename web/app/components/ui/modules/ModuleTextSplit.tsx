@@ -1,6 +1,6 @@
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 import { TextSplitUI } from "@/app/sanity-api/types/sanity.types";
-import { PortableText } from "next-sanity";
+import { PortableText, stegaClean } from "next-sanity";
 import React from "react";
 import Figure from "../Figure";
 
@@ -15,7 +15,9 @@ const ModuleTextSplit = ({ input }: Props) => {
     <section className='module module--text-split-ui'>
       <div className='inner'>
         <div className='header '>
-          {title && <h2 className='title text-md md:text-lg '>{title}</h2>}
+          {title && (
+            <h2 className='title text-md md:text-lg '>{stegaClean(title)}</h2>
+          )}
         </div>
 
         <div className='grid md:grid-cols-2'>
@@ -24,7 +26,7 @@ const ModuleTextSplit = ({ input }: Props) => {
               {item?.text && (
                 <div className='text'>
                   <PortableText
-                    value={item.text}
+                    value={stegaClean(item.text)}
                     components={portableTextComponents}
                   />
                 </div>
@@ -37,7 +39,7 @@ const ModuleTextSplit = ({ input }: Props) => {
           {image && <Figure className='card-img' asset={image.asset} />}
         </div>
       </div>
-      {footerText && <div className='footer'>{footerText}</div>}
+      {footerText && <div className='footer'>{stegaClean(footerText)}</div>}
     </section>
   );
 };

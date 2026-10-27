@@ -1,6 +1,6 @@
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 import { TextUI } from "@/app/sanity-api/types/sanity.types";
-import { PortableText } from "next-sanity";
+import { PortableText, stegaClean } from "next-sanity";
 import React from "react";
 
 type Props = {
@@ -15,14 +15,19 @@ const ModuleTextUI = ({ input }: Props) => {
       <div className='inner'>
         {hasHeading && (
           <div className='header'>
-            {title && <h2 className='title text-md md:text-lg '>{title}</h2>}
-            {subtitle && <p className='subtitle'>{subtitle}</p>}
+            {title && (
+              <h2 className='title text-md md:text-lg '>{stegaClean(title)}</h2>
+            )}
+            {subtitle && <p className='subtitle'>{stegaClean(subtitle)}</p>}
           </div>
         )}
         {text && (
           <div className='text'>
             <div className='module__text text'>
-              <PortableText value={text} components={portableTextComponents} />
+              <PortableText
+                value={stegaClean(text)}
+                components={portableTextComponents}
+              />
             </div>
           </div>
         )}

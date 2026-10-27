@@ -2,7 +2,7 @@ import clsx from "clsx";
 import React from "react";
 import Mailchimp from "../Mailchimp";
 import { NewsletterUI } from "@/app/sanity-api/types/sanity.types";
-import { PortableText } from "next-sanity";
+import { PortableText, stegaClean } from "next-sanity";
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 
 type Props = {
@@ -14,12 +14,17 @@ const ModuleNewsletterUI = ({ input }: Props) => {
   return (
     <section className='module module--newsletter-ui'>
       <div className='inner'>
-        {title && <h2 className='title text-md md:text-lg '>{title}</h2>}
+        {title && (
+          <h2 className='title text-md md:text-lg '>{stegaClean(title)}</h2>
+        )}
 
         {text && (
           <div className='text'>
             <div className='module__text text'>
-              <PortableText value={text} components={portableTextComponents} />
+              <PortableText
+                value={stegaClean(text)}
+                components={portableTextComponents}
+              />
             </div>
           </div>
         )}

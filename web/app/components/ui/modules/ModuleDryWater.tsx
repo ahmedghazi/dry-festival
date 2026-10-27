@@ -5,7 +5,7 @@ import LogoDry from "../../LogoDry";
 import LogoDryMobile from "../../LogoDryMobile";
 import DryWatter from "../../DryWatter";
 import { DryWaterUI } from "@/app/sanity-api/types/sanity.types";
-import { PortableText } from "next-sanity";
+import { PortableText, stegaClean } from "next-sanity";
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 
 type Props = {
@@ -65,7 +65,7 @@ const ModuleDryWater = ({ input, randomizeColors }: Props) => {
             <div className='footer'>
               <div className=' text'>
                 <PortableText
-                  value={text}
+                  value={stegaClean(text)}
                   components={portableTextComponents}
                 />
               </div>

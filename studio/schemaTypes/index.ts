@@ -20,6 +20,7 @@ import listCardsImageUI from './objects/modules/listCardsImageUI'
 import textSplitUI from './objects/modules/textSplitUI'
 import imageTextUI from './objects/modules/imageTextUI'
 import newsletterUI from './objects/modules/newsletterUI'
+import cardTextDropDown from './objects/cardTextDropDown'
 
 export const schemaTypes = [
   settings,
@@ -34,6 +35,7 @@ export const schemaTypes = [
   cta,
   keyVal,
   cardText,
+  cardTextDropDown,
 
   textUI,
   dryWaterUI,

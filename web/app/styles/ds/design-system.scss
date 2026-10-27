@@ -18,6 +18,12 @@
     @media all and (max-width: variables.$md) {
       gap: 1rem;
     }
+    &.card-text-dropdown {
+      gap: 0;
+      h3 {
+        line-height: 0.95;
+      }
+    }
     .text-lg {
       line-height: 0.8;
       hyphens: auto;

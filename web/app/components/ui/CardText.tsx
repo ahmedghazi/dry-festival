@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import React from "react";
-import { PortableText } from "next-sanity";
+import { PortableText, stegaClean } from "next-sanity";
 import { CardTextItem } from "@/app/sanity-api/types/extra-types";
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
 import { CardText } from "@/app/sanity-api/types/sanity.types";
@@ -32,19 +32,23 @@ const CardTextComponent = ({ input, withDropDownText = false }: Props) => {
             : undefined
         }>
         {input?.title && (
-          <h2 className='text-md md:text-lg ellipsis-'>{input.title}</h2>
+          <h2 className='text-md md:text-lg ellipsis-'>
+            {stegaClean(input.title)}
+          </h2>
         )}
-        {input?.subtitle && <p className='subtitle'>{input.subtitle}</p>}
+        {input?.subtitle && (
+          <p className='subtitle'>{stegaClean(input.subtitle)}</p>
+        )}
         {input?.text && (
           <div className='text text-sm'>
             {withDropDownText ? (
               <PortableExcerptToText
-                value={input.text}
+                value={stegaClean(input.text)}
                 components={portableTextComponents}
               />
             ) : (
               <PortableText
-                value={input.text}
+                value={stegaClean(input.text)}
                 components={portableTextComponents}
               />
             )}
@@ -53,7 +57,7 @@ const CardTextComponent = ({ input, withDropDownText = false }: Props) => {
       </div>
       {input?.footerText && (
         <div className='footer text text-xs- md:text-sm '>
-          <p>{input.footerText}</p>
+          <p>{stegaClean(input.footerText)}</p>
         </div>
       )}
     </div>

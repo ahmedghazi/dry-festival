@@ -1,8 +1,10 @@
 import clsx from "clsx";
-import React from "react";
+import React, { Fragment } from "react";
 import CardText from "../CardText";
 import { ListCardsImageUI } from "@/app/sanity-api/types/sanity.types";
 import Figure from "../Figure";
+import { stegaClean } from "next-sanity";
+import CardTextDropDownComponent from "../CardTextDropDown";
 
 type Props = {
   input: ListCardsImageUI;
@@ -14,7 +16,9 @@ const ModuleListCardsImageUI = ({ input }: Props) => {
     <section className='module module--list-cards-image-ui'>
       <div className='inner'>
         <div className='header'>
-          {title && <h2 className='title text-md md:text-lg'>{title}</h2>}
+          {title && (
+            <h2 className='title text-md md:text-lg'>{stegaClean(title)}</h2>
+          )}
         </div>
         <div
           className={clsx(
@@ -24,7 +28,12 @@ const ModuleListCardsImageUI = ({ input }: Props) => {
           <div className='col-text w-full order-2 md:order-1'>
             <div className='grid grid-cols-1 gap-sm md:gap-md'>
               {items?.map((item, i) => (
-                <CardText key={i} input={item} withDropDownText={true} />
+                // <CardText key={i} input={item} withDropDownText={true} />
+                <Fragment key={i}>
+                  {item._type === "cardTextDropDown" && (
+                    <CardTextDropDownComponent key={i} input={item} />
+                  )}
+                </Fragment>
               ))}
             </div>
           </div>

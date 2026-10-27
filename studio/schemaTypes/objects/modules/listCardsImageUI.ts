@@ -4,7 +4,7 @@ import {getFirstBlockText} from './lib/blockPreview'
 
 export default defineField({
   name: 'listCardsImageUI',
-  title: 'List Cards Image',
+  title: 'List Cards Image UI (équipe)',
   type: 'object',
   icon: FiLayers,
   fields: [
@@ -23,7 +23,7 @@ export default defineField({
       name: 'items',
       type: 'array',
       title: 'Cards',
-      of: [{type: 'cardText'}],
+      of: [{type: 'cardText'}, {type: 'cardTextDropDown'}],
     }),
     defineField({
       name: 'image',

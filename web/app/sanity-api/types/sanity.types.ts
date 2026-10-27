@@ -66,9 +66,12 @@ export type ListCardsImageUI = {
   title?: string;
   text?: BlockContent;
   items?: Array<
-    {
-      _key: string;
-    } & CardText
+    | ({
+        _key: string;
+      } & CardText)
+    | ({
+        _key: string;
+      } & CardTextDropDown)
   >;
   image?: {
     asset?: SanityImageAssetReference;
@@ -112,6 +115,27 @@ export type TextUI = {
   _type: "textUI";
   title?: string;
   subtitle?: string;
+  text?: BlockContent;
+};
+
+export type CardTextDropDown = {
+  _type: "cardTextDropDown";
+  title?: string;
+  color?:
+    | "black"
+    | "gray-50"
+    | "gray-100"
+    | "blue-50"
+    | "blue-100"
+    | "blue-200"
+    | "red-50"
+    | "red-100"
+    | "pink-50"
+    | "pink-100"
+    | "lime-100"
+    | "green-100"
+    | "yellow-100"
+    | "purple-100";
   text?: BlockContent;
 };
 
@@ -502,6 +526,7 @@ export type AllSanitySchemaTypes =
   | FormUI
   | DryWaterUI
   | TextUI
+  | CardTextDropDown
   | CardText
   | KeyVal
   | PageModulaireReference
@@ -1066,101 +1091,195 @@ export type HOME_QUERY_RESULT = {
               markDefs: null;
             }
         > | null;
-        items: Array<{
-          _key: string;
-          _type: "cardText";
-          title?: string;
-          subtitle?: string;
-          color?:
-            | "black"
-            | "blue-100"
-            | "blue-200"
-            | "blue-50"
-            | "gray-100"
-            | "gray-50"
-            | "green-100"
-            | "lime-100"
-            | "pink-100"
-            | "pink-50"
-            | "purple-100"
-            | "red-100"
-            | "red-50"
-            | "yellow-100";
-          colSize?: 12 | 4 | 6;
-          text: Array<
-            | {
-                children?: Array<{
-                  marks?: Array<string>;
-                  text?: string;
-                  _type: "span";
-                  _key: string;
-                }>;
-                style?: "normal" | "text-lg";
-                listItem?: "bullet";
-                markDefs: Array<
-                  | {
-                      href?: string;
-                      _type: "linkExternal";
+        items: Array<
+          | {
+              _key: string;
+              _type: "cardText";
+              title?: string;
+              subtitle?: string;
+              color?:
+                | "black"
+                | "blue-100"
+                | "blue-200"
+                | "blue-50"
+                | "gray-100"
+                | "gray-50"
+                | "green-100"
+                | "lime-100"
+                | "pink-100"
+                | "pink-50"
+                | "purple-100"
+                | "red-100"
+                | "red-50"
+                | "yellow-100";
+              colSize?: 12 | 4 | 6;
+              text: Array<
+                | {
+                    children?: Array<{
+                      marks?: Array<string>;
+                      text?: string;
+                      _type: "span";
                       _key: string;
-                    }
-                  | {
-                      reference: {
-                        _id: string;
-                        _type: "pageModulaire";
-                        _createdAt: string;
-                        _updatedAt: string;
-                        _rev: string;
-                        seo?: Seo;
-                        homePage?: boolean;
-                        title?: string;
-                        slug?: Slug;
-                        modules?: Array<
-                          | ({
-                              _key: string;
-                            } & DryWaterUI)
-                          | ({
-                              _key: string;
-                            } & FormUI)
-                          | ({
-                              _key: string;
-                            } & GridCardTextUI)
-                          | ({
-                              _key: string;
-                            } & ImageTextUI)
-                          | ({
-                              _key: string;
-                            } & ListCardsImageUI)
-                          | ({
-                              _key: string;
-                            } & NewsletterUI)
-                          | ({
-                              _key: string;
-                            } & TextSplitUI)
-                          | ({
-                              _key: string;
-                            } & TextUI)
-                        >;
-                      } | null;
-                      _type: "linkInternal";
+                    }>;
+                    style?: "normal" | "text-lg";
+                    listItem?: "bullet";
+                    markDefs: Array<
+                      | {
+                          href?: string;
+                          _type: "linkExternal";
+                          _key: string;
+                        }
+                      | {
+                          reference: {
+                            _id: string;
+                            _type: "pageModulaire";
+                            _createdAt: string;
+                            _updatedAt: string;
+                            _rev: string;
+                            seo?: Seo;
+                            homePage?: boolean;
+                            title?: string;
+                            slug?: Slug;
+                            modules?: Array<
+                              | ({
+                                  _key: string;
+                                } & DryWaterUI)
+                              | ({
+                                  _key: string;
+                                } & FormUI)
+                              | ({
+                                  _key: string;
+                                } & GridCardTextUI)
+                              | ({
+                                  _key: string;
+                                } & ImageTextUI)
+                              | ({
+                                  _key: string;
+                                } & ListCardsImageUI)
+                              | ({
+                                  _key: string;
+                                } & NewsletterUI)
+                              | ({
+                                  _key: string;
+                                } & TextSplitUI)
+                              | ({
+                                  _key: string;
+                                } & TextUI)
+                            >;
+                          } | null;
+                          _type: "linkInternal";
+                          _key: string;
+                        }
+                    > | null;
+                    level?: number;
+                    _type: "block";
+                    _key: string;
+                  }
+                | {
+                    asset?: SanityImageAssetReference;
+                    media?: unknown;
+                    hotspot?: SanityImageHotspot;
+                    crop?: SanityImageCrop;
+                    _type: "image";
+                    _key: string;
+                    markDefs: null;
+                  }
+              > | null;
+              footerText?: string;
+            }
+          | {
+              _key: string;
+              _type: "cardTextDropDown";
+              title?: string;
+              color?:
+                | "black"
+                | "blue-100"
+                | "blue-200"
+                | "blue-50"
+                | "gray-100"
+                | "gray-50"
+                | "green-100"
+                | "lime-100"
+                | "pink-100"
+                | "pink-50"
+                | "purple-100"
+                | "red-100"
+                | "red-50"
+                | "yellow-100";
+              text: Array<
+                | {
+                    children?: Array<{
+                      marks?: Array<string>;
+                      text?: string;
+                      _type: "span";
                       _key: string;
-                    }
-                > | null;
-                level?: number;
-                _type: "block";
-                _key: string;
-              }
-            | {
-                asset?: SanityImageAssetReference;
-                media?: unknown;
-                hotspot?: SanityImageHotspot;
-                crop?: SanityImageCrop;
-                _type: "image";
-                _key: string;
-                markDefs: null;
-              }
-          > | null;
-          footerText?: string;
-        }> | null;
+                    }>;
+                    style?: "normal" | "text-lg";
+                    listItem?: "bullet";
+                    markDefs: Array<
+                      | {
+                          href?: string;
+                          _type: "linkExternal";
+                          _key: string;
+                        }
+                      | {
+                          reference: {
+                            _id: string;
+                            _type: "pageModulaire";
+                            _createdAt: string;
+                            _updatedAt: string;
+                            _rev: string;
+                            seo?: Seo;
+                            homePage?: boolean;
+                            title?: string;
+                            slug?: Slug;
+                            modules?: Array<
+                              | ({
+                                  _key: string;
+                                } & DryWaterUI)
+                              | ({
+                                  _key: string;
+                                } & FormUI)
+                              | ({
+                                  _key: string;
+                                } & GridCardTextUI)
+                              | ({
+                                  _key: string;
+                                } & ImageTextUI)
+                              | ({
+                                  _key: string;
+                                } & ListCardsImageUI)
+                              | ({
+                                  _key: string;
+                                } & NewsletterUI)
+                              | ({
+                                  _key: string;
+                                } & TextSplitUI)
+                              | ({
+                                  _key: string;
+                                } & TextUI)
+                            >;
+                          } | null;
+                          _type: "linkInternal";
+                          _key: string;
+                        }
+                    > | null;
+                    level?: number;
+                    _type: "block";
+                    _key: string;
+                  }
+                | {
+                    asset?: SanityImageAssetReference;
+                    media?: unknown;
+                    hotspot?: SanityImageHotspot;
+                    crop?: SanityImageCrop;
+                    _type: "image";
+                    _key: string;
+                    markDefs: null;
+                  }
+              > | null;
+            }
+        > | null;
         image: {
           asset: {
             _id: string;
@@ -1938,101 +2057,195 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: null;
             }
         > | null;
-        items: Array<{
-          _key: string;
-          _type: "cardText";
-          title?: string;
-          subtitle?: string;
-          color?:
-            | "black"
-            | "blue-100"
-            | "blue-200"
-            | "blue-50"
-            | "gray-100"
-            | "gray-50"
-            | "green-100"
-            | "lime-100"
-            | "pink-100"
-            | "pink-50"
-            | "purple-100"
-            | "red-100"
-            | "red-50"
-            | "yellow-100";
-          colSize?: 12 | 4 | 6;
-          text: Array<
-            | {
-                children?: Array<{
-                  marks?: Array<string>;
-                  text?: string;
-                  _type: "span";
-                  _key: string;
-                }>;
-                style?: "normal" | "text-lg";
-                listItem?: "bullet";
-                markDefs: Array<
-                  | {
-                      href?: string;
-                      _type: "linkExternal";
+        items: Array<
+          | {
+              _key: string;
+              _type: "cardText";
+              title?: string;
+              subtitle?: string;
+              color?:
+                | "black"
+                | "blue-100"
+                | "blue-200"
+                | "blue-50"
+                | "gray-100"
+                | "gray-50"
+                | "green-100"
+                | "lime-100"
+                | "pink-100"
+                | "pink-50"
+                | "purple-100"
+                | "red-100"
+                | "red-50"
+                | "yellow-100";
+              colSize?: 12 | 4 | 6;
+              text: Array<
+                | {
+                    children?: Array<{
+                      marks?: Array<string>;
+                      text?: string;
+                      _type: "span";
                       _key: string;
-                    }
-                  | {
-                      reference: {
-                        _id: string;
-                        _type: "pageModulaire";
-                        _createdAt: string;
-                        _updatedAt: string;
-                        _rev: string;
-                        seo?: Seo;
-                        homePage?: boolean;
-                        title?: string;
-                        slug?: Slug;
-                        modules?: Array<
-                          | ({
-                              _key: string;
-                            } & DryWaterUI)
-                          | ({
-                              _key: string;
-                            } & FormUI)
-                          | ({
-                              _key: string;
-                            } & GridCardTextUI)
-                          | ({
-                              _key: string;
-                            } & ImageTextUI)
-                          | ({
-                              _key: string;
-                            } & ListCardsImageUI)
-                          | ({
-                              _key: string;
-                            } & NewsletterUI)
-                          | ({
-                              _key: string;
-                            } & TextSplitUI)
-                          | ({
-                              _key: string;
-                            } & TextUI)
-                        >;
-                      } | null;
-                      _type: "linkInternal";
+                    }>;
+                    style?: "normal" | "text-lg";
+                    listItem?: "bullet";
+                    markDefs: Array<
+                      | {
+                          href?: string;
+                          _type: "linkExternal";
+                          _key: string;
+                        }
+                      | {
+                          reference: {
+                            _id: string;
+                            _type: "pageModulaire";
+                            _createdAt: string;
+                            _updatedAt: string;
+                            _rev: string;
+                            seo?: Seo;
+                            homePage?: boolean;
+                            title?: string;
+                            slug?: Slug;
+                            modules?: Array<
+                              | ({
+                                  _key: string;
+                                } & DryWaterUI)
+                              | ({
+                                  _key: string;
+                                } & FormUI)
+                              | ({
+                                  _key: string;
+                                } & GridCardTextUI)
+                              | ({
+                                  _key: string;
+                                } & ImageTextUI)
+                              | ({
+                                  _key: string;
+                                } & ListCardsImageUI)
+                              | ({
+                                  _key: string;
+                                } & NewsletterUI)
+                              | ({
+                                  _key: string;
+                                } & TextSplitUI)
+                              | ({
+                                  _key: string;
+                                } & TextUI)
+                            >;
+                          } | null;
+                          _type: "linkInternal";
+                          _key: string;
+                        }
+                    > | null;
+                    level?: number;
+                    _type: "block";
+                    _key: string;
+                  }
+                | {
+                    asset?: SanityImageAssetReference;
+                    media?: unknown;
+                    hotspot?: SanityImageHotspot;
+                    crop?: SanityImageCrop;
+                    _type: "image";
+                    _key: string;
+                    markDefs: null;
+                  }
+              > | null;
+              footerText?: string;
+            }
+          | {
+              _key: string;
+              _type: "cardTextDropDown";
+              title?: string;
+              color?:
+                | "black"
+                | "blue-100"
+                | "blue-200"
+                | "blue-50"
+                | "gray-100"
+                | "gray-50"
+                | "green-100"
+                | "lime-100"
+                | "pink-100"
+                | "pink-50"
+                | "purple-100"
+                | "red-100"
+                | "red-50"
+                | "yellow-100";
+              text: Array<
+                | {
+                    children?: Array<{
+                      marks?: Array<string>;
+                      text?: string;
+                      _type: "span";
                       _key: string;
-                    }
-                > | null;
-                level?: number;
-                _type: "block";
-                _key: string;
-              }
-            | {
-                asset?: SanityImageAssetReference;
-                media?: unknown;
-                hotspot?: SanityImageHotspot;
-                crop?: SanityImageCrop;
-                _type: "image";
-                _key: string;
-                markDefs: null;
-              }
-          > | null;
-          footerText?: string;
-        }> | null;
+                    }>;
+                    style?: "normal" | "text-lg";
+                    listItem?: "bullet";
+                    markDefs: Array<
+                      | {
+                          href?: string;
+                          _type: "linkExternal";
+                          _key: string;
+                        }
+                      | {
+                          reference: {
+                            _id: string;
+                            _type: "pageModulaire";
+                            _createdAt: string;
+                            _updatedAt: string;
+                            _rev: string;
+                            seo?: Seo;
+                            homePage?: boolean;
+                            title?: string;
+                            slug?: Slug;
+                            modules?: Array<
+                              | ({
+                                  _key: string;
+                                } & DryWaterUI)
+                              | ({
+                                  _key: string;
+                                } & FormUI)
+                              | ({
+                                  _key: string;
+                                } & GridCardTextUI)
+                              | ({
+                                  _key: string;
+                                } & ImageTextUI)
+                              | ({
+                                  _key: string;
+                                } & ListCardsImageUI)
+                              | ({
+                                  _key: string;
+                                } & NewsletterUI)
+                              | ({
+                                  _key: string;
+                                } & TextSplitUI)
+                              | ({
+                                  _key: string;
+                                } & TextUI)
+                            >;
+                          } | null;
+                          _type: "linkInternal";
+                          _key: string;
+                        }
+                    > | null;
+                    level?: number;
+                    _type: "block";
+                    _key: string;
+                  }
+                | {
+                    asset?: SanityImageAssetReference;
+                    media?: unknown;
+                    hotspot?: SanityImageHotspot;
+                    crop?: SanityImageCrop;
+                    _type: "image";
+                    _key: string;
+                    markDefs: null;
+                  }
+              > | null;
+            }
+        > | null;
         image: {
           asset: {
             _id: string;

@@ -310,19 +310,39 @@
           "value": {
             "type": "array",
             "of": {
-              "type": "object",
-              "attributes": {
-                "_key": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
+              "type": "union",
+              "of": [
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "cardText"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "cardTextDropDown"
                   }
                 }
-              },
-              "rest": {
-                "type": "inline",
-                "name": "cardText"
-              }
+              ]
             }
           },
           "optional": true
@@ -555,6 +575,102 @@
           "type": "objectAttribute",
           "value": {
             "type": "string"
+          },
+          "optional": true
+        },
+        "text": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "blockContent"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "cardTextDropDown",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "cardTextDropDown"
+          }
+        },
+        "title": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "color": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "black"
+              },
+              {
+                "type": "string",
+                "value": "gray-50"
+              },
+              {
+                "type": "string",
+                "value": "gray-100"
+              },
+              {
+                "type": "string",
+                "value": "blue-50"
+              },
+              {
+                "type": "string",
+                "value": "blue-100"
+              },
+              {
+                "type": "string",
+                "value": "blue-200"
+              },
+              {
+                "type": "string",
+                "value": "red-50"
+              },
+              {
+                "type": "string",
+                "value": "red-100"
+              },
+              {
+                "type": "string",
+                "value": "pink-50"
+              },
+              {
+                "type": "string",
+                "value": "pink-100"
+              },
+              {
+                "type": "string",
+                "value": "lime-100"
+              },
+              {
+                "type": "string",
+                "value": "green-100"
+              },
+              {
+                "type": "string",
+                "value": "yellow-100"
+              },
+              {
+                "type": "string",
+                "value": "purple-100"
+              }
+            ]
           },
           "optional": true
         },
