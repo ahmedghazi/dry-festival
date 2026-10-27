@@ -21,6 +21,7 @@ const Modules = async ({ modules }: Props) => {
 
   const _renderModules = () => {
     return modules?.map((module) => {
+      console.log(module._type);
       switch (module._type) {
         case "dryWaterUI":
           return (
