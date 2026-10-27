@@ -1,4 +1,4 @@
-import { sanityFetch } from "./sanity.client";
+import { sanityFetch } from "./sanity.live";
 import { modules, seo } from "./fragments";
 import { defineQuery } from "next-sanity";
 import type {
@@ -25,10 +25,8 @@ export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0]{
 }`);
 
 export async function getSettings(): Promise<SETTINGS_QUERY_RESULT> {
-  return sanityFetch({
-    query: SETTINGS_QUERY,
-    tags: ["settings"],
-  });
+  const { data } = await sanityFetch({ query: SETTINGS_QUERY });
+  return data;
 }
 
 /**
@@ -47,11 +45,10 @@ export const HOME_QUERY =
   }
 }`);
 
-export async function getHome(): Promise<HOME_QUERY_RESULT> {
-  return sanityFetch({
-    query: HOME_QUERY,
-    tags: ["home"],
-  });
+// stega: false for strings that end up outside the DOM (metadata, <title>…)
+export async function getHome(stega?: boolean): Promise<HOME_QUERY_RESULT> {
+  const { data } = await sanityFetch({ query: HOME_QUERY, stega });
+  return data;
 }
 
 /**
@@ -72,10 +69,12 @@ export const PAGE_MODULAIRE_QUERY =
 
 export async function getPageModulaire(
   slug: string,
+  stega?: boolean,
 ): Promise<PAGE_MODULAIRE_QUERY_RESULT> {
-  return sanityFetch({
+  const { data } = await sanityFetch({
     query: PAGE_MODULAIRE_QUERY,
-    tags: ["pageModulaire"],
-    qParams: { slug: slug },
+    params: { slug: slug },
+    stega,
   });
+  return data;
 }
