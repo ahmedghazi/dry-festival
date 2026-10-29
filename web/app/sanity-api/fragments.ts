@@ -15,7 +15,15 @@ export const blockContent = `
 		_type == "linkInternal" => {
 			...,
 			reference->,
-		}
+		},
+
+	},
+	_type == "embed" => {
+		...,
+	},
+	_type == "image" => {
+		...,
+		asset->
 	}
 `;
 

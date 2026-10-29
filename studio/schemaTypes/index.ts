@@ -9,6 +9,8 @@ import contactLinkItem from './objects/contactLinkItem'
 import cta from './objects/cta'
 import keyVal from './objects/keyVal'
 import cardText from './objects/cardText'
+import embed from './objects/embed'
+import linkWeezevent from './objects/linkWeezevent'
 
 /** modules */
 import textUI from './objects/modules/textUI'
@@ -31,11 +33,13 @@ export const schemaTypes = [
   linkExternal,
   linkInternal,
   linkIcon,
+  linkWeezevent,
   contactLinkItem,
   cta,
   keyVal,
   cardText,
   cardTextDropDown,
+  embed,
 
   textUI,
   dryWaterUI,

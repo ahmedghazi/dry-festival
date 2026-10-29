@@ -17,6 +17,7 @@ export default defineField({
       name: 'subtitle',
       type: 'text',
       title: 'Subtitle',
+      rows: 2,
     }),
     defineField({
       name: 'text',

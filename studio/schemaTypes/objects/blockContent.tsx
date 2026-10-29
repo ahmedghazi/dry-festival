@@ -1,8 +1,9 @@
-import {defineType, defineArrayMember} from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
 // import { FiExternalLink, LinkIcon } from 'react-icons/fi'
 import {FiExternalLink} from 'react-icons/fi'
 import linkIntternalTypes from '../misc/linkIntternalTypes'
 import LinkIcon from '@sanity/icons/Link'
+import {IoTicketOutline} from 'react-icons/io5'
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -14,25 +15,11 @@ import LinkIcon from '@sanity/icons/Link'
  *  }
  */
 const TextL = (props: any): JSX.Element => (
-  <p style={{fontSize: '2rem', marginTop: 0}}> {props.children} </p>
+  <span style={{display: 'block', fontSize: '2rem', lineHeight: 1.2}}>{props.children}</span>
 )
-// const TextIndent = (props: any): JSX.Element => (
-//   <div className="indent">
-//     <p style={{paddingLeft: '1rem', marginTop: 0}}> {props.children} </p>
-//   </div>
-// )
-const TextIndent = (props: any): JSX.Element => (
-  <span style={{paddingLeft: '1rem', marginTop: 0, display: 'inline-block'}}>{props.children}</span>
+const HrPreview = (): JSX.Element => (
+  <hr style={{border: 0, borderTop: '1px solid currentColor', margin: '0.5rem 0'}} />
 )
-const Underline = (props: any): JSX.Element => (
-  <span style={{textDecoration: 'underline'}}> {props.children} </span>
-)
-const Outline = (props: any): JSX.Element => (
-  <span style={{border: '1px solid ', borderRadius: '100%'}}> {props.children} </span>
-)
-// const TextXL = (props: any): JSX.Element => (
-//   <p style={{fontSize: '3rem', marginTop: 0}}> {props.children} </p>
-// )
 
 export default defineType({
   title: 'Block Content',
@@ -114,6 +101,24 @@ export default defineType({
               },
             ],
           },
+          {
+            title: 'Weezevent link',
+            name: 'linkWeezevent',
+            type: 'object',
+            icon: IoTicketOutline,
+            fields: [
+              // {
+              //   name: 'label',
+              //   title: 'Label',
+              //   type: 'string',
+              // },
+              {
+                name: 'link',
+                title: 'Link',
+                type: 'url',
+              },
+            ],
+          },
         ],
       },
     }),
@@ -123,11 +128,27 @@ export default defineType({
 
     defineArrayMember({
       type: 'image',
-      options: {hotspot: true},
+      // options: {hotspot: true},
     }),
 
-    // defineArrayMember({
-    //   type: "embed",
-    // }),
+    defineArrayMember({
+      type: 'embed',
+    }),
+
+    defineArrayMember({
+      title: 'Séparateur',
+      name: 'hr',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'style',
+          type: 'string',
+          initialValue: 'line',
+          hidden: true,
+        }),
+      ],
+      components: {preview: HrPreview},
+      preview: {prepare: () => ({title: 'Séparateur'})},
+    }),
   ],
 })

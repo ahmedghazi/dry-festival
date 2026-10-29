@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import { ViewTransition } from "react";
 import { getSettings } from "./sanity-api/sanity-queries";
 import { SanityLive } from "./sanity-api/sanity.live";
+import WeezeventScript from "./components/WeezeventScript";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -38,6 +39,7 @@ export default async function RootLayout({
 
             <Footer settings={settings} />
             {/* <Cursor size={20} color='#00ff1a' /> */}
+            <WeezeventScript />
             <SanityLive />
             {isEnabled && <VisualEditing zIndex={1000} />}
           </PageContextProvider>

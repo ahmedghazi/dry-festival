@@ -118,6 +118,21 @@ export type TextUI = {
   text?: BlockContent;
 };
 
+export type Embed = {
+  _type: "embed";
+  title?: string;
+  placeholder?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  url?: string;
+  iframe?: string;
+  aspectRatio?: string;
+};
+
 export type CardTextDropDown = {
   _type: "cardTextDropDown";
   title?: string;
@@ -198,6 +213,11 @@ export type BlockContent = Array<
             _type: "linkExternal";
             _key: string;
           }
+        | {
+            link?: string;
+            _type: "linkWeezevent";
+            _key: string;
+          }
       >;
       level?: number;
       _type: "block";
@@ -211,6 +231,9 @@ export type BlockContent = Array<
       _type: "image";
       _key: string;
     }
+  | ({
+      _key: string;
+    } & Embed)
 >;
 
 export type Cta = {
@@ -236,6 +259,12 @@ export type ContactLinkItem = {
   label?: string;
   link?: string;
   colSize?: number;
+};
+
+export type LinkWeezevent = {
+  _type: "linkWeezevent";
+  label?: string;
+  link?: string;
 };
 
 export type LinkIcon = {
@@ -526,6 +555,7 @@ export type AllSanitySchemaTypes =
   | FormUI
   | DryWaterUI
   | TextUI
+  | Embed
   | CardTextDropDown
   | CardText
   | KeyVal
@@ -535,6 +565,7 @@ export type AllSanitySchemaTypes =
   | LinkExternal
   | LinkInternal
   | ContactLinkItem
+  | LinkWeezevent
   | LinkIcon
   | Seo
   | Settings
@@ -690,10 +721,31 @@ export type HOME_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -799,10 +851,31 @@ export type HOME_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -892,10 +965,31 @@ export type HOME_QUERY_RESULT = {
                       _type: "linkInternal";
                       _key: string;
                     }
+                  | {
+                      link?: string;
+                      _type: "linkWeezevent";
+                      _key: string;
+                    }
                 > | null;
                 level?: number;
                 _type: "block";
                 _key: string;
+              }
+            | {
+                _key: string;
+                _type: "embed";
+                title?: string;
+                placeholder?: {
+                  asset?: SanityImageAssetReference;
+                  media?: unknown;
+                  hotspot?: SanityImageHotspot;
+                  crop?: SanityImageCrop;
+                  _type: "image";
+                };
+                url?: string;
+                iframe?: string;
+                aspectRatio?: string;
+                markDefs: null;
               }
             | {
                 asset?: SanityImageAssetReference;
@@ -998,10 +1092,31 @@ export type HOME_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -1076,10 +1191,31 @@ export type HOME_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -1170,10 +1306,31 @@ export type HOME_QUERY_RESULT = {
                           _type: "linkInternal";
                           _key: string;
                         }
+                      | {
+                          link?: string;
+                          _type: "linkWeezevent";
+                          _key: string;
+                        }
                     > | null;
                     level?: number;
                     _type: "block";
                     _key: string;
+                  }
+                | {
+                    _key: string;
+                    _type: "embed";
+                    title?: string;
+                    placeholder?: {
+                      asset?: SanityImageAssetReference;
+                      media?: unknown;
+                      hotspot?: SanityImageHotspot;
+                      crop?: SanityImageCrop;
+                      _type: "image";
+                    };
+                    url?: string;
+                    iframe?: string;
+                    aspectRatio?: string;
+                    markDefs: null;
                   }
                 | {
                     asset?: SanityImageAssetReference;
@@ -1263,10 +1420,31 @@ export type HOME_QUERY_RESULT = {
                           _type: "linkInternal";
                           _key: string;
                         }
+                      | {
+                          link?: string;
+                          _type: "linkWeezevent";
+                          _key: string;
+                        }
                     > | null;
                     level?: number;
                     _type: "block";
                     _key: string;
+                  }
+                | {
+                    _key: string;
+                    _type: "embed";
+                    title?: string;
+                    placeholder?: {
+                      asset?: SanityImageAssetReference;
+                      media?: unknown;
+                      hotspot?: SanityImageHotspot;
+                      crop?: SanityImageCrop;
+                      _type: "image";
+                    };
+                    url?: string;
+                    iframe?: string;
+                    aspectRatio?: string;
+                    markDefs: null;
                   }
                 | {
                     asset?: SanityImageAssetReference;
@@ -1368,10 +1546,31 @@ export type HOME_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -1446,10 +1645,31 @@ export type HOME_QUERY_RESULT = {
                       _type: "linkInternal";
                       _key: string;
                     }
+                  | {
+                      link?: string;
+                      _type: "linkWeezevent";
+                      _key: string;
+                    }
                 > | null;
                 level?: number;
                 _type: "block";
                 _key: string;
+              }
+            | {
+                _key: string;
+                _type: "embed";
+                title?: string;
+                placeholder?: {
+                  asset?: SanityImageAssetReference;
+                  media?: unknown;
+                  hotspot?: SanityImageHotspot;
+                  crop?: SanityImageCrop;
+                  _type: "image";
+                };
+                url?: string;
+                iframe?: string;
+                aspectRatio?: string;
+                markDefs: null;
               }
             | {
                 asset?: SanityImageAssetReference;
@@ -1554,10 +1774,31 @@ export type HOME_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -1656,10 +1897,31 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -1765,10 +2027,31 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -1858,10 +2141,31 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       _type: "linkInternal";
                       _key: string;
                     }
+                  | {
+                      link?: string;
+                      _type: "linkWeezevent";
+                      _key: string;
+                    }
                 > | null;
                 level?: number;
                 _type: "block";
                 _key: string;
+              }
+            | {
+                _key: string;
+                _type: "embed";
+                title?: string;
+                placeholder?: {
+                  asset?: SanityImageAssetReference;
+                  media?: unknown;
+                  hotspot?: SanityImageHotspot;
+                  crop?: SanityImageCrop;
+                  _type: "image";
+                };
+                url?: string;
+                iframe?: string;
+                aspectRatio?: string;
+                markDefs: null;
               }
             | {
                 asset?: SanityImageAssetReference;
@@ -1964,10 +2268,31 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -2042,10 +2367,31 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -2136,10 +2482,31 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                           _type: "linkInternal";
                           _key: string;
                         }
+                      | {
+                          link?: string;
+                          _type: "linkWeezevent";
+                          _key: string;
+                        }
                     > | null;
                     level?: number;
                     _type: "block";
                     _key: string;
+                  }
+                | {
+                    _key: string;
+                    _type: "embed";
+                    title?: string;
+                    placeholder?: {
+                      asset?: SanityImageAssetReference;
+                      media?: unknown;
+                      hotspot?: SanityImageHotspot;
+                      crop?: SanityImageCrop;
+                      _type: "image";
+                    };
+                    url?: string;
+                    iframe?: string;
+                    aspectRatio?: string;
+                    markDefs: null;
                   }
                 | {
                     asset?: SanityImageAssetReference;
@@ -2229,10 +2596,31 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                           _type: "linkInternal";
                           _key: string;
                         }
+                      | {
+                          link?: string;
+                          _type: "linkWeezevent";
+                          _key: string;
+                        }
                     > | null;
                     level?: number;
                     _type: "block";
                     _key: string;
+                  }
+                | {
+                    _key: string;
+                    _type: "embed";
+                    title?: string;
+                    placeholder?: {
+                      asset?: SanityImageAssetReference;
+                      media?: unknown;
+                      hotspot?: SanityImageHotspot;
+                      crop?: SanityImageCrop;
+                      _type: "image";
+                    };
+                    url?: string;
+                    iframe?: string;
+                    aspectRatio?: string;
+                    markDefs: null;
                   }
                 | {
                     asset?: SanityImageAssetReference;
@@ -2334,10 +2722,31 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;
@@ -2412,10 +2821,31 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       _type: "linkInternal";
                       _key: string;
                     }
+                  | {
+                      link?: string;
+                      _type: "linkWeezevent";
+                      _key: string;
+                    }
                 > | null;
                 level?: number;
                 _type: "block";
                 _key: string;
+              }
+            | {
+                _key: string;
+                _type: "embed";
+                title?: string;
+                placeholder?: {
+                  asset?: SanityImageAssetReference;
+                  media?: unknown;
+                  hotspot?: SanityImageHotspot;
+                  crop?: SanityImageCrop;
+                  _type: "image";
+                };
+                url?: string;
+                iframe?: string;
+                aspectRatio?: string;
+                markDefs: null;
               }
             | {
                 asset?: SanityImageAssetReference;
@@ -2520,10 +2950,31 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     _type: "linkInternal";
                     _key: string;
                   }
+                | {
+                    link?: string;
+                    _type: "linkWeezevent";
+                    _key: string;
+                  }
               > | null;
               level?: number;
               _type: "block";
               _key: string;
+            }
+          | {
+              _key: string;
+              _type: "embed";
+              title?: string;
+              placeholder?: {
+                asset?: SanityImageAssetReference;
+                media?: unknown;
+                hotspot?: SanityImageHotspot;
+                crop?: SanityImageCrop;
+                _type: "image";
+              };
+              url?: string;
+              iframe?: string;
+              aspectRatio?: string;
+              markDefs: null;
             }
           | {
               asset?: SanityImageAssetReference;

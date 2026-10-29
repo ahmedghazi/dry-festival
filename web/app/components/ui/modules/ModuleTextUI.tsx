@@ -10,6 +10,7 @@ type Props = {
 const ModuleTextUI = ({ input }: Props) => {
   const { title, subtitle, text } = input;
   const hasHeading = title || subtitle;
+  console.log(text);
   return (
     <section className='module module--text-ui'>
       <div className='inner'>
@@ -24,6 +25,7 @@ const ModuleTextUI = ({ input }: Props) => {
         {text && (
           <div className='text'>
             <div className='module__text text'>
+              {/* <pre className='text-xs'>{JSON.stringify(text, null, 2)}</pre> */}
               <PortableText
                 value={stegaClean(text)}
                 components={portableTextComponents}
