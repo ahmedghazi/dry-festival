@@ -48,6 +48,7 @@
       &:last-child::after {
         content: var(--more-glyph);
         margin-left: 0.3em;
+        display: block;
       }
     }
 

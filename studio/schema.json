@@ -437,19 +437,39 @@
           "value": {
             "type": "array",
             "of": {
-              "type": "object",
-              "attributes": {
-                "_key": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
+              "type": "union",
+              "of": [
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "cardText"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "cardTextDropDown"
                   }
                 }
-              },
-              "rest": {
-                "type": "inline",
-                "name": "cardText"
-              }
+              ]
             }
           },
           "optional": true
@@ -760,6 +780,27 @@
               {
                 "type": "string",
                 "value": "purple-100"
+              }
+            ]
+          },
+          "optional": true
+        },
+        "colSize": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "number",
+                "value": 4
+              },
+              {
+                "type": "number",
+                "value": 6
+              },
+              {
+                "type": "number",
+                "value": 12
               }
             ]
           },

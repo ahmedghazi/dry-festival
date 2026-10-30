@@ -87,7 +87,7 @@
       //   margin-bottom: calc(var(--spacing-40));
       // }
       &:not(:has(~ section.module--image-text-ui)) {
-        margin-bottom: calc(var(--spacing-40));
+        margin-bottom: calc(var(--spacing-xl));
       }
 
       .col-text {
@@ -140,12 +140,24 @@
         // gap: calc(var(--spacing-md)*1.5 + var(--border-width));
         gap: calc(var(--spacing-40));
       }
+      .grid:has(.has-footer-text) {
+        align-items: start;
+      }
       h2,
       .footer-text {
         white-space: pre-line;
       }
       .grid:has(.card-outer.has-footer-text) {
         gap: var(--spacing-lg);
+      }
+      .card-text-dropdown {
+        h3 {
+          line-height: 1;
+          font-size: var(--text-lg);
+        }
+        p {
+          font-size: var(--text-md);
+        }
       }
     }
     &--text-split-ui {
@@ -245,6 +257,13 @@
           &:first-child {
             border-right: unset;
             border-bottom: var(--border-sm);
+          }
+        }
+      }
+      &--grid-card-text-ui {
+        .card-text-dropdown {
+          h3 {
+            font-size: var(--text-md);
           }
         }
       }

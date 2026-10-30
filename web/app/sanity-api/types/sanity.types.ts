@@ -88,9 +88,12 @@ export type GridCardTextUI = {
   subtitle?: string;
   text?: BlockContent;
   items?: Array<
-    {
-      _key: string;
-    } & CardText
+    | ({
+        _key: string;
+      } & CardText)
+    | ({
+        _key: string;
+      } & CardTextDropDown)
   >;
 };
 
@@ -151,6 +154,7 @@ export type CardTextDropDown = {
     | "green-100"
     | "yellow-100"
     | "purple-100";
+  colSize?: 4 | 6 | 12;
   text?: BlockContent;
 };
 
@@ -234,6 +238,11 @@ export type BlockContent = Array<
   | ({
       _key: string;
     } & Embed)
+  | {
+      style?: string;
+      _type: "hr";
+      _key: string;
+    }
 >;
 
 export type Cta = {
@@ -640,7 +649,7 @@ export type SETTINGS_QUERY_RESULT = {
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: HOME_QUERY
-// Query: *[_type == "pageModulaire" && homePage == true][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  modules[]{      ...,		_type == 'dryWaterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},	  _type == 'textUI' => {    ...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}  },		_type == 'formUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'gridCardTextUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		}	},		_type == 'listCardsImageUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'textSplitUI' => {		...,		texts[]{			...,			text[]{					...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}			}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'imageTextUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		},		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},		_type == 'newsletterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	}  }}
+// Query: *[_type == "pageModulaire" && homePage == true][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  modules[]{      ...,		_type == 'dryWaterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		}	},	  _type == 'textUI' => {    ...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		}  },		_type == 'formUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'gridCardTextUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}	}		}	},		_type == 'listCardsImageUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}	}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'textSplitUI' => {		...,		texts[]{			...,			text[]{					...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}			}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'imageTextUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		},		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		}	},		_type == 'newsletterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		}	}  }}
 export type HOME_QUERY_RESULT = {
   _id: string;
   _type: "pageModulaire";
@@ -748,7 +757,34 @@ export type HOME_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -878,7 +914,34 @@ export type HOME_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -887,122 +950,292 @@ export type HOME_QUERY_RESULT = {
               markDefs: null;
             }
         > | null;
-        items: Array<{
-          _key: string;
-          _type: "cardText";
-          title?: string;
-          subtitle?: string;
-          color?:
-            | "black"
-            | "blue-100"
-            | "blue-200"
-            | "blue-50"
-            | "gray-100"
-            | "gray-50"
-            | "green-100"
-            | "lime-100"
-            | "pink-100"
-            | "pink-50"
-            | "purple-100"
-            | "red-100"
-            | "red-50"
-            | "yellow-100";
-          colSize?: 12 | 4 | 6;
-          text: Array<
-            | {
-                children?: Array<{
-                  marks?: Array<string>;
-                  text?: string;
-                  _type: "span";
-                  _key: string;
-                }>;
-                style?: "normal" | "text-lg";
-                listItem?: "bullet";
-                markDefs: Array<
-                  | {
-                      href?: string;
-                      _type: "linkExternal";
+        items: Array<
+          | {
+              _key: string;
+              _type: "cardText";
+              title?: string;
+              subtitle?: string;
+              color?:
+                | "black"
+                | "blue-100"
+                | "blue-200"
+                | "blue-50"
+                | "gray-100"
+                | "gray-50"
+                | "green-100"
+                | "lime-100"
+                | "pink-100"
+                | "pink-50"
+                | "purple-100"
+                | "red-100"
+                | "red-50"
+                | "yellow-100";
+              colSize?: 12 | 4 | 6;
+              text: Array<
+                | {
+                    children?: Array<{
+                      marks?: Array<string>;
+                      text?: string;
+                      _type: "span";
                       _key: string;
-                    }
-                  | {
-                      reference: {
-                        _id: string;
-                        _type: "pageModulaire";
-                        _createdAt: string;
-                        _updatedAt: string;
-                        _rev: string;
-                        seo?: Seo;
-                        homePage?: boolean;
-                        title?: string;
-                        slug?: Slug;
-                        modules?: Array<
-                          | ({
-                              _key: string;
-                            } & DryWaterUI)
-                          | ({
-                              _key: string;
-                            } & FormUI)
-                          | ({
-                              _key: string;
-                            } & GridCardTextUI)
-                          | ({
-                              _key: string;
-                            } & ImageTextUI)
-                          | ({
-                              _key: string;
-                            } & ListCardsImageUI)
-                          | ({
-                              _key: string;
-                            } & NewsletterUI)
-                          | ({
-                              _key: string;
-                            } & TextSplitUI)
-                          | ({
-                              _key: string;
-                            } & TextUI)
-                        >;
-                      } | null;
-                      _type: "linkInternal";
+                    }>;
+                    style?: "normal" | "text-lg";
+                    listItem?: "bullet";
+                    markDefs: Array<
+                      | {
+                          href?: string;
+                          _type: "linkExternal";
+                          _key: string;
+                        }
+                      | {
+                          reference: {
+                            _id: string;
+                            _type: "pageModulaire";
+                            _createdAt: string;
+                            _updatedAt: string;
+                            _rev: string;
+                            seo?: Seo;
+                            homePage?: boolean;
+                            title?: string;
+                            slug?: Slug;
+                            modules?: Array<
+                              | ({
+                                  _key: string;
+                                } & DryWaterUI)
+                              | ({
+                                  _key: string;
+                                } & FormUI)
+                              | ({
+                                  _key: string;
+                                } & GridCardTextUI)
+                              | ({
+                                  _key: string;
+                                } & ImageTextUI)
+                              | ({
+                                  _key: string;
+                                } & ListCardsImageUI)
+                              | ({
+                                  _key: string;
+                                } & NewsletterUI)
+                              | ({
+                                  _key: string;
+                                } & TextSplitUI)
+                              | ({
+                                  _key: string;
+                                } & TextUI)
+                            >;
+                          } | null;
+                          _type: "linkInternal";
+                          _key: string;
+                        }
+                      | {
+                          link?: string;
+                          _type: "linkWeezevent";
+                          _key: string;
+                        }
+                    > | null;
+                    level?: number;
+                    _type: "block";
+                    _key: string;
+                  }
+                | {
+                    _key: string;
+                    _type: "embed";
+                    title?: string;
+                    placeholder?: {
+                      asset?: SanityImageAssetReference;
+                      media?: unknown;
+                      hotspot?: SanityImageHotspot;
+                      crop?: SanityImageCrop;
+                      _type: "image";
+                    };
+                    url?: string;
+                    iframe?: string;
+                    aspectRatio?: string;
+                    markDefs: null;
+                  }
+                | {
+                    style?: string;
+                    _type: "hr";
+                    _key: string;
+                    markDefs: null;
+                  }
+                | {
+                    asset: {
+                      _id: string;
+                      _type: "sanity.imageAsset";
+                      _createdAt: string;
+                      _updatedAt: string;
+                      _rev: string;
+                      originalFilename?: string;
+                      label?: string;
+                      title?: string;
+                      description?: string;
+                      altText?: string;
+                      sha1hash?: string;
+                      extension?: string;
+                      mimeType?: string;
+                      size?: number;
+                      assetId?: string;
+                      uploadId?: string;
+                      path?: string;
+                      url?: string;
+                      metadata?: SanityImageMetadata;
+                      source?: SanityAssetSourceData;
+                    } | null;
+                    media?: unknown;
+                    hotspot?: SanityImageHotspot;
+                    crop?: SanityImageCrop;
+                    _type: "image";
+                    _key: string;
+                    markDefs: null;
+                  }
+              > | null;
+              footerText?: string;
+            }
+          | {
+              _key: string;
+              _type: "cardTextDropDown";
+              title?: string;
+              color?:
+                | "black"
+                | "blue-100"
+                | "blue-200"
+                | "blue-50"
+                | "gray-100"
+                | "gray-50"
+                | "green-100"
+                | "lime-100"
+                | "pink-100"
+                | "pink-50"
+                | "purple-100"
+                | "red-100"
+                | "red-50"
+                | "yellow-100";
+              colSize?: 12 | 4 | 6;
+              text: Array<
+                | {
+                    children?: Array<{
+                      marks?: Array<string>;
+                      text?: string;
+                      _type: "span";
                       _key: string;
-                    }
-                  | {
-                      link?: string;
-                      _type: "linkWeezevent";
-                      _key: string;
-                    }
-                > | null;
-                level?: number;
-                _type: "block";
-                _key: string;
-              }
-            | {
-                _key: string;
-                _type: "embed";
-                title?: string;
-                placeholder?: {
-                  asset?: SanityImageAssetReference;
-                  media?: unknown;
-                  hotspot?: SanityImageHotspot;
-                  crop?: SanityImageCrop;
-                  _type: "image";
-                };
-                url?: string;
-                iframe?: string;
-                aspectRatio?: string;
-                markDefs: null;
-              }
-            | {
-                asset?: SanityImageAssetReference;
-                media?: unknown;
-                hotspot?: SanityImageHotspot;
-                crop?: SanityImageCrop;
-                _type: "image";
-                _key: string;
-                markDefs: null;
-              }
-          > | null;
-          footerText?: string;
-        }> | null;
+                    }>;
+                    style?: "normal" | "text-lg";
+                    listItem?: "bullet";
+                    markDefs: Array<
+                      | {
+                          href?: string;
+                          _type: "linkExternal";
+                          _key: string;
+                        }
+                      | {
+                          reference: {
+                            _id: string;
+                            _type: "pageModulaire";
+                            _createdAt: string;
+                            _updatedAt: string;
+                            _rev: string;
+                            seo?: Seo;
+                            homePage?: boolean;
+                            title?: string;
+                            slug?: Slug;
+                            modules?: Array<
+                              | ({
+                                  _key: string;
+                                } & DryWaterUI)
+                              | ({
+                                  _key: string;
+                                } & FormUI)
+                              | ({
+                                  _key: string;
+                                } & GridCardTextUI)
+                              | ({
+                                  _key: string;
+                                } & ImageTextUI)
+                              | ({
+                                  _key: string;
+                                } & ListCardsImageUI)
+                              | ({
+                                  _key: string;
+                                } & NewsletterUI)
+                              | ({
+                                  _key: string;
+                                } & TextSplitUI)
+                              | ({
+                                  _key: string;
+                                } & TextUI)
+                            >;
+                          } | null;
+                          _type: "linkInternal";
+                          _key: string;
+                        }
+                      | {
+                          link?: string;
+                          _type: "linkWeezevent";
+                          _key: string;
+                        }
+                    > | null;
+                    level?: number;
+                    _type: "block";
+                    _key: string;
+                  }
+                | {
+                    _key: string;
+                    _type: "embed";
+                    title?: string;
+                    placeholder?: {
+                      asset?: SanityImageAssetReference;
+                      media?: unknown;
+                      hotspot?: SanityImageHotspot;
+                      crop?: SanityImageCrop;
+                      _type: "image";
+                    };
+                    url?: string;
+                    iframe?: string;
+                    aspectRatio?: string;
+                    markDefs: null;
+                  }
+                | {
+                    style?: string;
+                    _type: "hr";
+                    _key: string;
+                    markDefs: null;
+                  }
+                | {
+                    asset: {
+                      _id: string;
+                      _type: "sanity.imageAsset";
+                      _createdAt: string;
+                      _updatedAt: string;
+                      _rev: string;
+                      originalFilename?: string;
+                      label?: string;
+                      title?: string;
+                      description?: string;
+                      altText?: string;
+                      sha1hash?: string;
+                      extension?: string;
+                      mimeType?: string;
+                      size?: number;
+                      assetId?: string;
+                      uploadId?: string;
+                      path?: string;
+                      url?: string;
+                      metadata?: SanityImageMetadata;
+                      source?: SanityAssetSourceData;
+                    } | null;
+                    media?: unknown;
+                    hotspot?: SanityImageHotspot;
+                    crop?: SanityImageCrop;
+                    _type: "image";
+                    _key: string;
+                    markDefs: null;
+                  }
+              > | null;
+            }
+        > | null;
       }
     | {
         _key: string;
@@ -1119,7 +1352,34 @@ export type HOME_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -1218,7 +1478,34 @@ export type HOME_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -1333,7 +1620,34 @@ export type HOME_QUERY_RESULT = {
                     markDefs: null;
                   }
                 | {
-                    asset?: SanityImageAssetReference;
+                    style?: string;
+                    _type: "hr";
+                    _key: string;
+                    markDefs: null;
+                  }
+                | {
+                    asset: {
+                      _id: string;
+                      _type: "sanity.imageAsset";
+                      _createdAt: string;
+                      _updatedAt: string;
+                      _rev: string;
+                      originalFilename?: string;
+                      label?: string;
+                      title?: string;
+                      description?: string;
+                      altText?: string;
+                      sha1hash?: string;
+                      extension?: string;
+                      mimeType?: string;
+                      size?: number;
+                      assetId?: string;
+                      uploadId?: string;
+                      path?: string;
+                      url?: string;
+                      metadata?: SanityImageMetadata;
+                      source?: SanityAssetSourceData;
+                    } | null;
                     media?: unknown;
                     hotspot?: SanityImageHotspot;
                     crop?: SanityImageCrop;
@@ -1363,6 +1677,7 @@ export type HOME_QUERY_RESULT = {
                 | "red-100"
                 | "red-50"
                 | "yellow-100";
+              colSize?: 12 | 4 | 6;
               text: Array<
                 | {
                     children?: Array<{
@@ -1447,7 +1762,34 @@ export type HOME_QUERY_RESULT = {
                     markDefs: null;
                   }
                 | {
-                    asset?: SanityImageAssetReference;
+                    style?: string;
+                    _type: "hr";
+                    _key: string;
+                    markDefs: null;
+                  }
+                | {
+                    asset: {
+                      _id: string;
+                      _type: "sanity.imageAsset";
+                      _createdAt: string;
+                      _updatedAt: string;
+                      _rev: string;
+                      originalFilename?: string;
+                      label?: string;
+                      title?: string;
+                      description?: string;
+                      altText?: string;
+                      sha1hash?: string;
+                      extension?: string;
+                      mimeType?: string;
+                      size?: number;
+                      assetId?: string;
+                      uploadId?: string;
+                      path?: string;
+                      url?: string;
+                      metadata?: SanityImageMetadata;
+                      source?: SanityAssetSourceData;
+                    } | null;
                     media?: unknown;
                     hotspot?: SanityImageHotspot;
                     crop?: SanityImageCrop;
@@ -1573,7 +1915,34 @@ export type HOME_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -1672,7 +2041,34 @@ export type HOME_QUERY_RESULT = {
                 markDefs: null;
               }
             | {
-                asset?: SanityImageAssetReference;
+                style?: string;
+                _type: "hr";
+                _key: string;
+                markDefs: null;
+              }
+            | {
+                asset: {
+                  _id: string;
+                  _type: "sanity.imageAsset";
+                  _createdAt: string;
+                  _updatedAt: string;
+                  _rev: string;
+                  originalFilename?: string;
+                  label?: string;
+                  title?: string;
+                  description?: string;
+                  altText?: string;
+                  sha1hash?: string;
+                  extension?: string;
+                  mimeType?: string;
+                  size?: number;
+                  assetId?: string;
+                  uploadId?: string;
+                  path?: string;
+                  url?: string;
+                  metadata?: SanityImageMetadata;
+                  source?: SanityAssetSourceData;
+                } | null;
                 media?: unknown;
                 hotspot?: SanityImageHotspot;
                 crop?: SanityImageCrop;
@@ -1801,7 +2197,34 @@ export type HOME_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -1816,7 +2239,7 @@ export type HOME_QUERY_RESULT = {
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: PAGE_MODULAIRE_QUERY
-// Query: *[_type == "pageModulaire" && slug.current == $slug][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  modules[]{      ...,		_type == 'dryWaterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},	  _type == 'textUI' => {    ...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}  },		_type == 'formUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'gridCardTextUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		}	},		_type == 'listCardsImageUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}	}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'textSplitUI' => {		...,		texts[]{			...,			text[]{					...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}			}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'imageTextUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		},		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	},		_type == 'newsletterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		}	}		}	}  }}
+// Query: *[_type == "pageModulaire" && slug.current == $slug][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  modules[]{      ...,		_type == 'dryWaterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		}	},	  _type == 'textUI' => {    ...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		}  },		_type == 'formUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'gridCardTextUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}	}		}	},		_type == 'listCardsImageUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		},		items[]{				...,	text[]{			...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}	}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'textSplitUI' => {		...,		texts[]{			...,			text[]{					...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}			}		},		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		}	},		_type == 'imageTextUI' => {		...,		image{				asset->{		...,		url,		extension,		mimeType	},	alt,	caption,		},		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		}	},		_type == 'newsletterUI' => {		...,		text[]{				...,	markDefs[] {		...,		_type == "linkInternal" => {			...,			reference->,		},	},	_type == "embed" => {		...,	},	_type == "image" => {		...,		asset->	}		}	}  }}
 export type PAGE_MODULAIRE_QUERY_RESULT = {
   _id: string;
   _type: "pageModulaire";
@@ -1924,7 +2347,34 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -2054,7 +2504,34 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -2063,122 +2540,292 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: null;
             }
         > | null;
-        items: Array<{
-          _key: string;
-          _type: "cardText";
-          title?: string;
-          subtitle?: string;
-          color?:
-            | "black"
-            | "blue-100"
-            | "blue-200"
-            | "blue-50"
-            | "gray-100"
-            | "gray-50"
-            | "green-100"
-            | "lime-100"
-            | "pink-100"
-            | "pink-50"
-            | "purple-100"
-            | "red-100"
-            | "red-50"
-            | "yellow-100";
-          colSize?: 12 | 4 | 6;
-          text: Array<
-            | {
-                children?: Array<{
-                  marks?: Array<string>;
-                  text?: string;
-                  _type: "span";
-                  _key: string;
-                }>;
-                style?: "normal" | "text-lg";
-                listItem?: "bullet";
-                markDefs: Array<
-                  | {
-                      href?: string;
-                      _type: "linkExternal";
+        items: Array<
+          | {
+              _key: string;
+              _type: "cardText";
+              title?: string;
+              subtitle?: string;
+              color?:
+                | "black"
+                | "blue-100"
+                | "blue-200"
+                | "blue-50"
+                | "gray-100"
+                | "gray-50"
+                | "green-100"
+                | "lime-100"
+                | "pink-100"
+                | "pink-50"
+                | "purple-100"
+                | "red-100"
+                | "red-50"
+                | "yellow-100";
+              colSize?: 12 | 4 | 6;
+              text: Array<
+                | {
+                    children?: Array<{
+                      marks?: Array<string>;
+                      text?: string;
+                      _type: "span";
                       _key: string;
-                    }
-                  | {
-                      reference: {
-                        _id: string;
-                        _type: "pageModulaire";
-                        _createdAt: string;
-                        _updatedAt: string;
-                        _rev: string;
-                        seo?: Seo;
-                        homePage?: boolean;
-                        title?: string;
-                        slug?: Slug;
-                        modules?: Array<
-                          | ({
-                              _key: string;
-                            } & DryWaterUI)
-                          | ({
-                              _key: string;
-                            } & FormUI)
-                          | ({
-                              _key: string;
-                            } & GridCardTextUI)
-                          | ({
-                              _key: string;
-                            } & ImageTextUI)
-                          | ({
-                              _key: string;
-                            } & ListCardsImageUI)
-                          | ({
-                              _key: string;
-                            } & NewsletterUI)
-                          | ({
-                              _key: string;
-                            } & TextSplitUI)
-                          | ({
-                              _key: string;
-                            } & TextUI)
-                        >;
-                      } | null;
-                      _type: "linkInternal";
+                    }>;
+                    style?: "normal" | "text-lg";
+                    listItem?: "bullet";
+                    markDefs: Array<
+                      | {
+                          href?: string;
+                          _type: "linkExternal";
+                          _key: string;
+                        }
+                      | {
+                          reference: {
+                            _id: string;
+                            _type: "pageModulaire";
+                            _createdAt: string;
+                            _updatedAt: string;
+                            _rev: string;
+                            seo?: Seo;
+                            homePage?: boolean;
+                            title?: string;
+                            slug?: Slug;
+                            modules?: Array<
+                              | ({
+                                  _key: string;
+                                } & DryWaterUI)
+                              | ({
+                                  _key: string;
+                                } & FormUI)
+                              | ({
+                                  _key: string;
+                                } & GridCardTextUI)
+                              | ({
+                                  _key: string;
+                                } & ImageTextUI)
+                              | ({
+                                  _key: string;
+                                } & ListCardsImageUI)
+                              | ({
+                                  _key: string;
+                                } & NewsletterUI)
+                              | ({
+                                  _key: string;
+                                } & TextSplitUI)
+                              | ({
+                                  _key: string;
+                                } & TextUI)
+                            >;
+                          } | null;
+                          _type: "linkInternal";
+                          _key: string;
+                        }
+                      | {
+                          link?: string;
+                          _type: "linkWeezevent";
+                          _key: string;
+                        }
+                    > | null;
+                    level?: number;
+                    _type: "block";
+                    _key: string;
+                  }
+                | {
+                    _key: string;
+                    _type: "embed";
+                    title?: string;
+                    placeholder?: {
+                      asset?: SanityImageAssetReference;
+                      media?: unknown;
+                      hotspot?: SanityImageHotspot;
+                      crop?: SanityImageCrop;
+                      _type: "image";
+                    };
+                    url?: string;
+                    iframe?: string;
+                    aspectRatio?: string;
+                    markDefs: null;
+                  }
+                | {
+                    style?: string;
+                    _type: "hr";
+                    _key: string;
+                    markDefs: null;
+                  }
+                | {
+                    asset: {
+                      _id: string;
+                      _type: "sanity.imageAsset";
+                      _createdAt: string;
+                      _updatedAt: string;
+                      _rev: string;
+                      originalFilename?: string;
+                      label?: string;
+                      title?: string;
+                      description?: string;
+                      altText?: string;
+                      sha1hash?: string;
+                      extension?: string;
+                      mimeType?: string;
+                      size?: number;
+                      assetId?: string;
+                      uploadId?: string;
+                      path?: string;
+                      url?: string;
+                      metadata?: SanityImageMetadata;
+                      source?: SanityAssetSourceData;
+                    } | null;
+                    media?: unknown;
+                    hotspot?: SanityImageHotspot;
+                    crop?: SanityImageCrop;
+                    _type: "image";
+                    _key: string;
+                    markDefs: null;
+                  }
+              > | null;
+              footerText?: string;
+            }
+          | {
+              _key: string;
+              _type: "cardTextDropDown";
+              title?: string;
+              color?:
+                | "black"
+                | "blue-100"
+                | "blue-200"
+                | "blue-50"
+                | "gray-100"
+                | "gray-50"
+                | "green-100"
+                | "lime-100"
+                | "pink-100"
+                | "pink-50"
+                | "purple-100"
+                | "red-100"
+                | "red-50"
+                | "yellow-100";
+              colSize?: 12 | 4 | 6;
+              text: Array<
+                | {
+                    children?: Array<{
+                      marks?: Array<string>;
+                      text?: string;
+                      _type: "span";
                       _key: string;
-                    }
-                  | {
-                      link?: string;
-                      _type: "linkWeezevent";
-                      _key: string;
-                    }
-                > | null;
-                level?: number;
-                _type: "block";
-                _key: string;
-              }
-            | {
-                _key: string;
-                _type: "embed";
-                title?: string;
-                placeholder?: {
-                  asset?: SanityImageAssetReference;
-                  media?: unknown;
-                  hotspot?: SanityImageHotspot;
-                  crop?: SanityImageCrop;
-                  _type: "image";
-                };
-                url?: string;
-                iframe?: string;
-                aspectRatio?: string;
-                markDefs: null;
-              }
-            | {
-                asset?: SanityImageAssetReference;
-                media?: unknown;
-                hotspot?: SanityImageHotspot;
-                crop?: SanityImageCrop;
-                _type: "image";
-                _key: string;
-                markDefs: null;
-              }
-          > | null;
-          footerText?: string;
-        }> | null;
+                    }>;
+                    style?: "normal" | "text-lg";
+                    listItem?: "bullet";
+                    markDefs: Array<
+                      | {
+                          href?: string;
+                          _type: "linkExternal";
+                          _key: string;
+                        }
+                      | {
+                          reference: {
+                            _id: string;
+                            _type: "pageModulaire";
+                            _createdAt: string;
+                            _updatedAt: string;
+                            _rev: string;
+                            seo?: Seo;
+                            homePage?: boolean;
+                            title?: string;
+                            slug?: Slug;
+                            modules?: Array<
+                              | ({
+                                  _key: string;
+                                } & DryWaterUI)
+                              | ({
+                                  _key: string;
+                                } & FormUI)
+                              | ({
+                                  _key: string;
+                                } & GridCardTextUI)
+                              | ({
+                                  _key: string;
+                                } & ImageTextUI)
+                              | ({
+                                  _key: string;
+                                } & ListCardsImageUI)
+                              | ({
+                                  _key: string;
+                                } & NewsletterUI)
+                              | ({
+                                  _key: string;
+                                } & TextSplitUI)
+                              | ({
+                                  _key: string;
+                                } & TextUI)
+                            >;
+                          } | null;
+                          _type: "linkInternal";
+                          _key: string;
+                        }
+                      | {
+                          link?: string;
+                          _type: "linkWeezevent";
+                          _key: string;
+                        }
+                    > | null;
+                    level?: number;
+                    _type: "block";
+                    _key: string;
+                  }
+                | {
+                    _key: string;
+                    _type: "embed";
+                    title?: string;
+                    placeholder?: {
+                      asset?: SanityImageAssetReference;
+                      media?: unknown;
+                      hotspot?: SanityImageHotspot;
+                      crop?: SanityImageCrop;
+                      _type: "image";
+                    };
+                    url?: string;
+                    iframe?: string;
+                    aspectRatio?: string;
+                    markDefs: null;
+                  }
+                | {
+                    style?: string;
+                    _type: "hr";
+                    _key: string;
+                    markDefs: null;
+                  }
+                | {
+                    asset: {
+                      _id: string;
+                      _type: "sanity.imageAsset";
+                      _createdAt: string;
+                      _updatedAt: string;
+                      _rev: string;
+                      originalFilename?: string;
+                      label?: string;
+                      title?: string;
+                      description?: string;
+                      altText?: string;
+                      sha1hash?: string;
+                      extension?: string;
+                      mimeType?: string;
+                      size?: number;
+                      assetId?: string;
+                      uploadId?: string;
+                      path?: string;
+                      url?: string;
+                      metadata?: SanityImageMetadata;
+                      source?: SanityAssetSourceData;
+                    } | null;
+                    media?: unknown;
+                    hotspot?: SanityImageHotspot;
+                    crop?: SanityImageCrop;
+                    _type: "image";
+                    _key: string;
+                    markDefs: null;
+                  }
+              > | null;
+            }
+        > | null;
       }
     | {
         _key: string;
@@ -2295,7 +2942,34 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -2394,7 +3068,34 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -2509,7 +3210,34 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     markDefs: null;
                   }
                 | {
-                    asset?: SanityImageAssetReference;
+                    style?: string;
+                    _type: "hr";
+                    _key: string;
+                    markDefs: null;
+                  }
+                | {
+                    asset: {
+                      _id: string;
+                      _type: "sanity.imageAsset";
+                      _createdAt: string;
+                      _updatedAt: string;
+                      _rev: string;
+                      originalFilename?: string;
+                      label?: string;
+                      title?: string;
+                      description?: string;
+                      altText?: string;
+                      sha1hash?: string;
+                      extension?: string;
+                      mimeType?: string;
+                      size?: number;
+                      assetId?: string;
+                      uploadId?: string;
+                      path?: string;
+                      url?: string;
+                      metadata?: SanityImageMetadata;
+                      source?: SanityAssetSourceData;
+                    } | null;
                     media?: unknown;
                     hotspot?: SanityImageHotspot;
                     crop?: SanityImageCrop;
@@ -2539,6 +3267,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                 | "red-100"
                 | "red-50"
                 | "yellow-100";
+              colSize?: 12 | 4 | 6;
               text: Array<
                 | {
                     children?: Array<{
@@ -2623,7 +3352,34 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     markDefs: null;
                   }
                 | {
-                    asset?: SanityImageAssetReference;
+                    style?: string;
+                    _type: "hr";
+                    _key: string;
+                    markDefs: null;
+                  }
+                | {
+                    asset: {
+                      _id: string;
+                      _type: "sanity.imageAsset";
+                      _createdAt: string;
+                      _updatedAt: string;
+                      _rev: string;
+                      originalFilename?: string;
+                      label?: string;
+                      title?: string;
+                      description?: string;
+                      altText?: string;
+                      sha1hash?: string;
+                      extension?: string;
+                      mimeType?: string;
+                      size?: number;
+                      assetId?: string;
+                      uploadId?: string;
+                      path?: string;
+                      url?: string;
+                      metadata?: SanityImageMetadata;
+                      source?: SanityAssetSourceData;
+                    } | null;
                     media?: unknown;
                     hotspot?: SanityImageHotspot;
                     crop?: SanityImageCrop;
@@ -2749,7 +3505,34 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -2848,7 +3631,34 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                 markDefs: null;
               }
             | {
-                asset?: SanityImageAssetReference;
+                style?: string;
+                _type: "hr";
+                _key: string;
+                markDefs: null;
+              }
+            | {
+                asset: {
+                  _id: string;
+                  _type: "sanity.imageAsset";
+                  _createdAt: string;
+                  _updatedAt: string;
+                  _rev: string;
+                  originalFilename?: string;
+                  label?: string;
+                  title?: string;
+                  description?: string;
+                  altText?: string;
+                  sha1hash?: string;
+                  extension?: string;
+                  mimeType?: string;
+                  size?: number;
+                  assetId?: string;
+                  uploadId?: string;
+                  path?: string;
+                  url?: string;
+                  metadata?: SanityImageMetadata;
+                  source?: SanityAssetSourceData;
+                } | null;
                 media?: unknown;
                 hotspot?: SanityImageHotspot;
                 crop?: SanityImageCrop;
@@ -2977,7 +3787,34 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: null;
             }
           | {
-              asset?: SanityImageAssetReference;
+              style?: string;
+              _type: "hr";
+              _key: string;
+              markDefs: null;
+            }
+          | {
+              asset: {
+                _id: string;
+                _type: "sanity.imageAsset";
+                _createdAt: string;
+                _updatedAt: string;
+                _rev: string;
+                originalFilename?: string;
+                label?: string;
+                title?: string;
+                description?: string;
+                altText?: string;
+                sha1hash?: string;
+                extension?: string;
+                mimeType?: string;
+                size?: number;
+                assetId?: string;
+                uploadId?: string;
+                path?: string;
+                url?: string;
+                metadata?: SanityImageMetadata;
+                source?: SanityAssetSourceData;
+              } | null;
               media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
@@ -2994,8 +3831,8 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
 declare global {
   interface SanityQueries {
     "*[_type == \"settings\"][0]{\n  ...,\n  navPrimary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        homePage,\n        _type,\n        slug\n      }\n    }\n  },\n  contact,\n  contactText,\n}": SETTINGS_QUERY_RESULT;
-    '*[_type == "pageModulaire" && homePage == true][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n\n  modules[]{\n    \n  ...,\n\t\n\t_type == \'dryWaterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n  _type == \'textUI\' => {\n    ...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n  }\n,\n\t\n\t_type == \'formUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'gridCardTextUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'listCardsImageUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'textSplitUI\' => {\n\t\t...,\n\t\ttexts[]{\n\t\t\t...,\n\t\t\ttext[]{\n\t\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t\t}\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'imageTextUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t},\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'newsletterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n\n\n  }\n}': HOME_QUERY_RESULT;
-    '*[_type == "pageModulaire" && slug.current == $slug][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n\n  modules[]{\n    \n  ...,\n\t\n\t_type == \'dryWaterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n  _type == \'textUI\' => {\n    ...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n  }\n,\n\t\n\t_type == \'formUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'gridCardTextUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'listCardsImageUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'textSplitUI\' => {\n\t\t...,\n\t\ttexts[]{\n\t\t\t...,\n\t\t\ttext[]{\n\t\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t\t}\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'imageTextUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t},\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'newsletterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t}\n\t}\n\n\t\t}\n\t}\n\n\n  }\n}': PAGE_MODULAIRE_QUERY_RESULT;
+    '*[_type == "pageModulaire" && homePage == true][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n\n  modules[]{\n    \n  ...,\n\t\n\t_type == \'dryWaterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n,\n\t\n  _type == \'textUI\' => {\n    ...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n  }\n,\n\t\n\t_type == \'formUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'gridCardTextUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'listCardsImageUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'textSplitUI\' => {\n\t\t...,\n\t\ttexts[]{\n\t\t\t...,\n\t\t\ttext[]{\n\t\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t\t}\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'imageTextUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t},\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'newsletterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n\n\n  }\n}': HOME_QUERY_RESULT;
+    '*[_type == "pageModulaire" && slug.current == $slug][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n\n  modules[]{\n    \n  ...,\n\t\n\t_type == \'dryWaterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n,\n\t\n  _type == \'textUI\' => {\n    ...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n  }\n,\n\t\n\t_type == \'formUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'gridCardTextUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'listCardsImageUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'textSplitUI\' => {\n\t\t...,\n\t\ttexts[]{\n\t\t\t...,\n\t\t\ttext[]{\n\t\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t\t}\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'imageTextUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t},\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'newsletterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n\n\n  }\n}': PAGE_MODULAIRE_QUERY_RESULT;
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too

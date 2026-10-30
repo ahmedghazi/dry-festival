@@ -15,7 +15,7 @@ type Props = {
 
 const CardTextComponent = ({ input, withDropDownText = false }: Props) => {
   const hasFooterText = input?.footerText !== undefined;
-  console.log(input?.footerText);
+  // console.log(input?.footerText);
   return (
     <div
       className={clsx(
@@ -31,17 +31,13 @@ const CardTextComponent = ({ input, withDropDownText = false }: Props) => {
             ? { backgroundColor: `var(--color-${input.color})` }
             : undefined
         }>
-        {input?.title && (
-          <h2 className='text-md md:text-lg ellipsis-'>
-            {stegaClean(input.title)}
-          </h2>
-        )}
+        {input?.title && <h2 className='text-md md:text-lg'>{input.title}</h2>}
         {input?.subtitle && (
           <p className='subtitle'>{stegaClean(input.subtitle)}</p>
         )}
         {input?.text && (
           <div className='text text-sm'>
-            {withDropDownText ? (
+            {/* {withDropDownText ? (
               <PortableExcerptToText
                 value={stegaClean(input.text)}
                 components={portableTextComponents}
@@ -51,7 +47,11 @@ const CardTextComponent = ({ input, withDropDownText = false }: Props) => {
                 value={stegaClean(input.text)}
                 components={portableTextComponents}
               />
-            )}
+            )} */}
+            <PortableText
+              value={stegaClean(input.text)}
+              components={portableTextComponents}
+            />
           </div>
         )}
       </div>

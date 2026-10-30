@@ -18,7 +18,7 @@ const portableTextComponents: PortableTextComponents = {
     image: ({ value }) => {
       console.log(value);
       return (
-        <div className='media'>
+        <div className='media rounded'>
           <Image
             src={urlFor(value.asset, 1200)}
             alt='icon'
@@ -31,7 +31,7 @@ const portableTextComponents: PortableTextComponents = {
     hr: () => <hr />,
     embed: ({ value }) => {
       return (
-        <div className='media'>
+        <div className='media rounded'>
           <EmbedComponent input={value} />
         </div>
       );

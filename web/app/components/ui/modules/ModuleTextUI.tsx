@@ -10,7 +10,6 @@ type Props = {
 const ModuleTextUI = ({ input }: Props) => {
   const { title, subtitle, text } = input;
   const hasHeading = title || subtitle;
-  console.log(text);
   return (
     <section className='module module--text-ui'>
       <div className='inner'>

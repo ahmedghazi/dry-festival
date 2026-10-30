@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import CardText from "../CardText";
 import { GridCardTextUI } from "@/app/sanity-api/types/sanity.types";
 import { PortableText, stegaClean } from "next-sanity";
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
+import CardTextDropDownComponent from "../CardTextDropDown";
 
 type Props = {
   input: GridCardTextUI;
@@ -35,7 +36,12 @@ const ModuleGridCardTextUI = ({ input }: Props) => {
         )}
         <div className='grid grid-cols-1 md:grid-cols-12 gap-sm md:gap-md'>
           {items?.map((item, i) => (
-            <CardText key={i} input={item} />
+            <Fragment key={i}>
+              {item._type === "cardText" && <CardText key={i} input={item} />}
+              {item._type === "cardTextDropDown" && (
+                <CardTextDropDownComponent key={i} input={item} />
+              )}
+            </Fragment>
           ))}
         </div>
       </div>

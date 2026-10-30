@@ -22,6 +22,27 @@ export default defineField({
         list: colors,
       },
     }),
+    defineField({
+      name: 'colSize',
+      type: 'number',
+      title: 'Taille de la carte',
+      options: {
+        list: [
+          {
+            title: 'SM',
+            value: 4,
+          },
+          {
+            title: 'MD',
+            value: 6,
+          },
+          {
+            title: 'LG',
+            value: 12,
+          },
+        ],
+      },
+    }),
 
     defineField({
       name: 'text',

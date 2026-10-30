@@ -14,7 +14,7 @@ type Props = {
 
 const CardTextDropDownComponent = ({ input }: Props) => {
   return (
-    <div className={clsx("card-outer")}>
+    <div className={clsx("card-outer", `md:col-span-${input?.colSize}`)}>
       <div
         className={clsx("card card-text-dropdown rounded")}
         style={
@@ -22,11 +22,7 @@ const CardTextDropDownComponent = ({ input }: Props) => {
             ? { backgroundColor: `var(--color-${input.color})` }
             : undefined
         }>
-        {input?.title && (
-          <h3 className='text-md strong ellipsis-'>
-            {stegaClean(input.title)}
-          </h3>
-        )}
+        {input?.title && <h3 className='text-md strong'>{input.title}</h3>}
 
         {input?.text && (
           <div className='text text-sm'>

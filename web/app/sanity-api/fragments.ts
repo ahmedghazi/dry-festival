@@ -44,6 +44,13 @@ export const cardText = `
 		${blockContent}
 	}
 `;
+export const cardTextDropDown = `
+	...,
+	text[]{
+		${blockContent}
+	},
+	colSize
+`;
 
 export const dryWaterUI = `
 	_type == 'dryWaterUI' => {
