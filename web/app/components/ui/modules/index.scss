@@ -140,7 +140,8 @@
         // gap: calc(var(--spacing-md)*1.5 + var(--border-width));
         gap: calc(var(--spacing-40));
       }
-      .grid:has(.has-footer-text) {
+      .grid:has(.has-footer-text),
+      .grid:has(.no-excerpts) {
         align-items: start;
       }
       h2,
@@ -150,6 +151,7 @@
       .grid:has(.card-outer.has-footer-text) {
         gap: var(--spacing-lg);
       }
+
       .card-text-dropdown {
         h3 {
           line-height: 1;

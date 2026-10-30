@@ -86,6 +86,12 @@ export default defineType({
                 title: 'Reference',
                 to: linkIntternalTypes,
               },
+              {
+                title: 'CTA',
+                name: 'cta',
+                type: 'boolean',
+                initialValue: false,
+              },
             ],
           },
           {
@@ -99,6 +105,12 @@ export default defineType({
                 name: 'href',
                 type: 'string',
               },
+              {
+                title: 'CTA',
+                name: 'cta',
+                type: 'boolean',
+                initialValue: false,
+              },
             ],
           },
           {
@@ -107,13 +119,14 @@ export default defineType({
             type: 'object',
             icon: IoTicketOutline,
             fields: [
-              // {
-              //   name: 'label',
-              //   title: 'Label',
-              //   type: 'string',
-              // },
               {
                 name: 'link',
+                title: 'Link',
+                type: 'url',
+                hidden: true,
+              },
+              {
+                name: 'url',
                 title: 'Link',
                 type: 'url',
               },

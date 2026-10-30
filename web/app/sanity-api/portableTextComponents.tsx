@@ -40,12 +40,24 @@ const portableTextComponents: PortableTextComponents = {
 
   marks: {
     linkInternal: ({ children, value }) => {
-      return <Link href={_linkResolver(value.reference)}>{children}</Link>;
+      const { reference, cta } = value;
+      return (
+        <Link
+          className={cta ? "btn btn--cta" : ""}
+          href={_linkResolver(reference)}>
+          {children}
+        </Link>
+      );
     },
     linkExternal: ({ children, value }) => {
-      const { href } = value;
+      const { href, cta } = value;
+      console.log(value);
       return (
-        <a href={href} rel={"noreferrer noopener"} target='_blank'>
+        <a
+          className={cta ? "btn btn--cta" : ""}
+          href={href}
+          rel={"noreferrer noopener"}
+          target='_blank'>
           <span>{children}</span>
         </a>
       );

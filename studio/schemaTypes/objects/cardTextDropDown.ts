@@ -26,6 +26,7 @@ export default defineField({
       name: 'colSize',
       type: 'number',
       title: 'Taille de la carte',
+      hidden: true,
       options: {
         list: [
           {

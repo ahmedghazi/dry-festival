@@ -8,9 +8,11 @@ import linkIcon from './objects/linkIcon'
 import contactLinkItem from './objects/contactLinkItem'
 import cta from './objects/cta'
 import keyVal from './objects/keyVal'
-import cardText from './objects/cardText'
 import embed from './objects/embed'
 import linkWeezevent from './objects/linkWeezevent'
+import cardText from './objects/cardText'
+import cardTextDropDown from './objects/cardTextDropDown'
+import cardTextDropDownAgenda from './objects/cardTextDropDownAgenda'
 
 /** modules */
 import textUI from './objects/modules/textUI'
@@ -22,7 +24,6 @@ import listCardsImageUI from './objects/modules/listCardsImageUI'
 import textSplitUI from './objects/modules/textSplitUI'
 import imageTextUI from './objects/modules/imageTextUI'
 import newsletterUI from './objects/modules/newsletterUI'
-import cardTextDropDown from './objects/cardTextDropDown'
 
 export const schemaTypes = [
   settings,
@@ -39,6 +40,7 @@ export const schemaTypes = [
   keyVal,
   cardText,
   cardTextDropDown,
+  cardTextDropDownAgenda,
   embed,
 
   textUI,

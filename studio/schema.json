@@ -466,7 +466,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "cardTextDropDown"
+                    "name": "cardTextDropDownAgenda"
                   }
                 }
               ]
@@ -694,6 +694,123 @@
           "type": "objectAttribute",
           "value": {
             "type": "string"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "cardTextDropDownAgenda",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "cardTextDropDownAgenda"
+          }
+        },
+        "title": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "color": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "black"
+              },
+              {
+                "type": "string",
+                "value": "gray-50"
+              },
+              {
+                "type": "string",
+                "value": "gray-100"
+              },
+              {
+                "type": "string",
+                "value": "blue-50"
+              },
+              {
+                "type": "string",
+                "value": "blue-100"
+              },
+              {
+                "type": "string",
+                "value": "blue-200"
+              },
+              {
+                "type": "string",
+                "value": "red-50"
+              },
+              {
+                "type": "string",
+                "value": "red-100"
+              },
+              {
+                "type": "string",
+                "value": "pink-50"
+              },
+              {
+                "type": "string",
+                "value": "pink-100"
+              },
+              {
+                "type": "string",
+                "value": "lime-100"
+              },
+              {
+                "type": "string",
+                "value": "green-100"
+              },
+              {
+                "type": "string",
+                "value": "yellow-100"
+              },
+              {
+                "type": "string",
+                "value": "purple-100"
+              }
+            ]
+          },
+          "optional": true
+        },
+        "colSize": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "number",
+                "value": 4
+              },
+              {
+                "type": "number",
+                "value": 6
+              },
+              {
+                "type": "number",
+                "value": 12
+              }
+            ]
+          },
+          "optional": true
+        },
+        "text": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "blockContent"
           },
           "optional": true
         }
@@ -1122,6 +1239,13 @@
                             },
                             "optional": true
                           },
+                          "cta": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "boolean"
+                            },
+                            "optional": true
+                          },
                           "_type": {
                             "type": "objectAttribute",
                             "value": {
@@ -1152,6 +1276,13 @@
                             },
                             "optional": true
                           },
+                          "cta": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "boolean"
+                            },
+                            "optional": true
+                          },
                           "_type": {
                             "type": "objectAttribute",
                             "value": {
@@ -1176,6 +1307,13 @@
                         "type": "object",
                         "attributes": {
                           "link": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "string"
+                            },
+                            "optional": true
+                          },
+                          "url": {
                             "type": "objectAttribute",
                             "value": {
                               "type": "string"

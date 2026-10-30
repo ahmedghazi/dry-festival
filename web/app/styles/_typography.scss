@@ -139,6 +139,7 @@ em {
     font-size: var(--text-lg);
     // line-height: toRem(53);
   }
+  &--cta,
   &--weezevent {
     background-color: var(--color-pink-50);
     border: var(--border);

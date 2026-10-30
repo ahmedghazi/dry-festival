@@ -93,7 +93,7 @@ export type GridCardTextUI = {
       } & CardText)
     | ({
         _key: string;
-      } & CardTextDropDown)
+      } & CardTextDropDownAgenda)
   >;
 };
 
@@ -134,6 +134,28 @@ export type Embed = {
   url?: string;
   iframe?: string;
   aspectRatio?: string;
+};
+
+export type CardTextDropDownAgenda = {
+  _type: "cardTextDropDownAgenda";
+  title?: string;
+  color?:
+    | "black"
+    | "gray-50"
+    | "gray-100"
+    | "blue-50"
+    | "blue-100"
+    | "blue-200"
+    | "red-50"
+    | "red-100"
+    | "pink-50"
+    | "pink-100"
+    | "lime-100"
+    | "green-100"
+    | "yellow-100"
+    | "purple-100";
+  colSize?: 4 | 6 | 12;
+  text?: BlockContent;
 };
 
 export type CardTextDropDown = {
@@ -209,16 +231,19 @@ export type BlockContent = Array<
       markDefs?: Array<
         | {
             reference?: PageModulaireReference;
+            cta?: boolean;
             _type: "linkInternal";
             _key: string;
           }
         | {
             href?: string;
+            cta?: boolean;
             _type: "linkExternal";
             _key: string;
           }
         | {
             link?: string;
+            url?: string;
             _type: "linkWeezevent";
             _key: string;
           }
@@ -565,6 +590,7 @@ export type AllSanitySchemaTypes =
   | DryWaterUI
   | TextUI
   | Embed
+  | CardTextDropDownAgenda
   | CardTextDropDown
   | CardText
   | KeyVal
@@ -686,6 +712,7 @@ export type HOME_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -727,11 +754,13 @@ export type HOME_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -843,6 +872,7 @@ export type HOME_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -884,11 +914,13 @@ export type HOME_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -985,6 +1017,7 @@ export type HOME_QUERY_RESULT = {
                     markDefs: Array<
                       | {
                           href?: string;
+                          cta?: boolean;
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -1026,11 +1059,13 @@ export type HOME_QUERY_RESULT = {
                                 } & TextUI)
                             >;
                           } | null;
+                          cta?: boolean;
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
+                          url?: string;
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -1096,7 +1131,7 @@ export type HOME_QUERY_RESULT = {
             }
           | {
               _key: string;
-              _type: "cardTextDropDown";
+              _type: "cardTextDropDownAgenda";
               title?: string;
               color?:
                 | "black"
@@ -1127,6 +1162,7 @@ export type HOME_QUERY_RESULT = {
                     markDefs: Array<
                       | {
                           href?: string;
+                          cta?: boolean;
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -1168,11 +1204,13 @@ export type HOME_QUERY_RESULT = {
                                 } & TextUI)
                             >;
                           } | null;
+                          cta?: boolean;
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
+                          url?: string;
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -1281,6 +1319,7 @@ export type HOME_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -1322,11 +1361,13 @@ export type HOME_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -1407,6 +1448,7 @@ export type HOME_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -1448,11 +1490,13 @@ export type HOME_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -1549,6 +1593,7 @@ export type HOME_QUERY_RESULT = {
                     markDefs: Array<
                       | {
                           href?: string;
+                          cta?: boolean;
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -1590,11 +1635,13 @@ export type HOME_QUERY_RESULT = {
                                 } & TextUI)
                             >;
                           } | null;
+                          cta?: boolean;
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
+                          url?: string;
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -1691,6 +1738,7 @@ export type HOME_QUERY_RESULT = {
                     markDefs: Array<
                       | {
                           href?: string;
+                          cta?: boolean;
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -1732,11 +1780,13 @@ export type HOME_QUERY_RESULT = {
                                 } & TextUI)
                             >;
                           } | null;
+                          cta?: boolean;
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
+                          url?: string;
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -1844,6 +1894,7 @@ export type HOME_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -1885,11 +1936,13 @@ export type HOME_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -1970,6 +2023,7 @@ export type HOME_QUERY_RESULT = {
                 markDefs: Array<
                   | {
                       href?: string;
+                      cta?: boolean;
                       _type: "linkExternal";
                       _key: string;
                     }
@@ -2011,11 +2065,13 @@ export type HOME_QUERY_RESULT = {
                             } & TextUI)
                         >;
                       } | null;
+                      cta?: boolean;
                       _type: "linkInternal";
                       _key: string;
                     }
                   | {
                       link?: string;
+                      url?: string;
                       _type: "linkWeezevent";
                       _key: string;
                     }
@@ -2126,6 +2182,7 @@ export type HOME_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -2167,11 +2224,13 @@ export type HOME_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -2276,6 +2335,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -2317,11 +2377,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -2433,6 +2495,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -2474,11 +2537,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -2575,6 +2640,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     markDefs: Array<
                       | {
                           href?: string;
+                          cta?: boolean;
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -2616,11 +2682,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                                 } & TextUI)
                             >;
                           } | null;
+                          cta?: boolean;
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
+                          url?: string;
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -2686,7 +2754,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
             }
           | {
               _key: string;
-              _type: "cardTextDropDown";
+              _type: "cardTextDropDownAgenda";
               title?: string;
               color?:
                 | "black"
@@ -2717,6 +2785,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     markDefs: Array<
                       | {
                           href?: string;
+                          cta?: boolean;
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -2758,11 +2827,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                                 } & TextUI)
                             >;
                           } | null;
+                          cta?: boolean;
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
+                          url?: string;
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -2871,6 +2942,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -2912,11 +2984,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -2997,6 +3071,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -3038,11 +3113,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -3139,6 +3216,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     markDefs: Array<
                       | {
                           href?: string;
+                          cta?: boolean;
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -3180,11 +3258,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                                 } & TextUI)
                             >;
                           } | null;
+                          cta?: boolean;
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
+                          url?: string;
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -3281,6 +3361,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                     markDefs: Array<
                       | {
                           href?: string;
+                          cta?: boolean;
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -3322,11 +3403,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                                 } & TextUI)
                             >;
                           } | null;
+                          cta?: boolean;
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
+                          url?: string;
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -3434,6 +3517,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -3475,11 +3559,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -3560,6 +3646,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                 markDefs: Array<
                   | {
                       href?: string;
+                      cta?: boolean;
                       _type: "linkExternal";
                       _key: string;
                     }
@@ -3601,11 +3688,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                             } & TextUI)
                         >;
                       } | null;
+                      cta?: boolean;
                       _type: "linkInternal";
                       _key: string;
                     }
                   | {
                       link?: string;
+                      url?: string;
                       _type: "linkWeezevent";
                       _key: string;
                     }
@@ -3716,6 +3805,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               markDefs: Array<
                 | {
                     href?: string;
+                    cta?: boolean;
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -3757,11 +3847,13 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                           } & TextUI)
                       >;
                     } | null;
+                    cta?: boolean;
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
+                    url?: string;
                     _type: "linkWeezevent";
                     _key: string;
                   }

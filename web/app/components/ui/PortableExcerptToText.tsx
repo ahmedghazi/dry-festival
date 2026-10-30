@@ -33,6 +33,8 @@ type Props = {
   moreGlyph?: string;
   /** Full glyph shown at the end of the expanded text, e.g. "[−]" or "Read less". */
   lessGlyph?: string;
+  /** Hides the excerpt text, leaving only the more glyph as the toggle. */
+  hideExcerpt?: boolean;
 };
 
 const isPortableBlock = (
@@ -95,6 +97,7 @@ const PortableExcerptToText = ({
   components,
   moreGlyph = "[+]",
   lessGlyph = "[−]",
+  hideExcerpt = false,
 }: Props) => {
   const [expanded, setExpanded] = useState(false);
   const id = useId();
@@ -119,7 +122,7 @@ const PortableExcerptToText = ({
 
   if (!blocks.length) return null;
 
-  if (!isTruncated) {
+  if (!isTruncated && !hideExcerpt) {
     return (
       <div className={clsx("portable-excerpt", className)}>
         <PortableText value={blocks} components={components} />
@@ -147,7 +150,11 @@ const PortableExcerptToText = ({
           }
         }}>
         <div className='portable-excerpt__excerpt-inner'>
-          <PortableText value={excerptBlocks} components={components} />
+          {hideExcerpt ? (
+            <span className='portable-excerpt__more'>{moreGlyph}</span>
+          ) : (
+            <PortableText value={excerptBlocks} components={components} />
+          )}
         </div>
       </div>
       <div className='portable-excerpt__full' id={id}>

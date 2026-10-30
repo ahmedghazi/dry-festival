@@ -27,7 +27,7 @@ export default defineField({
       name: 'items',
       type: 'array',
       title: 'Cards',
-      of: [{type: 'cardText'}, {type: 'cardTextDropDown'}],
+      of: [{type: 'cardText'}, {type: 'cardTextDropDownAgenda'}],
     }),
   ],
   preview: {
