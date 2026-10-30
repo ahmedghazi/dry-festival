@@ -22,7 +22,8 @@ const CardTextDropDownAgendaComponent = ({ input }: Props) => {
             ? { backgroundColor: `var(--color-${input.color})` }
             : undefined
         }>
-        {input?.title && <h3 className='text-md strong'>{input.title}</h3>}
+        {/* {input?.title && <h3 className='text-md strong'>{input.title}</h3>} */}
+        {input?.title && <h2 className='text-md md:text-lg'>{input.title}</h2>}
 
         {input?.text && (
           <div className='text text-sm'>

@@ -41,8 +41,9 @@
   }
   &.no-excerpt {
     padding-top: var(--spacing-md);
-    p {
-      margin-bottom: 1em;
+    .portable-excerpt__more,
+    .portable-excerpt__less {
+      font-size: var(--text-md);
     }
   }
   &__excerpt {
