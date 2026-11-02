@@ -5,11 +5,14 @@ import React from "react";
 import { PortableText, stegaClean } from "next-sanity";
 import { CardTextItem } from "@/app/sanity-api/types/extra-types";
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
-import { CardTextDropDown } from "@/app/sanity-api/types/sanity.types";
+import {
+  CardTextDropDown,
+  CardTextDropDownAgenda,
+} from "@/app/sanity-api/types/sanity.types";
 import PortableExcerptToText from "./PortableExcerptToText";
 
 type Props = {
-  input: CardTextDropDown;
+  input: CardTextDropDownAgenda;
 };
 
 const CardTextDropDownAgendaComponent = ({ input }: Props) => {
