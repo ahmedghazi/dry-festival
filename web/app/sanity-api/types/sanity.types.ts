@@ -139,6 +139,7 @@ export type Embed = {
 export type CardTextDropDownAgenda = {
   _type: "cardTextDropDownAgenda";
   title?: string;
+  subtitle?: string;
   color?:
     | "black"
     | "gray-50"
@@ -232,18 +233,63 @@ export type BlockContent = Array<
         | {
             reference?: PageModulaireReference;
             cta?: boolean;
+            color?:
+              | "black"
+              | "gray-50"
+              | "gray-100"
+              | "blue-50"
+              | "blue-100"
+              | "blue-200"
+              | "red-50"
+              | "red-100"
+              | "pink-50"
+              | "pink-100"
+              | "lime-100"
+              | "green-100"
+              | "yellow-100"
+              | "purple-100";
             _type: "linkInternal";
             _key: string;
           }
         | {
             href?: string;
             cta?: boolean;
+            color?:
+              | "black"
+              | "gray-50"
+              | "gray-100"
+              | "blue-50"
+              | "blue-100"
+              | "blue-200"
+              | "red-50"
+              | "red-100"
+              | "pink-50"
+              | "pink-100"
+              | "lime-100"
+              | "green-100"
+              | "yellow-100"
+              | "purple-100";
             _type: "linkExternal";
             _key: string;
           }
         | {
             link?: string;
             url?: string;
+            color?:
+              | "black"
+              | "gray-50"
+              | "gray-100"
+              | "blue-50"
+              | "blue-100"
+              | "blue-200"
+              | "red-50"
+              | "red-100"
+              | "pink-50"
+              | "pink-100"
+              | "lime-100"
+              | "green-100"
+              | "yellow-100"
+              | "purple-100";
             _type: "linkWeezevent";
             _key: string;
           }
@@ -713,6 +759,21 @@ export type HOME_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -755,12 +816,42 @@ export type HOME_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -873,6 +964,21 @@ export type HOME_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -915,12 +1021,42 @@ export type HOME_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -1018,6 +1154,21 @@ export type HOME_QUERY_RESULT = {
                       | {
                           href?: string;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -1060,12 +1211,42 @@ export type HOME_QUERY_RESULT = {
                             >;
                           } | null;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
                           url?: string;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -1133,6 +1314,7 @@ export type HOME_QUERY_RESULT = {
               _key: string;
               _type: "cardTextDropDownAgenda";
               title?: string;
+              subtitle?: string;
               color?:
                 | "black"
                 | "blue-100"
@@ -1163,6 +1345,21 @@ export type HOME_QUERY_RESULT = {
                       | {
                           href?: string;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -1205,12 +1402,42 @@ export type HOME_QUERY_RESULT = {
                             >;
                           } | null;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
                           url?: string;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -1320,6 +1547,21 @@ export type HOME_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -1362,12 +1604,42 @@ export type HOME_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -1449,6 +1721,21 @@ export type HOME_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -1491,12 +1778,42 @@ export type HOME_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -1594,6 +1911,21 @@ export type HOME_QUERY_RESULT = {
                       | {
                           href?: string;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -1636,12 +1968,42 @@ export type HOME_QUERY_RESULT = {
                             >;
                           } | null;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
                           url?: string;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -1739,6 +2101,21 @@ export type HOME_QUERY_RESULT = {
                       | {
                           href?: string;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -1781,12 +2158,42 @@ export type HOME_QUERY_RESULT = {
                             >;
                           } | null;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
                           url?: string;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -1895,6 +2302,21 @@ export type HOME_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -1937,12 +2359,42 @@ export type HOME_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -2024,6 +2476,21 @@ export type HOME_QUERY_RESULT = {
                   | {
                       href?: string;
                       cta?: boolean;
+                      color?:
+                        | "black"
+                        | "blue-100"
+                        | "blue-200"
+                        | "blue-50"
+                        | "gray-100"
+                        | "gray-50"
+                        | "green-100"
+                        | "lime-100"
+                        | "pink-100"
+                        | "pink-50"
+                        | "purple-100"
+                        | "red-100"
+                        | "red-50"
+                        | "yellow-100";
                       _type: "linkExternal";
                       _key: string;
                     }
@@ -2066,12 +2533,42 @@ export type HOME_QUERY_RESULT = {
                         >;
                       } | null;
                       cta?: boolean;
+                      color?:
+                        | "black"
+                        | "blue-100"
+                        | "blue-200"
+                        | "blue-50"
+                        | "gray-100"
+                        | "gray-50"
+                        | "green-100"
+                        | "lime-100"
+                        | "pink-100"
+                        | "pink-50"
+                        | "purple-100"
+                        | "red-100"
+                        | "red-50"
+                        | "yellow-100";
                       _type: "linkInternal";
                       _key: string;
                     }
                   | {
                       link?: string;
                       url?: string;
+                      color?:
+                        | "black"
+                        | "blue-100"
+                        | "blue-200"
+                        | "blue-50"
+                        | "gray-100"
+                        | "gray-50"
+                        | "green-100"
+                        | "lime-100"
+                        | "pink-100"
+                        | "pink-50"
+                        | "purple-100"
+                        | "red-100"
+                        | "red-50"
+                        | "yellow-100";
                       _type: "linkWeezevent";
                       _key: string;
                     }
@@ -2183,6 +2680,21 @@ export type HOME_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -2225,12 +2737,42 @@ export type HOME_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -2336,6 +2878,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -2378,12 +2935,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -2496,6 +3083,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -2538,12 +3140,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -2641,6 +3273,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       | {
                           href?: string;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -2683,12 +3330,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                             >;
                           } | null;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
                           url?: string;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -2756,6 +3433,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
               _key: string;
               _type: "cardTextDropDownAgenda";
               title?: string;
+              subtitle?: string;
               color?:
                 | "black"
                 | "blue-100"
@@ -2786,6 +3464,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       | {
                           href?: string;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -2828,12 +3521,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                             >;
                           } | null;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
                           url?: string;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -2943,6 +3666,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -2985,12 +3723,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -3072,6 +3840,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -3114,12 +3897,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -3217,6 +4030,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       | {
                           href?: string;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -3259,12 +4087,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                             >;
                           } | null;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
                           url?: string;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -3362,6 +4220,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       | {
                           href?: string;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkExternal";
                           _key: string;
                         }
@@ -3404,12 +4277,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                             >;
                           } | null;
                           cta?: boolean;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkInternal";
                           _key: string;
                         }
                       | {
                           link?: string;
                           url?: string;
+                          color?:
+                            | "black"
+                            | "blue-100"
+                            | "blue-200"
+                            | "blue-50"
+                            | "gray-100"
+                            | "gray-50"
+                            | "green-100"
+                            | "lime-100"
+                            | "pink-100"
+                            | "pink-50"
+                            | "purple-100"
+                            | "red-100"
+                            | "red-50"
+                            | "yellow-100";
                           _type: "linkWeezevent";
                           _key: string;
                         }
@@ -3518,6 +4421,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -3560,12 +4478,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }
@@ -3647,6 +4595,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                   | {
                       href?: string;
                       cta?: boolean;
+                      color?:
+                        | "black"
+                        | "blue-100"
+                        | "blue-200"
+                        | "blue-50"
+                        | "gray-100"
+                        | "gray-50"
+                        | "green-100"
+                        | "lime-100"
+                        | "pink-100"
+                        | "pink-50"
+                        | "purple-100"
+                        | "red-100"
+                        | "red-50"
+                        | "yellow-100";
                       _type: "linkExternal";
                       _key: string;
                     }
@@ -3689,12 +4652,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                         >;
                       } | null;
                       cta?: boolean;
+                      color?:
+                        | "black"
+                        | "blue-100"
+                        | "blue-200"
+                        | "blue-50"
+                        | "gray-100"
+                        | "gray-50"
+                        | "green-100"
+                        | "lime-100"
+                        | "pink-100"
+                        | "pink-50"
+                        | "purple-100"
+                        | "red-100"
+                        | "red-50"
+                        | "yellow-100";
                       _type: "linkInternal";
                       _key: string;
                     }
                   | {
                       link?: string;
                       url?: string;
+                      color?:
+                        | "black"
+                        | "blue-100"
+                        | "blue-200"
+                        | "blue-50"
+                        | "gray-100"
+                        | "gray-50"
+                        | "green-100"
+                        | "lime-100"
+                        | "pink-100"
+                        | "pink-50"
+                        | "purple-100"
+                        | "red-100"
+                        | "red-50"
+                        | "yellow-100";
                       _type: "linkWeezevent";
                       _key: string;
                     }
@@ -3806,6 +4799,21 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                 | {
                     href?: string;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkExternal";
                     _key: string;
                   }
@@ -3848,12 +4856,42 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
                       >;
                     } | null;
                     cta?: boolean;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkInternal";
                     _key: string;
                   }
                 | {
                     link?: string;
                     url?: string;
+                    color?:
+                      | "black"
+                      | "blue-100"
+                      | "blue-200"
+                      | "blue-50"
+                      | "gray-100"
+                      | "gray-50"
+                      | "green-100"
+                      | "lime-100"
+                      | "pink-100"
+                      | "pink-50"
+                      | "purple-100"
+                      | "red-100"
+                      | "red-50"
+                      | "yellow-100";
                     _type: "linkWeezevent";
                     _key: string;
                   }

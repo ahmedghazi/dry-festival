@@ -720,6 +720,13 @@
           },
           "optional": true
         },
+        "subtitle": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "color": {
           "type": "objectAttribute",
           "value": {
@@ -1246,6 +1253,71 @@
                             },
                             "optional": true
                           },
+                          "color": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "union",
+                              "of": [
+                                {
+                                  "type": "string",
+                                  "value": "black"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "gray-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "gray-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "blue-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "blue-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "blue-200"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "red-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "red-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "pink-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "pink-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "lime-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "green-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "yellow-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "purple-100"
+                                }
+                              ]
+                            },
+                            "optional": true
+                          },
                           "_type": {
                             "type": "objectAttribute",
                             "value": {
@@ -1283,6 +1355,71 @@
                             },
                             "optional": true
                           },
+                          "color": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "union",
+                              "of": [
+                                {
+                                  "type": "string",
+                                  "value": "black"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "gray-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "gray-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "blue-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "blue-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "blue-200"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "red-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "red-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "pink-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "pink-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "lime-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "green-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "yellow-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "purple-100"
+                                }
+                              ]
+                            },
+                            "optional": true
+                          },
                           "_type": {
                             "type": "objectAttribute",
                             "value": {
@@ -1317,6 +1454,71 @@
                             "type": "objectAttribute",
                             "value": {
                               "type": "string"
+                            },
+                            "optional": true
+                          },
+                          "color": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "union",
+                              "of": [
+                                {
+                                  "type": "string",
+                                  "value": "black"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "gray-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "gray-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "blue-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "blue-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "blue-200"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "red-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "red-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "pink-50"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "pink-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "lime-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "green-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "yellow-100"
+                                },
+                                {
+                                  "type": "string",
+                                  "value": "purple-100"
+                                }
+                              ]
                             },
                             "optional": true
                           },

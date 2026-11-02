@@ -27,7 +27,9 @@ const CardTextDropDownAgendaComponent = ({ input }: Props) => {
         }>
         {/* {input?.title && <h3 className='text-md strong'>{input.title}</h3>} */}
         {input?.title && <h2 className='text-md md:text-lg'>{input.title}</h2>}
-
+        {input?.subtitle && (
+          <p className='subtitle'>{stegaClean(input.subtitle)}</p>
+        )}
         {input?.text && (
           <div className='text text-sm'>
             <PortableExcerptToText

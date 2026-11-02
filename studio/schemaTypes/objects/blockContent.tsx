@@ -4,6 +4,7 @@ import {FiExternalLink} from 'react-icons/fi'
 import linkIntternalTypes from '../misc/linkIntternalTypes'
 import LinkIcon from '@sanity/icons/Link'
 import {IoTicketOutline} from 'react-icons/io5'
+import colors from '../misc/colors'
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -92,6 +93,15 @@ export default defineType({
                 type: 'boolean',
                 initialValue: false,
               },
+              defineField({
+                name: 'color',
+                type: 'string',
+                title: 'Color',
+                options: {
+                  list: colors,
+                },
+                hidden: ({parent}) => !parent?.cta,
+              }),
             ],
           },
           {
@@ -100,17 +110,26 @@ export default defineType({
             type: 'object',
             icon: FiExternalLink,
             fields: [
-              {
+              defineField({
                 title: 'URL',
                 name: 'href',
                 type: 'string',
-              },
-              {
+              }),
+              defineField({
                 title: 'CTA',
                 name: 'cta',
                 type: 'boolean',
                 initialValue: false,
-              },
+              }),
+              defineField({
+                name: 'color',
+                type: 'string',
+                title: 'Color',
+                options: {
+                  list: colors,
+                },
+                hidden: ({parent}) => !parent?.cta,
+              }),
             ],
           },
           {
@@ -119,17 +138,25 @@ export default defineType({
             type: 'object',
             icon: IoTicketOutline,
             fields: [
-              {
+              defineField({
                 name: 'link',
                 title: 'Link',
                 type: 'url',
                 hidden: true,
-              },
-              {
+              }),
+              defineField({
                 name: 'url',
                 title: 'Link',
                 type: 'url',
-              },
+              }),
+              defineField({
+                name: 'color',
+                type: 'string',
+                title: 'Color',
+                options: {
+                  list: colors,
+                },
+              }),
             ],
           },
         ],

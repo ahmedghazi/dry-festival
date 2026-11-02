@@ -11,8 +11,15 @@ export default defineField({
   fields: [
     defineField({
       name: 'title',
-      type: 'string',
+      type: 'text',
       title: 'Title',
+      rows: 2,
+    }),
+    defineField({
+      name: 'subtitle',
+      type: 'text',
+      title: 'Subtitle',
+      rows: 2,
     }),
     defineField({
       name: 'color',

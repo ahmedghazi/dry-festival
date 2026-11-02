@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { _linkResolver } from "./utils";
 import EmbedComponent from "../components/ui/Embed";
+import clsx from "clsx";
 
 const portableTextComponents: PortableTextComponents = {
   block: {
@@ -40,10 +41,16 @@ const portableTextComponents: PortableTextComponents = {
 
   marks: {
     linkInternal: ({ children, value }) => {
-      const { reference, cta } = value;
+      const { reference, cta, color } = value;
       return (
         <Link
-          className={cta ? "btn btn--cta" : ""}
+          className={clsx(
+            cta ? "btn btn--cta" : "",
+            // color ? `btn--${color}` : "",
+          )}
+          style={{
+            backgroundColor: `var(--color-${color})`,
+          }}
           href={_linkResolver(reference)}>
           {children}
         </Link>
@@ -80,7 +87,7 @@ const portableTextComponents: PortableTextComponents = {
           data-noscroll='0'
           data-use-container='yes'
           data-type='neo'>
-          <span>{children}</span>
+          <span>{children} </span>
         </a>
       );
     },

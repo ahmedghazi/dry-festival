@@ -19,9 +19,12 @@
       gap: 1rem;
     }
     &.card-text-dropdown {
-      gap: 0;
+      // gap: 0;
       h3 {
         line-height: 0.95;
+      }
+      p.subtitle {
+        margin-bottom: 0;
       }
     }
     .text-lg {
