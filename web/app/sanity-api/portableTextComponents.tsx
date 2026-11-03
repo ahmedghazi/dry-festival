@@ -12,12 +12,7 @@ const portableTextComponents: PortableTextComponents = {
     "text-lg": ({ children }) => <p className=' md:text-md'>{children}</p>,
   },
   types: {
-    // image: ({ value }) => {
-    //   console.log(value)
-    //   return <img src={urlFor(value.asset)} alt="some image" />
-    // },
     image: ({ value }) => {
-      console.log(value);
       return (
         <div className='media rounded'>
           <Image
