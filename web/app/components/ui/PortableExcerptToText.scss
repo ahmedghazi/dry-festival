@@ -41,6 +41,9 @@
   }
   &.no-excerpt {
     // padding-top: var(--spacing-md);
+    .portable-excerpt__toggle {
+      font-size: var(--text-md);
+    }
   }
   .portable-excerpt__more,
   .portable-excerpt__less {
@@ -72,15 +75,14 @@
   }
 
   &__toggle {
-    font-size: var(--text-md);
     display: block;
     width: fit-content;
     margin: 0 auto;
     padding: 0;
     border: 0;
     background: none;
-    // font-size: inherit;
-    // line-height: 0.95;
+    font-size: inherit;
+    line-height: 0.95;
     color: inherit;
     cursor: pointer;
 
