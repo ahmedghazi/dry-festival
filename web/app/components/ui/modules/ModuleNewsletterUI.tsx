@@ -18,18 +18,19 @@ const ModuleNewsletterUI = ({ input }: Props) => {
           <h2 className='title text-md md:text-lg '>{stegaClean(title)}</h2>
         )}
 
-        {text && (
-          <div className='text'>
-            <div className='module__text text'>
-              <PortableText
-                value={stegaClean(text)}
-                components={portableTextComponents}
-              />
+        <div className='content'>
+          {text && (
+            <div className='text'>
+              <div className='module__text text'>
+                <PortableText
+                  value={stegaClean(text)}
+                  components={portableTextComponents}
+                />
+              </div>
             </div>
-          </div>
-        )}
-
-        <Mailchimp action='' optin />
+          )}
+          <Mailchimp action='' optin />
+        </div>
       </div>
     </section>
   );

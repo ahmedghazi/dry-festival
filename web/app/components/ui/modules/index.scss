@@ -100,12 +100,19 @@
       margin-bottom: var(--spacing-2xl);
 
       text-align: center;
-      .inner {
+      .inner,
+      .content {
         display: flex;
         flex-direction: column;
-        // gap: var(--spacing-md);
-        // gap: calc(var(--spacing-md) * 1.5 + var(--border-width));
+
         gap: calc(var(--spacing-40));
+        align-items: center;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+
+        gap: calc(var(--spacing-md));
         align-items: center;
       }
     }
