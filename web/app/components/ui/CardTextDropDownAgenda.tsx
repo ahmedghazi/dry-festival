@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import React from "react";
+import React, { useState } from "react";
 import { PortableText, stegaClean } from "next-sanity";
 import { CardTextItem } from "@/app/sanity-api/types/extra-types";
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
@@ -16,8 +16,11 @@ type Props = {
 };
 
 const CardTextDropDownAgendaComponent = ({ input }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className={clsx("card-outer", `md:col-span-${input?.colSize}`)}>
+    <div
+      className={clsx("card-outer", `md:col-span-${input?.colSize}`)}
+      onClick={() => setIsOpen(!isOpen)}>
       <div
         className={clsx("card card-text-dropdown rounded")}
         style={
@@ -36,7 +39,9 @@ const CardTextDropDownAgendaComponent = ({ input }: Props) => {
               value={stegaClean(input.text)}
               components={portableTextComponents}
               hideExcerpt={true}
-              className='no-excerpt'
+              className='no-excerpt with-scrollbar'
+              isOpen={isOpen}
+              onOpenChange={setIsOpen}
             />
           </div>
         )}

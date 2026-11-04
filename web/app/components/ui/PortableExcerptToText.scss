@@ -39,8 +39,13 @@
       opacity: 1;
     }
   }
+  &.with-scrollbar {
+    max-height: 60dvh;
+    overflow-y: auto;
+  }
   &.no-excerpt {
     // padding-top: var(--spacing-md);
+
     .portable-excerpt__toggle {
       font-size: var(--text-md);
     }

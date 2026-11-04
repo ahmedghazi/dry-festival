@@ -27,6 +27,14 @@
         margin-bottom: 0;
       }
     }
+    &:has(.with-scrollbar) {
+      padding-left: 0;
+      padding-right: 0;
+      .with-scrollbar {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+      }
+    }
     .text-lg {
       line-height: 0.8;
       hyphens: auto;

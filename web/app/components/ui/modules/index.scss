@@ -148,7 +148,11 @@
         gap: calc(var(--spacing-40));
       }
       .grid:has(.has-footer-text),
-      .grid:has(.no-excerpts) {
+      .grid:has(.no-excerpts),
+      .grid:has(.card-text-dropdown) {
+        align-items: start;
+      }
+      .grid:has(.card-text-dropdown) {
         align-items: start;
       }
       h2,
@@ -163,6 +167,9 @@
         h3 {
           line-height: 1;
           font-size: var(--text-lg);
+        }
+        hr:first-of-type {
+          margin-top: 0;
         }
         p {
           font-size: var(--text-md);

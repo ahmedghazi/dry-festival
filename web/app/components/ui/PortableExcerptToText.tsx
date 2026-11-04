@@ -35,6 +35,10 @@ type Props = {
   lessGlyph?: string;
   /** Hides the excerpt text, leaving only the more glyph as the toggle. */
   hideExcerpt?: boolean;
+  /** Controlled open state. When provided, the parent owns the state. */
+  isOpen?: boolean;
+  /** Called whenever the component requests an open/close change. */
+  onOpenChange?: (open: boolean) => void;
 };
 
 const isPortableBlock = (
@@ -98,22 +102,34 @@ const PortableExcerptToText = ({
   moreGlyph = "[+]",
   lessGlyph = "[−]",
   hideExcerpt = false,
+  isOpen,
+  onOpenChange,
 }: Props) => {
-  const [expanded, setExpanded] = useState(false);
+  const isControlled = isOpen !== undefined;
+  const [internalExpanded, setInternalExpanded] = useState(false);
+  const expanded = isControlled ? isOpen : internalExpanded;
   const id = useId();
+
+  const setExpanded = (next: boolean) => {
+    if (!isControlled) setInternalExpanded(next);
+    onOpenChange?.(next);
+  };
 
   const blocks = useMemo(() => (Array.isArray(value) ? value : []), [value]);
   const isTruncated = useMemo(() => getIsTruncated(blocks), [blocks]);
   const excerptBlocks = useMemo(() => getExcerptBlocks(blocks), [blocks]);
 
+  // Uncontrolled instances close when another one opens; controlled ones are
+  // left to their parent.
   useEffect(() => {
+    if (isControlled) return;
     const token = subscribe(TOPIC_OPEN, (_msg, openedId) => {
-      if (openedId !== id) setExpanded(false);
+      if (openedId !== id) setInternalExpanded(false);
     });
     return () => {
       unsubscribe(token);
     };
-  }, [id]);
+  }, [id, isControlled]);
 
   const _onExpand = () => {
     setExpanded(true);

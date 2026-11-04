@@ -9,6 +9,9 @@
 
 - move webhook from aeai's netlify account to dry festival's netlify account
 - unblock deploys from netlify
+- agenda, reste ouvert + pas de stretch, + click sur toute la carte toggle,
+- agenda ajouter le moins qui sera sticky en haut
+- agenda ajouter un scroll
 
 # Dry Festival
 
