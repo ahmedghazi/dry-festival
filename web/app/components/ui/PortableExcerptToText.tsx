@@ -100,7 +100,7 @@ const PortableExcerptToText = ({
   className,
   components,
   moreGlyph = "[+]",
-  lessGlyph = "[−]",
+  lessGlyph = "[—]",
   hideExcerpt = false,
   isOpen,
   onOpenChange,

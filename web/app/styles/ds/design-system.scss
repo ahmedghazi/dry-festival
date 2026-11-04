@@ -20,11 +20,18 @@
     }
     &.card-text-dropdown {
       // gap: 0;
+      position: relative;
       h3 {
         line-height: 0.95;
       }
       p.subtitle {
         margin-bottom: 0;
+      }
+      .card-toggle {
+        cursor: pointer;
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
       }
     }
     &:has(.with-scrollbar) {
