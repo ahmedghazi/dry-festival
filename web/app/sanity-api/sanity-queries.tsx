@@ -33,7 +33,15 @@ export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0]{
     _type == 'linkIcon' => {
       ...,
       icon{
-        asset->}
+        ...,
+        asset->{
+          _id,
+          url,
+          metadata{
+            dimensions
+          }
+        }
+      }
     }
   },
   contact,

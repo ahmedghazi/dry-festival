@@ -53,7 +53,6 @@ const portableTextComponents: PortableTextComponents = {
     },
     linkExternal: ({ children, value }) => {
       const { href, cta } = value;
-      console.log(value);
       return (
         <a
           className={cta ? "btn btn--cta" : ""}
