@@ -401,6 +401,9 @@ export type Settings = {
     | ({
         _key: string;
       } & LinkExternal)
+    | ({
+        _key: string;
+      } & LinkIcon)
   >;
   contact?: string;
   contactText?: BlockContent;
@@ -672,7 +675,7 @@ export type AllSanitySchemaTypes =
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: SETTINGS_QUERY
-// Query: *[_type == "settings"][0]{  ...,  navPrimary[]{    ...,    _type == 'linkInternal' => {      ...,      link->{        homePage,        _type,        slug      }    }  },  contact,  contactText,}
+// Query: *[_type == "settings"][0]{  ...,  navPrimary[]{    ...,    _type == 'linkInternal' => {      ...,      link->{        homePage,        _type,        slug      }    }  },  navSecondary[]{    ...,    _type == 'linkInternal' => {      ...,      link->{        homePage,        _type,        slug      }    },    _type == 'linkIcon' => {      ...,      icon    }  },  contact,  contactText,}
 export type SETTINGS_QUERY_RESULT = {
   _id: string;
   _type: "settings";
@@ -704,14 +707,37 @@ export type SETTINGS_QUERY_RESULT = {
       _key: string;
     } & LinkIcon
   >;
-  navSecondary?: Array<
-    | ({
+  navSecondary: Array<
+    | {
         _key: string;
-      } & LinkExternal)
-    | ({
+        _type: "linkExternal";
+        label?: string;
+        link?: string;
+      }
+    | {
         _key: string;
-      } & LinkInternal)
-  >;
+        _type: "linkIcon";
+        label?: string;
+        link?: string;
+        icon: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
+        } | null;
+      }
+    | {
+        _key: string;
+        _type: "linkInternal";
+        label?: string;
+        link: {
+          homePage: boolean | null;
+          _type: "pageModulaire";
+          slug: Slug | null;
+        } | null;
+      }
+  > | null;
   contact: string | null;
   contactText: BlockContent | null;
   message404?: BlockContent;
@@ -4960,7 +4986,7 @@ export type PAGE_MODULAIRE_QUERY_RESULT = {
 // Query TypeMap
 declare global {
   interface SanityQueries {
-    "*[_type == \"settings\"][0]{\n  ...,\n  navPrimary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        homePage,\n        _type,\n        slug\n      }\n    }\n  },\n  contact,\n  contactText,\n}": SETTINGS_QUERY_RESULT;
+    "*[_type == \"settings\"][0]{\n  ...,\n  navPrimary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        homePage,\n        _type,\n        slug\n      }\n    }\n  },\n  navSecondary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        homePage,\n        _type,\n        slug\n      }\n    },\n    _type == 'linkIcon' => {\n      ...,\n      icon\n    }\n  },\n  contact,\n  contactText,\n}": SETTINGS_QUERY_RESULT;
     '*[_type == "pageModulaire" && homePage == true][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n\n  modules[]{\n    \n  ...,\n\t\n\t_type == \'dryWaterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n,\n\t\n  _type == \'textUI\' => {\n    ...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n  }\n,\n\t\n\t_type == \'formUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'gridCardTextUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'listCardsImageUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'textSplitUI\' => {\n\t\t...,\n\t\ttexts[]{\n\t\t\t...,\n\t\t\ttext[]{\n\t\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t\t}\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'imageTextUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t},\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'newsletterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n\n\n  }\n}': HOME_QUERY_RESULT;
     '*[_type == "pageModulaire" && slug.current == $slug][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n\n  modules[]{\n    \n  ...,\n\t\n\t_type == \'dryWaterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n,\n\t\n  _type == \'textUI\' => {\n    ...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n  }\n,\n\t\n\t_type == \'formUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'gridCardTextUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'listCardsImageUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t},\n\t\titems[]{\n\t\t\t\n\t...,\n\ttext[]{\n\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t}\n\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'textSplitUI\' => {\n\t\t...,\n\t\ttexts[]{\n\t\t\t...,\n\t\t\ttext[]{\n\t\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t\t}\n\t\t},\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'imageTextUI\' => {\n\t\t...,\n\t\timage{\n\t\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t\t},\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n,\n\t\n\t_type == \'newsletterUI\' => {\n\t\t...,\n\t\ttext[]{\n\t\t\t\n\t...,\n\n\tmarkDefs[] {\n\t\t...,\n\t\t_type == "linkInternal" => {\n\t\t\t...,\n\t\t\treference->,\n\t\t},\n\n\t},\n\t_type == "embed" => {\n\t\t...,\n\t},\n\t_type == "image" => {\n\t\t...,\n\t\tasset->\n\t}\n\n\t\t}\n\t}\n\n\n  }\n}': PAGE_MODULAIRE_QUERY_RESULT;
   }

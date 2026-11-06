@@ -76,6 +76,7 @@ export default defineType({
     defineField({
       name: 'navSecondary',
       title: 'Naviguation Secondary',
+      description: 'partenaires',
       type: 'array',
       of: [
         {
@@ -84,9 +85,12 @@ export default defineType({
         {
           type: 'linkExternal',
         },
+        {
+          type: 'linkIcon',
+        },
       ],
       group: 'footer',
-      hidden: true,
+      // hidden: true,
     }),
 
     defineField({

@@ -20,6 +20,22 @@ export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0]{
       }
     }
   },
+  navSecondary[]{
+    ...,
+    _type == 'linkInternal' => {
+      ...,
+      link->{
+        homePage,
+        _type,
+        slug
+      }
+    },
+    _type == 'linkIcon' => {
+      ...,
+      icon{
+        asset->}
+    }
+  },
   contact,
   contactText,
 }`);

@@ -7,6 +7,7 @@ footer {
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-md);
+    gap: 1em;
     text-align: center;
 
     h2 {
@@ -14,11 +15,35 @@ footer {
       border-bottom: var(--border);
       min-width: 100%;
     }
+    .nav-secondary {
+      min-width: 100%;
+      h2 {
+      }
+      ul {
+        padding: 1em 0;
+        display: flex;
+        gap: var(--spacing-md);
+        align-items: center;
+        justify-content: center;
+        img {
+          max-height: 4rem;
+          width: auto;
+        }
+      }
+    }
   }
   @media all and (max-width: variables.$md) {
     padding-top: var(--spacing-40);
     .inner h2 {
       border-bottom: var(--border-sm);
+    }
+    .nav-secondary {
+      ul {
+        flex-direction: column;
+        img {
+          max-height: 2rem;
+        }
+      }
     }
   }
 }
