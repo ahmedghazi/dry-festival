@@ -1,7 +1,6 @@
 import React from "react";
 import { PortableText, stegaClean } from "next-sanity";
 import portableTextComponents from "../sanity-api/portableTextComponents";
-import Mailchimp from "./ui/Mailchimp";
 import { SETTINGS_QUERY_RESULT } from "../sanity-api/types/sanity.types";
 import { urlFor } from "../sanity-api/sanity-utils";
 import Image from "next/image";
@@ -11,7 +10,6 @@ type Props = {
 };
 
 const Footer = ({ settings }: Props) => {
-  // const { contact, contactText } = settings;
   return (
     <footer>
       <div className='inner'>
