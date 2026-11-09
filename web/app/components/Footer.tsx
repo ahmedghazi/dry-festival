@@ -27,7 +27,7 @@ const Footer = ({ settings }: Props) => {
         {settings?.navSecondary && (
           <nav className='nav-secondary'>
             {/* <h2 className='text-md md:text-lg '>partenaires</h2> */}
-            <hr />
+            {/* <hr /> */}
             <ul>
               {settings?.navSecondary.map((item) => (
                 <li key={item._key}>
