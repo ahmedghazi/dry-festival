@@ -28,8 +28,10 @@ footer {
         justify-content: center;
         // justify-content: space-between;
         img {
-          max-height: 4rem;
-          max-height: 2rem;
+          // max-height: 4rem;
+          // max-height: 2rem;
+          width: auto;
+          height: calc(2rem * var(--s, 1));
           width: auto;
         }
       }

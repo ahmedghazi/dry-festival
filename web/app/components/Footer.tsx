@@ -30,13 +30,18 @@ const Footer = ({ settings }: Props) => {
             {/* <hr /> */}
             <ul>
               {settings?.navSecondary.map((item) => (
-                <li key={item._key}>
+                <li
+                  key={item._key}
+                  // style={{
+                  //   flexShrink: 0,
+                  //   display: "block",
+                  //   transform: `scale(${item.size || 1})`,
+                  //   zoom: 2,
+                  // }}
+                >
                   {item._type === "linkIcon" && (
                     <a href={item.link}>
                       <Image
-                        style={{
-                          transform: `scale(${item.size || 1})`,
-                        }}
                         src={urlFor(item.icon?.asset)}
                         alt={item.label || ""}
                         width={
@@ -44,6 +49,11 @@ const Footer = ({ settings }: Props) => {
                         }
                         height={
                           item.icon?.asset?.metadata?.dimensions?.height || 24
+                        }
+                        style={
+                          {
+                            "--s": item.size || 1,
+                          } as React.CSSProperties
                         }
                       />
                     </a>
