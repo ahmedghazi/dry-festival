@@ -23,11 +23,13 @@ footer {
       ul {
         padding: 1em 0;
         display: flex;
-        gap: var(--spacing-md);
+        gap: var(--spacing-lg);
         align-items: center;
         justify-content: center;
+        // justify-content: space-between;
         img {
           max-height: 4rem;
+          max-height: 2rem;
           width: auto;
         }
       }
@@ -40,9 +42,10 @@ footer {
     }
     .nav-secondary {
       ul {
-        flex-direction: column;
+        // flex-direction: column;
+        flex-wrap: wrap;
         img {
-          max-height: 2rem;
+          // max-height: 2rem;
         }
       }
     }

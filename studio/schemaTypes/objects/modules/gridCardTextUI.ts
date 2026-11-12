@@ -4,7 +4,7 @@ import {getFirstBlockText} from './lib/blockPreview'
 
 export default defineField({
   name: 'gridCardTextUI',
-  title: 'Grid Card Text',
+  title: 'Grid Card Text (mosaic)',
   type: 'object',
   icon: FiGrid,
   fields: [

@@ -3,20 +3,21 @@
 import {defineField} from 'sanity'
 
 export default defineField({
-  title: 'Link Icon',
+  title: 'Link image',
   name: 'linkIcon',
   type: 'object',
   preview: {
     select: {
       label: `label`,
       media: 'icon',
+      link: 'link',
     },
     prepare(selection) {
-      const {label, media} = selection
+      const {label, media, link} = selection
       return {
         title: label,
         media: media,
-        // subtitle: "test",
+        subtitle: link,
       }
     },
   },
