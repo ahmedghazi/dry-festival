@@ -358,6 +358,7 @@ export type LinkIcon = {
     crop?: SanityImageCrop;
     _type: "image";
   };
+  size?: number;
 };
 
 export type Seo = {
@@ -732,6 +733,7 @@ export type SETTINGS_QUERY_RESULT = {
           crop?: SanityImageCrop;
           _type: "image";
         } | null;
+        size?: number;
       }
     | {
         _key: string;

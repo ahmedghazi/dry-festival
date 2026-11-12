@@ -34,7 +34,16 @@ export default defineField({
     }),
     defineField({
       name: 'icon',
+      title: 'Image',
       type: 'image',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'size',
+      title: "Taile de l'image en %)",
+      type: 'number',
+      validation: (Rule) => Rule.min(0).max(2),
+      description: 'Size in % (0 -> 2) ex: 1.5 = 150%',
     }),
   ],
 })

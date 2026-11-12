@@ -34,6 +34,9 @@ const Footer = ({ settings }: Props) => {
                   {item._type === "linkIcon" && (
                     <a href={item.link}>
                       <Image
+                        style={{
+                          transform: `scale(${item.size || 1})`,
+                        }}
                         src={urlFor(item.icon?.asset)}
                         alt={item.label || ""}
                         width={
