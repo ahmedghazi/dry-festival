@@ -2,7 +2,7 @@
 
 [data-theme="theme-xyz"] {
   --header-height: 43.5px;
-  --color-bg: #fff;
+  --color-bg: rgb(255, 250, 240);
   --color-primary: #000;
   --color-secondary: #ff8c71;
   --color-hover: #333;
@@ -10,45 +10,94 @@
   --color-red: #ff0000;
   --color-bleu: #77b5fe;
 
+  /* --c-vert: rgb(161, 178, 0);
+  --c-violet: rgb(140, 77, 239);
+  --c-rose: rgb(255, 141, 244);
+  --c-jaune: rgb(255, 255, 36);
+  --c-corail: rgb(255, 140, 113);
+  --c-bleu: rgb(119, 181, 254);
+  --c-bleu-gris: rgb(146, 184, 204);
+  --c-gris: rgb(204, 204, 204);
+  --c-écru: rgb(255, 250, 240); */
+
+  /* v1 colors palette */
+  --color-black: rgb(0, 0, 0);
+
+  --color-gray-50: rgb(225, 228, 226);
+  --color-gray-100: rgb(204, 204, 204);
+
+  --color-blue-50: rgb(146, 184, 204);
+  --color-blue-100: rgb(119, 181, 254);
+  --color-blue-200: rgb(10, 5, 240);
+
+  --color-red-50: rgb(255, 140, 113);
+  --color-red-100: rgb(255, 93, 112);
+
+  --color-pink-50: rgb(255, 141, 244);
+  --color-pink-100: rgb(255, 94, 244);
+
+  --color-lime-100: rgb(161, 178, 0);
+  --color-green-100: rgb(54, 148, 0);
+
+  --color-yellow-100: rgb(255, 255, 36);
+  --color-purple-100: rgb(140, 77, 239);
+
   --font-primary:
     "FormaDJRDisplay-Medium-Testing", "Helvetica Neue", "HelveticaNeueRoman",
     "HelveticaNeue-Roman", "Helvetica Neue Roman", "TeXGyreHerosRegular",
     "Helvetica", "Arial", sans-serif;
+  --font-primary-i:
+    "FormaDJRDisplay-MediumItalic-Testing", "Helvetica Neue",
+    "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman",
+    "TeXGyreHerosRegular", "Helvetica", "Arial", sans-serif;
   --font-primary-b:
     "FormaDJRDisplay-Bold-Testing", "Helvetica Neue", "HelveticaNeueRoman",
     "HelveticaNeue-Roman", "Helvetica Neue Roman", "TeXGyreHerosRegular",
     "Helvetica", "Arial", sans-serif;
 
-  --spacing-xs: 0.4em;
-  --spacing-sm: 0.625em;
-  --spacing-md: 1.2rem; /*18px*/
-  --spacing-lg: 1.875rem;
-  --spacing-xl: 3.75rem;
-  --spacing-2xl: 6.25rem;
+  --spacing-sm: 0.625rem; /* 10px */
+  --spacing-md: 1.25rem; /* 20px */
+  --spacing-lg: 1.875rem; /* 30px */
+  --spacing-xl: 3.75rem; /* 60px */
+  --spacing-2xl: 6.25rem; /* 100px */
+  --spacing-40: 2.5rem; /* 40px */
 
   --text-md-mobile: 1rem;
+  /* --text-lg-mobile: 2rem; */
 
   /*
   Et oui desktop : taille 30 px / interlignage 28 px / interlettrage 20px
 mobile : taille 17 px / interlignage 16 px / interlettrage 20px
   */
-  --text-sm: 0.75rem;
-  --text-md: 1.063rem; /*17px*/
-  --text-lg: 1.875rem; /*30px*/
+  /* --text-sm: 0.75rem;
+  --text-md: 1.063rem;
+  --text-lg: 1.875rem;  */
+  --text-2xs: 0.625rem; /* 10px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-base: 1rem; /* 16px */
+  --text-sm: 1.25rem; /* 20px*/
+  --text-md: 1.875rem; /* 30px*/
+  --text-lg: 3.75rem; /* 60px*/
 
   --cubic: cubic-bezier(0.87, 0, 0.13, 1);
 
   /* --text-xl: clamp(26px, 5.21vw, 75px);*/
-  --border-width-sm: 2px;
-  --border-sm: var(--border-width-sm) solid;
-  --border-width: 3px;
+  --border-width--mobile: 0.125rem;
+  --border-width: 0.188rem;
   --border: var(--border-width) solid;
+  --border-sm: var(--border-width--mobile) solid;
 
-  --gutter: 0.4em;
+  --radius-xs: 0.313rem; /* 5px */
+  --radius: 1.25rem; /* 20px */
+  --radius-sm: 0.625rem; /* 10px */
+
+  --gutter: 1.25rem;
 
   --screen-sm: 768px;
   --screen-md: 1080px;
   --screen-lg: 1441px;
+
+  --text-max-w: 62.5rem;
 }
 
 @theme inline {
@@ -59,7 +108,23 @@ mobile : taille 17 px / interlignage 16 px / interlettrage 20px
   --color-accent: var(--color-accent);
   --color-red: var(--color-red);
 
+  --color-black: var(--color-black);
+  --color-gray-50: var(--color-gray-50);
+  --color-gray-100: var(--color-gray-100);
+  --color-blue-50: var(--color-blue-50);
+  --color-blue-100: var(--color-blue-100);
+  --color-blue-200: var(--color-blue-200);
+  --color-red-50: var(--color-red-50);
+  --color-red-100: var(--color-red-100);
+  --color-pink-50: var(--color-pink-50);
+  --color-pink-100: var(--color-pink-100);
+  --color-lime-100: var(--color-lime-100);
+  --color-green-100: var(--color-green-100);
+  --color-yellow-100: var(--color-yellow-100);
+  --color-purple-100: var(--color-purple-100);
+
   --font-primary: var(--font-primary);
+  --font-primary-i: var(--font-primary-i);
   --font-secondary: var(--font-secondary);
 
   --spacing-xs: var(--spacing-xs);
@@ -71,6 +136,9 @@ mobile : taille 17 px / interlignage 16 px / interlettrage 20px
 
   --text-md-mobile: var(--text-md-mobile);
 
+  --text-2xs: var(--text-2xs);
+  --text-xs: var(--text-xs);
+  --text-base: var(--text-base);
   --text-sm: var(--text-sm);
   --text-md: var(--text-md);
   --text-lg: var(--text-lg);
@@ -81,6 +149,9 @@ mobile : taille 17 px / interlignage 16 px / interlettrage 20px
   --border: var(--border);
   --border-width-lg: var(--border-width-lg);
   --border-lg: var(--border-lg);
+
+  --radius: var(--radius);
+  --radius-xs: var(--radius-xs);
 
   --gutter: var(--gutter);
 

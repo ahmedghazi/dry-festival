@@ -1,19 +1,18 @@
-import { draftMode } from "next/headers";
-// import data from "./data.json";
-// import { getHome, HOME_QUERY } from "./sanity-api/sanity-queries";
 import { Metadata } from "next";
 import website from "./config/website";
 import { JSX } from "react/jsx-runtime";
-import ContentLanding from "./components/ContentLanding";
+import ContentModulaire from "./components/ContentModulaire";
+import { getHome } from "./sanity-api/sanity-queries";
+import { ModulesList } from "./sanity-api/types/extra-types";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata(): Promise<Metadata> {
-  // const data = await getHome();
-  // console.log(data.seo);
+  const data = await getHome(false);
   return {
-    title: website.title,
-    description: website.description,
+    title: `${data?.seo?.metaTitle || data?.title || website.title}`,
+    description: data?.seo?.metaDescription || website.description,
     openGraph: {
-      images: website.image,
+      images: data?.seo?.metaImage?.asset?.url || website.image,
     },
   };
 }
@@ -29,21 +28,13 @@ type PageLandingProps = {
 const PageLanding: ({
   params,
 }: PageLandingProps) => Promise<JSX.Element> = async () => {
-  // const { isEnabled: preview } = draftMode();
-  // let data: Home;
-  // if (preview) {
-  //   data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-  //     HOME_QUERY,
-  //     params
-  //   );
-  // } else {
-  //   data = (await getHome()) as Home;
-  // }
+  const data = await getHome();
+  if (!data) return notFound();
 
-  // if (!data) return <div>please edit pageLanding</div>;
   return (
-    <div className='template template--landing' data-template='landing'>
-      <ContentLanding />
+    <div className='template template--home' data-template='home'>
+      {/* <ContentLanding /> */}
+      <ContentModulaire input={(data.modules ?? []) as ModulesList} />
     </div>
   );
 };

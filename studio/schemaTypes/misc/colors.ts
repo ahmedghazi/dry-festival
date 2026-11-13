@@ -1,0 +1,16 @@
+export default [
+  {title: 'Black — rgb(0, 0, 0)', value: 'black'},
+  {title: 'Gray 50 — rgb(225, 228, 226)', value: 'gray-50'},
+  {title: 'Gray 100 — rgb(204, 204, 204)', value: 'gray-100'},
+  {title: 'Blue 50 — rgb(146, 184, 204)', value: 'blue-50'},
+  {title: 'Blue 100 — rgb(99, 163, 239)', value: 'blue-100'},
+  {title: 'Blue 200 — rgb(10, 5, 240)', value: 'blue-200'},
+  {title: 'Red 50 — rgb(230, 131, 115)', value: 'red-50'},
+  {title: 'Red 100 — rgb(255, 93, 112)', value: 'red-100'},
+  {title: 'Pink 50 — rgb(255, 141, 244)', value: 'pink-50'},
+  {title: 'Pink 100 — rgb(255, 94, 244)', value: 'pink-100'},
+  {title: 'Lime 100 — rgb(143, 174, 12)', value: 'lime-100'},
+  {title: 'Green 100 — rgb(54, 148, 0)', value: 'green-100'},
+  {title: 'Yellow 100 — rgb(255, 255, 36)', value: 'yellow-100'},
+  {title: 'Purple 100 — rgb(118, 67, 229)', value: 'purple-100'},
+]

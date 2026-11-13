@@ -1,3 +1,55 @@
+@use "../variables";
+
 footer {
-  padding: var(--spacing-md);
+  padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-md);
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    gap: 1em;
+    text-align: center;
+
+    h2 {
+      padding-bottom: var(--spacing-md);
+      border-bottom: var(--border);
+      min-width: 100%;
+    }
+    .nav-secondary {
+      min-width: 100%;
+      border-top: var(--border);
+      h2 {
+      }
+      ul {
+        padding: 1em 0;
+        display: flex;
+        gap: var(--spacing-lg);
+        align-items: center;
+        justify-content: center;
+        // justify-content: space-between;
+        img {
+          // max-height: 4rem;
+          // max-height: 2rem;
+          width: auto;
+          height: calc(2rem * var(--s, 1));
+          width: auto;
+        }
+      }
+    }
+  }
+  @media all and (max-width: variables.$md) {
+    padding-top: var(--spacing-40);
+    .inner h2 {
+      border-bottom: var(--border-sm);
+    }
+    .nav-secondary {
+      ul {
+        // flex-direction: column;
+        flex-wrap: wrap;
+        img {
+          // max-height: 2rem;
+        }
+      }
+    }
+  }
 }

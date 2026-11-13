@@ -1,0 +1,300 @@
+@use "../variables";
+
+.card-outer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  @media all and (max-width: variables.$md) {
+    gap: 1rem;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    text-align: center;
+    flex: 1 1 auto;
+    height: auto;
+    @media all and (max-width: variables.$md) {
+      gap: 1rem;
+    }
+    &.card-text-dropdown {
+      // gap: 0;
+      position: relative;
+      h3 {
+        line-height: 0.95;
+      }
+      p.subtitle {
+        margin-bottom: 0;
+      }
+      .card-toggle {
+        cursor: pointer;
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+      }
+    }
+    &:has(.with-scrollbar) {
+      padding-left: 0;
+      padding-right: 0;
+      .with-scrollbar {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+      }
+    }
+    .text-lg {
+      line-height: 0.8;
+      hyphens: auto;
+      overflow-wrap: break-word;
+    }
+  }
+  .footer {
+    // padding: 0 var(--spacing-md);
+    display: flex;
+    justify-content: center;
+    p {
+      max-width: 23.375rem;
+    }
+  }
+}
+
+.card-img {
+  &.figure--is-svg {
+    // border-radius: var(--radius);
+    // overflow: clip;
+  }
+  &:not(.figure--is-svg) {
+    overflow: clip;
+    img {
+      // transition: transform 1s var(--cubic);
+      vertical-align: top;
+    }
+    // &:hover {
+    //   img {
+    //     // transform: scale(1.05);
+    //   }
+    // }
+  }
+}
+
+.rounded {
+  border-radius: var(--radius);
+  border: var(--border);
+  overflow: clip;
+
+  // outline: var(--border-width) solid var(--color-primary);
+  // outline-offset: calc(var(--border-width) * -1);
+  @media screen and (max-width: 1090px) {
+    border: var(--border-sm);
+    border-radius: var(--radius-sm);
+
+    // outline: var(--border-width--mobile) solid var(--color-primary);
+    // outline-offset: calc(var(--border-width--mobile) * -1);
+  }
+}
+
+.figure--is-svg {
+  .figure__svg {
+    display: block;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+
+      path,
+      rect {
+        stroke-width: var(--border-width);
+        vector-effect: non-scaling-stroke;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1090px) {
+    .figure__svg svg {
+      path,
+      rect {
+        stroke-width: var(--border-width--mobile);
+      }
+    }
+  }
+}
+
+figure {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+form {
+  &.mailchimp,
+  &.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    @media all and (max-width: variables.$md) {
+      gap: var(--spacing-sm);
+    }
+  }
+  .form-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &__optin {
+      text-align: left;
+      justify-content: center;
+    }
+    input,
+    textarea,
+    button {
+      border: var(--border);
+      border-width: var(--border-width);
+      border-radius: var(--radius-xs);
+
+      &[type="email"],
+      &[type="text"] {
+        &::placeholder {
+          color: var(--color-primary);
+        }
+      }
+      &[type="email"] {
+        min-width: 13.3em;
+      }
+    }
+    textarea {
+      &::placeholder {
+        color: var(--color-primary);
+      }
+    }
+
+    [type="email"],
+    [type="text"],
+    button {
+      height: var(--spacing-xl);
+      line-height: calc(var(--spacing-xl) * 0.8);
+      padding: 0 0.5em;
+      font-style: unset;
+    }
+    textarea {
+      min-height: calc(var(--spacing-xl) * 3);
+      padding: 0.5em;
+      resize: vertical;
+    }
+    button {
+      cursor: pointer;
+      transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+      &:hover {
+        background-color: var(--color-primary) !important;
+        border-color: var(--color-primary);
+        color: var(--color-bg);
+      }
+    }
+    label {
+      line-height: 1;
+    }
+  }
+  @media screen and (max-width: 1090px) {
+    width: 100%;
+    .form-row {
+      gap: var(--spacing-sm);
+      &__email .flex {
+        width: 100%;
+      }
+      input,
+      textarea,
+      button {
+        border-width: var(--border-width--mobile);
+      }
+      [type="email"],
+      [type="text"],
+      button {
+        height: var(--spacing-lg);
+        line-height: calc(var(--spacing-lg) * 0.8);
+      }
+      label.text-xs {
+        line-height: 1;
+      }
+    }
+  }
+
+  &.mailchimp {
+    input[type="email"] {
+      background-color: var(--color-yellow-100);
+    }
+    button {
+      background-color: var(--color-pink-50);
+    }
+  }
+}
+
+.ui-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: var(--spacing-lg);
+  height: var(--spacing-lg);
+  background-color: var(--color-blue-50);
+  accent-color: var(--color-blue-50);
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    opacity: 0;
+    transform: translate(-50%, -60%) rotate(45deg) scale(0);
+    transform-origin: center;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  &:checked {
+    background: currentColor;
+    &::after {
+      opacity: 1;
+      transform: translate(-50%, -60%) rotate(45deg) scale(1);
+    }
+  }
+  @media screen and (max-width: 1090px) {
+    width: calc(var(--spacing-lg) * 0.75);
+    height: calc(var(--spacing-lg) * 0.75);
+  }
+}
+
+@media (width >= 10rem) {
+  @for $i from 1 through 12 {
+    .grid-cols-#{$i} {
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+    .col-span-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}
+
+@media (width >= 48rem) {
+  @for $i from 1 through 12 {
+    .md\:grid-cols-#{$i} {
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+    .md\:col-span-#{$i} {
+      grid-column: span $i;
+    }
+    .md\:w-#{$i}\/12 {
+      width: calc(#{$i} / 12 * 100%);
+    }
+  }
+}
