@@ -64,23 +64,38 @@ const portableTextComponents: PortableTextComponents = {
       );
     },
     linkWeezevent: ({ children, value }) => {
+      /*
+<a
+title="Logiciel billetterie en ligne"
+href="https://widget.weezevent.com/ticket/38b56177-8b10-4bf7-a29a-c3eae8aff1d4?locale=fr-fr"
+class="weezevent-widget-integration"
+target="_blank"
+data-src="https://widget.weezevent.com/ticket/38b56177-8b10-4bf7-a29a-c3eae8aff1d4?locale=fr-fr"
+data-width="650"
+data-height="600"
+data-resize="1"
+data-nopb="1"
+data-type="neo"
+data-width_auto="1"
+>Billetterie Weezevent</a>
+<script type="text/javascript" src="https://widget.weezevent.com/weez.js"  async defer></script>
+      */
       const { link } = value;
       return (
         <a
-          // className='btn btn--weezevent'
+          target='_blank'
           href={link}
           rel={"noreferrer noopener"}
-          target='_blank'
           title='Logiciel billetterie en ligne'
           //  href="https://widget.weezevent.com/ticket/E2155285/?code=45405&locale=fr-FR&width_auto=1&color_primary=FF6680"
-          className='weezevent-widget-integration btn btn--weezevent'
+          className='weezevent-widget-integration'
           data-src={link}
-          data-id='2155285'
+          data-width='650'
+          data-height='600'
           data-resize='1'
-          data-width_auto='1'
-          data-noscroll='0'
-          data-use-container='yes'
-          data-type='neo'>
+          data-nopb='1'
+          data-type='neo'
+          data-width_auto='1'>
           <span>{children} </span>
         </a>
       );
