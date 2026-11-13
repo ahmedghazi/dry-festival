@@ -11,6 +11,7 @@ import { ViewTransition } from "react";
 import { getSettings } from "./sanity-api/sanity-queries";
 import { SanityLive } from "./sanity-api/sanity.live";
 import WeezeventScript from "./components/WeezeventScript";
+import GAScript from "./components/GAScript";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -38,8 +39,8 @@ export default async function RootLayout({
             </ViewTransition>
 
             <Footer settings={settings} />
-            {/* <Cursor size={20} color='#00ff1a' /> */}
             <WeezeventScript />
+            <GAScript />
             <SanityLive />
             {isEnabled && <VisualEditing zIndex={1000} />}
           </PageContextProvider>
