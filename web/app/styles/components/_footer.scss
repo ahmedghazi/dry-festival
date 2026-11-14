@@ -36,6 +36,15 @@ footer {
         }
       }
     }
+    .credits {
+      border-top: var(--border);
+      padding-top: var(--spacing-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      font-size: var(--text-sm);
+    }
   }
   @media all and (max-width: variables.$md) {
     padding-top: var(--spacing-40);

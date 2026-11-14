@@ -26,19 +26,9 @@ const Footer = ({ settings }: Props) => {
         )}
         {settings?.navSecondary && (
           <nav className='nav-secondary'>
-            {/* <h2 className='text-md md:text-lg '>partenaires</h2> */}
-            {/* <hr /> */}
             <ul>
               {settings?.navSecondary.map((item) => (
-                <li
-                  key={item._key}
-                  // style={{
-                  //   flexShrink: 0,
-                  //   display: "block",
-                  //   transform: `scale(${item.size || 1})`,
-                  //   zoom: 2,
-                  // }}
-                >
+                <li key={item._key}>
                   {item._type === "linkIcon" && (
                     <a href={item.link}>
                       <Image
@@ -64,6 +54,26 @@ const Footer = ({ settings }: Props) => {
           </nav>
         )}
         {/* <Mailchimp action='' optin /> */}
+        <div className='credits'>
+          <p>© {new Date().getFullYear()} Dry Festival. All rights reserved.</p>
+          <p>
+            Design{" "}
+            <a
+              href='https://fakepaper.fr/'
+              target='_blank'
+              rel='noopener noreferrer'>
+              Fake Paper
+            </a>
+            {", "}
+            Code{" "}
+            <a
+              href='https://www.ahmedghazi.com'
+              target='_blank'
+              rel='noopener noreferrer'>
+              Ahmed Ghazi
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
