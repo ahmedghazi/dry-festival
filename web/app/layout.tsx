@@ -4,7 +4,6 @@ import website from "./config/website";
 import { PageContextProvider } from "./context/PageContext";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
-// import Cursor from "./components/ui/Cursor";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { ViewTransition } from "react";
