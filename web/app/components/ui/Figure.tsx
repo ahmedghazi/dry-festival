@@ -34,54 +34,40 @@ const Figure = ({
     asset?.metadata?.dimensions?.width > asset?.metadata?.dimensions?.height;
   const isSvg = asset.mimeType === "image/svg+xml";
   return (
-    <figure
-      className={clsx(
-        "figure",
-        isSvg && "figure--is-svg",
-        !isSvg && "rounded",
-        className,
-        isLandscape && "figure--is-landscape",
-        !isLandscape && "figure--is-portrait",
-      )}>
-      {/* <Image
-        src={urlFor(asset, width)}
-        width={asset?.metadata?.dimensions?.width || width}
-        height={asset?.metadata?.dimensions?.height || width}
-        alt={alt || ""}
-        sizes={sizes}
-        style={{
-          width: "100%",
-          height: "auto",
-          aspectRatio: `${asset?.metadata?.dimensions?.width} / ${asset?.metadata?.dimensions?.height}`,
-        }}
-        placeholder={asset?.metadata?.lqip ? "blur" : "empty"}
-        blurDataURL={asset?.metadata?.lqip}
-      /> */}
-      {isSvg ? (
-        <InlineSvg src={urlFor(asset, width)} className='figure__svg' />
-      ) : (
-        <ImagePixelated
-          src={urlFor(asset, width)}
-          width={asset?.metadata?.dimensions?.width || width}
-          height={asset?.metadata?.dimensions?.height || width}
-          alt={alt || ""}
-          sizes={sizes}
-          style={{
-            width: "100%",
-            height: "auto",
-            aspectRatio: `${asset?.metadata?.dimensions?.width} / ${asset?.metadata?.dimensions?.height}`,
-          }}
-          blurDataURL={asset?.metadata?.lqip}
-        />
-      )}
-      {caption && (
-        <figcaption>
-          <span className='c-caption caption'>{caption}</span>
-          {author && <span className='c-caption'>, {author}</span>}
-          {copyright && <span className='c-credits'> | © {copyright}</span>}
+    <>
+      <figure
+        className={clsx(
+          "figure",
+          isSvg && "figure--is-svg",
+          !isSvg && "rounded",
+          className,
+          isLandscape && "figure--is-landscape",
+          !isLandscape && "figure--is-portrait",
+        )}>
+        {isSvg ? (
+          <InlineSvg src={urlFor(asset, width)} className='figure__svg' />
+        ) : (
+          <ImagePixelated
+            src={urlFor(asset, width)}
+            width={asset?.metadata?.dimensions?.width || width}
+            height={asset?.metadata?.dimensions?.height || width}
+            alt={alt || ""}
+            sizes={sizes}
+            style={{
+              width: "100%",
+              height: "auto",
+              aspectRatio: `${asset?.metadata?.dimensions?.width} / ${asset?.metadata?.dimensions?.height}`,
+            }}
+            blurDataURL={asset?.metadata?.lqip}
+          />
+        )}
+      </figure>
+      {copyright && (
+        <figcaption className='text-sm text-right py-sm'>
+          {copyright}
         </figcaption>
       )}
-    </figure>
+    </>
   );
 };
 

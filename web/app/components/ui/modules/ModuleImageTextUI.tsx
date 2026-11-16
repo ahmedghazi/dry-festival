@@ -4,6 +4,7 @@ import React from "react";
 import Figure from "../Figure";
 import { PortableText, stegaClean } from "next-sanity";
 import portableTextComponents from "@/app/sanity-api/portableTextComponents";
+import { SanityImageAssetExpanded } from "@/app/sanity-api/types/extra-types";
 
 type Props = {
   input: ImageTextUI;
@@ -11,6 +12,8 @@ type Props = {
 
 const ModuleImageTextUI = ({ input }: Props) => {
   const { title, subtitle, text, image, direction } = input;
+  // asset is dereferenced in the query (fragments.ts > image)
+  const asset = image?.asset as unknown as SanityImageAssetExpanded | undefined;
 
   return (
     <section className='module module--image-text-ui'>
@@ -21,7 +24,11 @@ const ModuleImageTextUI = ({ input }: Props) => {
         )}>
         {image && (
           <div className='col-media w-full md:w-1/2'>
-            <Figure className='card-img' asset={image.asset} />
+            <Figure
+              className='card-img'
+              asset={asset}
+              copyright={asset?.creditLine || ""}
+            />
           </div>
         )}
         <div className='col-text w-full md:w-1/2'>

@@ -6,6 +6,7 @@ import {
   ImageTextUI,
   ListCardsImageUI,
   NewsletterUI,
+  SanityImageAsset,
   TextSplitUI,
   TextUI,
 } from "./sanity.types";
@@ -24,3 +25,8 @@ export type ModulesList = Array<
 >;
 
 export type CardTextItem = SanityKeyed<CardText>;
+
+// creditLine is added to image assets by sanity-plugin-media (not in schema, so typegen can't see it)
+export type SanityImageAssetExpanded = SanityImageAsset & {
+  creditLine?: string | null;
+};

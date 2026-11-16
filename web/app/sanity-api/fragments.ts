@@ -32,7 +32,8 @@ export const image = `
 		...,
 		url,
 		extension,
-		mimeType
+		mimeType,
+		creditLine
 	},
 	alt,
 	caption,
