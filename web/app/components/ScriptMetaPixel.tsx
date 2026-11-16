@@ -4,11 +4,6 @@ const ScriptMetaPixel = () => {
   //<script type="text/javascript" src="https://widget.weezevent.com/weez.js"  async defer></script>
   return (
     <>
-      <Script
-        defer
-        src='https://www.googletagmanager.com/gtm.js?id=GTM-PM7VJJJ3'
-        strategy='afterInteractive'
-      />
       <Script id='google-analytics'>
         {`
         !function(f,b,e,v,n,t,s)

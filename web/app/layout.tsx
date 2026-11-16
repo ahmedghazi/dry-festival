@@ -12,6 +12,7 @@ import { getSettings } from "./sanity-api/sanity-queries";
 import { SanityLive } from "./sanity-api/sanity.live";
 import WeezeventScript from "./components/WeezeventScript";
 import ScriptGA from "./components/ScriptGA";
+import ScriptMetaPixel from "./components/ScriptMetaPixel";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -41,6 +42,7 @@ export default async function RootLayout({
             <Footer settings={settings} />
             <WeezeventScript />
             <ScriptGA />
+            <ScriptMetaPixel />
             <SanityLive />
             {isEnabled && <VisualEditing zIndex={1000} />}
           </PageContextProvider>
