@@ -45,6 +45,15 @@ footer {
       width: 100%;
       font-size: var(--text-sm);
     }
+    .instagram {
+      text-align: center;
+      display: inline-block;
+      margin: var(--spacing-sm);
+      svg {
+        width: var(--text-md);
+        height: var(--text-md);
+      }
+    }
   }
   @media all and (max-width: variables.$md) {
     padding-top: var(--spacing-40);

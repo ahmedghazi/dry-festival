@@ -41,6 +41,7 @@ export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0]{
   },
   contact,
   contactText,
+  instagram,
 }`);
 
 export async function getSettings() {
@@ -86,10 +87,7 @@ export const PAGE_MODULAIRE_QUERY =
   }
 }`);
 
-export async function getPageModulaire(
-  slug: string,
-  stega?: boolean,
-) {
+export async function getPageModulaire(slug: string, stega?: boolean) {
   const { data } = await sanityFetch({
     query: PAGE_MODULAIRE_QUERY,
     params: { slug: slug },

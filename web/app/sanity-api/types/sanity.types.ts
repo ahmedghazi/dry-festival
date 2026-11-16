@@ -407,6 +407,7 @@ export type Settings = {
       } & LinkIcon)
   >;
   contact?: string;
+  instagram?: string;
   contactText?: BlockContent;
   credits?: BlockContent;
   message404?: BlockContent;
@@ -748,6 +749,7 @@ export type SETTINGS_QUERY_RESULT = {
       }
   > | null;
   contact: string | null;
+  instagram?: string;
   contactText: BlockContent | null;
   credits?: BlockContent;
   message404?: BlockContent;

@@ -100,6 +100,12 @@ export default defineType({
       group: 'footer',
     }),
     defineField({
+      name: 'instagram',
+      title: 'Instagram',
+      type: 'string',
+      group: 'footer',
+    }),
+    defineField({
       name: 'contactText',
       title: 'Contact text',
       type: 'blockContent',

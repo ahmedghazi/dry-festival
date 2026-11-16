@@ -4,6 +4,7 @@ import portableTextComponents from "../sanity-api/portableTextComponents";
 import { SETTINGS_QUERY_RESULT } from "../sanity-api/types/sanity.types";
 import { urlFor } from "../sanity-api/sanity-utils";
 import Image from "next/image";
+import Icon from "./ui/Icon";
 
 type Props = {
   settings: SETTINGS_QUERY_RESULT;
@@ -16,12 +17,20 @@ const Footer = ({ settings }: Props) => {
         <h2 className='text-md md:text-lg '>contact</h2>
         {settings?.contactText && (
           <div className='text'>
-            <div className='module__text text'>
-              <PortableText
-                value={stegaClean(settings?.contactText)}
-                components={portableTextComponents}
-              />
-            </div>
+            <PortableText
+              value={stegaClean(settings?.contactText)}
+              components={portableTextComponents}
+            />
+            {settings?.instagram && (
+              <a
+                title='Instagram'
+                className='instagram'
+                href={settings?.instagram}
+                target='_blank'
+                rel='noopener noreferrer'>
+                <Icon name='instagram' />
+              </a>
+            )}
           </div>
         )}
         {settings?.navSecondary && (
