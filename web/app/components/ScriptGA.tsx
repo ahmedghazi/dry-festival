@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const GAScript = () => {
+const ScriptGA = () => {
   //<script type="text/javascript" src="https://widget.weezevent.com/weez.js"  async defer></script>
   return (
     <>
@@ -20,4 +20,4 @@ const GAScript = () => {
   );
 };
 
-export default GAScript;
+export default ScriptGA;
