@@ -54,26 +54,17 @@ const Footer = ({ settings }: Props) => {
           </nav>
         )}
         {/* <Mailchimp action='' optin /> */}
-        <div className='credits'>
-          <p>© {new Date().getFullYear()} Dry Festival. All rights reserved.</p>
-          <p>
-            Design{" "}
-            <a
-              href='https://fakepaper.fr/'
-              target='_blank'
-              rel='noopener noreferrer'>
-              Fake Paper
-            </a>
-            {", "}
-            Code{" "}
-            <a
-              href='https://www.ahmedghazi.com'
-              target='_blank'
-              rel='noopener noreferrer'>
-              Ahmed Ghazi
-            </a>
-          </p>
-        </div>
+        {settings?.credits && (
+          <div className='credits'>
+            <p>© {new Date().getFullYear()} Dry Festival</p>
+            <div className='text'>
+              <PortableText
+                value={stegaClean(settings?.credits)}
+                components={portableTextComponents}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </footer>
   );

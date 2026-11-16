@@ -2183,6 +2183,14 @@
         },
         "optional": true
       },
+      "credits": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "blockContent"
+        },
+        "optional": true
+      },
       "message404": {
         "type": "objectAttribute",
         "value": {

@@ -408,6 +408,7 @@ export type Settings = {
   >;
   contact?: string;
   contactText?: BlockContent;
+  credits?: BlockContent;
   message404?: BlockContent;
   customCss?: string;
   randomizeDryWaterColors?: boolean;
@@ -748,6 +749,7 @@ export type SETTINGS_QUERY_RESULT = {
   > | null;
   contact: string | null;
   contactText: BlockContent | null;
+  credits?: BlockContent;
   message404?: BlockContent;
   customCss?: string;
   randomizeDryWaterColors?: boolean;

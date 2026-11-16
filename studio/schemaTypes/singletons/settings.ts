@@ -105,6 +105,12 @@ export default defineType({
       type: 'blockContent',
       group: 'footer',
     }),
+    defineField({
+      name: 'credits',
+      title: 'Credits',
+      type: 'blockContent',
+      group: 'footer',
+    }),
     // defineField({
     //   name: 'logos',
     //   title: 'Logos',
