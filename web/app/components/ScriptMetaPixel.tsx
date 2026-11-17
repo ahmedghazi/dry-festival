@@ -4,7 +4,7 @@ const ScriptMetaPixel = () => {
   //<script type="text/javascript" src="https://widget.weezevent.com/weez.js"  async defer></script>
   return (
     <>
-      <Script id='google-analytics'>
+      <Script id='meta-pixel'>
         {`
         !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
