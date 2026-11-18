@@ -27,6 +27,7 @@ main {
   z-index: 0;
   .template {
     padding-top: calc(var(--header-h, 80px));
+
     &:not(.template--home) {
       padding-top: calc(var(--header-h, 80px) + var(--spacing-2xl));
     }

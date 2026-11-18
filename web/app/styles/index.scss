@@ -13,3 +13,26 @@
 @use "components/footer";
 @use "components/content--landing";
 @use "components/dry-water";
+
+header {
+  opacity: 0;
+}
+main {
+  .template {
+    padding-top: var(--spacing-md);
+  }
+}
+
+body .modules section.module--dry-water-ui {
+  &,
+  .dry-water {
+    min-height: calc(100dvh - (var(--spacing-lg)) - var(--border-width) * 2);
+  }
+  &:before {
+    display: none;
+  }
+  .dry-water {
+    border-radius: var(--radius);
+    border: var(--border);
+  }
+}
